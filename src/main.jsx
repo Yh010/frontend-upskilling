@@ -3,8 +3,28 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
+import MovingButtonPage from './pages/MovingButtonPage.js';
+import AnimatedCardPage from './pages/AnimatedCardPage.js';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  }, {
+    path: "/movingbutton",
+    element: <MovingButtonPage />
+  },{
+    path: "/animatedcard",
+    element: <AnimatedCardPage />
+  }
+]);
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />,
+    
   </StrictMode>,
 )
