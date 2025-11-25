@@ -8,6 +8,7 @@ import { RouterProvider } from "react-router/dom";
 import MovingButtonPage from './pages/MovingButtonPage.js';
 import AnimatedCardPage from './pages/AnimatedCardPage.js';
 import SidebarAnimationPage from './pages/SidebarAnimationPage.js';
+import MotionHooksPage from './pages/MotionHooksPage.js';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   },{
     path: "/sidebar",
     element: <SidebarAnimationPage />
+  },
+  {
+    path: "/motionhooks",
+    element: <MotionHooksPage />
   }
 ]);
 
