@@ -1,4 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
+
+const useOutsideClick = (callback: () => void) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        callback();
+      }
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, [callback]);
+
+  return ref;
+};
 
 function LayoutCards() {
   const cards = [
@@ -89,13 +109,18 @@ function LayoutCards() {
     },
   ];
   const [current, setCurrent] = useState<any>(null);
+  const ref = useOutsideClick(() => setCurrent(null));
   return (
     <div className="min-h-screen bg-gray-100 py-10 relative">
       {current && (
         <div className="fixed z-10 h-full w-full inset-0 bg-black/50 backdrop-blur-sm"></div>
       )}
       {current && (
-        <div className="h-[600px] fixed inset-0 z-20 m-auto bg-white w-72 rounded-2xl border border-neutral-200 p-4">
+        <motion.div
+          layoutId={`card-${current.title}`}
+          ref={ref}
+          className="h-[600px] fixed inset-0 z-20 m-auto bg-white w-72 rounded-2xl border border-neutral-200 p-4"
+        >
           <img
             src={current.src}
             alt={current.title}
@@ -120,14 +145,18 @@ function LayoutCards() {
             </div>
             <div className="h-60 overflow-auto">{current.content()}</div>
           </div>
-        </div>
+        </motion.div>
       )}
       <div className="max-w-lg mx-auto flex flex-col gap-10">
         {cards.map((card, idx) => {
           return (
-            <button
+            <motion.button
+              layoutId={`card-${card.title}`}
               key={card.title}
-              onClick={() => setCurrent(card)}
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent event from bubbling
+                setCurrent(card);
+              }}
               className="p-4 rounded-lg cursor-pointer flex justify-between items-center bg-white border border-neutral-200"
             >
               <div className="flex gap-4 items-center">
@@ -152,7 +181,7 @@ function LayoutCards() {
               >
                 {card.ctaText}
               </a>
-            </button>
+            </motion.button>
           );
         })}
       </div>
