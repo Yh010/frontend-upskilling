@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, stagger } from "motion/react";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -13,54 +13,90 @@ export default function Sidebar() {
     },
   };
 
-  return (
-    <div className="relative">
-      {/* Open Button */}
-      {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          className="px-4 py-2 bg-neutral-900 text-white rounded-md"
-        >
-          Menu
-        </button>
-      )}
+  const itemVariants = {
+    open: {
+      opacity: 1,
+      x: 0,
+    },
+    closed: {
+      opacity: 0,
+      x: -10,
+    },
+  };
 
+  const listAnimation = {
+    open: {
+      transition: {
+        staggerChildren: 0.07,
+        delayChildren: 0.2,
+      },
+    },
+    closed: {
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: -1,
+      },
+    },
+  };
+
+  return (
+    <motion.div
+      initial={false}
+      animate={open ? "open" : "closed"}
+      transition={{ duration: 0.3 }}
+    >
       {/* Sidebar */}
       <motion.div
-        initial={false}
-        animate={open ? "open" : "closed"}
         variants={sidebarVariants}
-        transition={{ duration: 0.3 }}
-        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-xl`}
+        className="fixed top-0 left-0 h-full bg-white shadow-xl"
       >
-        {/* Close Button INSIDE sidebar */}
+        {/* Toggle Button */}
         <button
           onClick={() => setOpen((prev) => !prev)}
-          className="absolute top-4 right-4 px-3 py-1 bg-neutral-900 text-white rounded-md"
+          className="absolute top-4 right-4 px-3 py-1 bg-neutral-900 text-white rounded-md z-10"
         >
-          ✕
+          {open ? "✕" : "☰"}
         </button>
 
-        {open && (
-          <>
-            <div className="p-4 font-bold text-neutral-900 text-lg">
+        {/* Animated Title */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="p-4 font-bold text-neutral-900 text-lg"
+            >
               Sidebar
-            </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-            <nav className="divide-y divide-neutral-200 mt-8">
-              <button className="w-full text-left p-4 hover:bg-neutral-100">
-                Dashboard
-              </button>
-              <button className="w-full text-left p-4 hover:bg-neutral-100">
-                Settings
-              </button>
-              <button className="w-full text-left p-4 hover:bg-neutral-100">
-                Profile
-              </button>
-            </nav>
-          </>
-        )}
+        {/* Navigation Items */}
+        <motion.nav
+          variants={listAnimation}
+          className="divide-y divide-neutral-200 mt-8"
+        >
+          <motion.button
+            variants={itemVariants}
+            className="w-full text-left p-4 hover:bg-neutral-100"
+          >
+            Dashboard
+          </motion.button>
+          <motion.button
+            variants={itemVariants}
+            className="w-full text-left p-4 hover:bg-neutral-100"
+          >
+            Settings
+          </motion.button>
+          <motion.button
+            variants={itemVariants}
+            className="w-full text-left p-4 hover:bg-neutral-100"
+          >
+            Profile
+          </motion.button>
+        </motion.nav>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
