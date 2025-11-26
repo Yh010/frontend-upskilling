@@ -10,6 +10,7 @@ import AnimatedCardPage from './pages/AnimatedCardPage.js';
 import SidebarAnimationPage from './pages/SidebarAnimationPage.js';
 import MotionHooksPage from './pages/MotionHooksPage.js';
 import LayoutCardsPage from './pages/LayoutCardsPage.js';
+import { Navbar } from './components/Navbar.js';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,9 @@ const router = createBrowserRouter([
   {
     path: "/layout",
     element: <LayoutCardsPage />
+  }, {
+    path: "/navbar",
+    element: <Navbar />
   }
 ]);
 
