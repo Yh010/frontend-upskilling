@@ -36,6 +36,20 @@ function LayoutCards() {
           <br />
           Her music frequently explores love, loss, and the complexities of
           Americana culture.
+          <br />
+          Lana Del Rey, known for her cinematic sound and nostalgic themes, has
+          inspired millions with her emotional songwriting and haunting vocals.
+          <br />
+          <br />
+          Her music frequently explores love, loss, and the complexities of
+          Americana culture.
+          <br /> Lana Del Rey, known for her cinematic sound and nostalgic
+          themes, has inspired millions with her emotional songwriting and
+          haunting vocals.
+          <br />
+          <br />
+          Her music frequently explores love, loss, and the complexities of
+          Americana culture.
         </p>
       ),
     },
@@ -113,15 +127,20 @@ function LayoutCards() {
   return (
     <div className="min-h-screen bg-gray-100 py-10 relative">
       {current && (
-        <div className="fixed z-10 h-full w-full inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="fixed z-10 h-full w-full inset-0 bg-black/50 backdrop-blur-sm"
+        ></motion.div>
       )}
       {current && (
         <motion.div
           layoutId={`card-${current.title}`}
           ref={ref}
-          className="h-[600px] fixed inset-0 z-20 m-auto bg-white w-72 rounded-2xl border border-neutral-200 p-4"
+          className="h-[500px] fixed inset-0 z-20 m-auto bg-white w-72 rounded-2xl border border-neutral-200 p-4 overflow-hidden"
         >
-          <img
+          <motion.img
+            layoutId={`cardImage-${current.title}`}
             src={current.src}
             alt={current.title}
             className="w-full aspect-square rounded-xl"
@@ -129,21 +148,44 @@ function LayoutCards() {
           <div className="flex flex-col justify-between items-start">
             <div className="flex justify-between w-full items-start py-4 gap-2">
               <div className="flex flex-col items-start gap-2">
-                <h2 className="font-bold text-xs tracking-tight text-black">
+                <motion.h2
+                  layoutId={`cardTitle-${current.title}`}
+                  className="font-bold text-xs tracking-tight text-black"
+                >
                   {current.title}
-                </h2>
-                <p className="text-[10px] text-neutral-500">
+                </motion.h2>
+                <motion.p
+                  layoutId={`cardDesc-${current.title}`}
+                  className="text-[10px] text-neutral-500"
+                >
                   {current.description}
-                </p>
+                </motion.p>
               </div>
-              <a
+              <motion.a
+                layoutId={`cardctaText-${current.title}`}
                 href={current.ctaLink}
                 className="px-2 py-1 bg-green-500 rounded-full text-white text-xs"
               >
                 {current.ctaText}
-              </a>
+              </motion.a>
             </div>
-            <div className="h-60 overflow-auto">{current.content()}</div>
+            <motion.div
+              initial={{
+                filter: "blur(10px)",
+                opacity: 0,
+              }}
+              animate={{
+                filter: "blur(0px)",
+                opacity: 1,
+              }}
+              transition={{
+                delay: 0.3,
+                ease: "easeInOut",
+              }}
+              className="h-60 overflow-auto pb-20 mask-[linear-gradient(to_top,transparent_20%,black_80%)]"
+            >
+              {current.content()}
+            </motion.div>
           </div>
         </motion.div>
       )}
@@ -160,27 +202,35 @@ function LayoutCards() {
               className="p-4 rounded-lg cursor-pointer flex justify-between items-center bg-white border border-neutral-200"
             >
               <div className="flex gap-4 items-center">
-                <img
+                <motion.img
+                  layoutId={`cardImage-${card.title}`}
                   src={card.src}
                   alt={card.title}
                   className="h-14 aspect-square rounded-lg"
                 />
                 <div className="flex flex-col items-start gap-2">
-                  <h2 className="font-bold text-xs tracking-tight text-black">
+                  <motion.h2
+                    layoutId={`cardTitle-${card.title}`}
+                    className="font-bold text-xs tracking-tight text-black"
+                  >
                     {card.title}
-                  </h2>
-                  <p className="text-[10px] text-neutral-500">
+                  </motion.h2>
+                  <motion.p
+                    layoutId={`cardDesc-${card.title}`}
+                    className="text-[10px] text-neutral-500"
+                  >
                     {card.description}
-                  </p>
+                  </motion.p>
                 </div>
               </div>
 
-              <a
+              <motion.a
+                layoutId={`cardctaText-${card.title}`}
                 href={card.ctaLink}
                 className="px-2 py-1 bg-green-500 rounded-full text-white text-xs"
               >
                 {card.ctaText}
-              </a>
+              </motion.a>
             </motion.button>
           );
         })}
