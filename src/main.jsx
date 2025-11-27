@@ -14,6 +14,7 @@ import { Navbar } from './components/Navbar.js';
 import { AnimatedTextPage } from './pages/AnimatedTextPage.js';
 import { AnimationSequencesPage } from './pages/AnimationSequencesPage.js';
 import { ToolTip } from './components/ToolTip.js';
+import { ThreeDCard } from './components/ThreeDCard.js';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,9 @@ const router = createBrowserRouter([
   {
     path: "/toolTip",
     element: <ToolTip />
+  },{
+    path: "/card",
+    element: <ThreeDCard />
   }
 ]);
 
