@@ -13,6 +13,7 @@ import LayoutCardsPage from './pages/LayoutCardsPage.js';
 import { Navbar } from './components/Navbar.js';
 import { AnimatedTextPage } from './pages/AnimatedTextPage.js';
 import { AnimationSequencesPage } from './pages/AnimationSequencesPage.js';
+import { ToolTip } from './components/ToolTip.js';
 
 const router = createBrowserRouter([
   {
@@ -43,9 +44,13 @@ const router = createBrowserRouter([
     path: "/animatedText",
     element: <AnimatedTextPage />
   },
-   {
+  {
     path: "/animatedsequence",
     element: <AnimationSequencesPage />
+  },
+  {
+    path: "/toolTip",
+    element: <ToolTip />
   }
 ]);
 
