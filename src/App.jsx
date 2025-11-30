@@ -9,7 +9,7 @@ function App() {
       backgroundSize: "8px 8px",
       backgroundRepeat: "repeat"
     }}> 
-     hi
+     Welcome to my portfolio of components
     </div>
   )
 }
