@@ -16,6 +16,7 @@ import { AnimationSequencesPage } from './pages/AnimationSequencesPage.js';
 import { ToolTip } from './components/ToolTip.js';
 import { ThreeDCard } from './components/ThreeDCard.js';
 import { Testimonials } from './components/Testimonials.js';
+import UnderlineEffect from './components/UnderlineEffect.js';
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
   {
     path: "/testimonials",
     element: <Testimonials />
+  },
+  {
+    path: "/animatedunderline",
+    element: <UnderlineEffect />
   }
 ]);
 
