@@ -17,6 +17,8 @@ import { ToolTip } from './components/ToolTip.js';
 import { ThreeDCard } from './components/ThreeDCard.js';
 import { Testimonials } from './components/Testimonials.js';
 import UnderlineEffect from './components/UnderlineEffect.js';
+import { CompareCard } from './components/CompareCard.js';
+import { Responsive } from './components/Responsive.js';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +67,14 @@ const router = createBrowserRouter([
   {
     path: "/animatedunderline",
     element: <UnderlineEffect />
+  },
+  {
+    path: "/compare",
+    element: <CompareCard />
+  },
+   {
+    path: "/responsive",
+    element: <Responsive />
   }
 ]);
 
