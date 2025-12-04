@@ -19,6 +19,7 @@ import { Testimonials } from './components/Testimonials.js';
 import UnderlineEffect from './components/UnderlineEffect.js';
 import { CompareCard } from './components/CompareCard.js';
 import { Responsive } from './components/Responsive.js';
+import Progress from './components/Progress.js';
 
 const router = createBrowserRouter([
   {
@@ -72,9 +73,13 @@ const router = createBrowserRouter([
     path: "/compare",
     element: <CompareCard />
   },
-   {
+  {
     path: "/responsive",
     element: <Responsive />
+  },
+  {
+    path: "/progress",
+    element: <Progress />
   }
 ]);
 
