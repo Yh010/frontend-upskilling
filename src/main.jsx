@@ -21,6 +21,7 @@ import { CompareCard } from './components/CompareCard.js';
 import { Responsive } from './components/Responsive.js';
 import Progress from './components/Progress.js';
 import { Particles } from './components/Particles.js';
+import FloatingDock from './components/FloatingDock.js';
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
   {
     path: "/particles",
     element: <Particles />
+  },
+  {
+    path: "/floatingdock",
+    element: <FloatingDock />
   }
 ]);
 
