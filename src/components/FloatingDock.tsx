@@ -28,7 +28,7 @@ const items = [
   },
   {
     icon: <GitBranchPlus />,
-    tooltip: "GitBranchPlus",
+    tooltip: "Git",
   },
   {
     icon: <Twitch />,
@@ -45,40 +45,26 @@ const FloatingDock = () => {
         whileHover={{
           scaleX: 1.1,
         }}
-        className="bg-neutral-800 min-w-1/3 flex justify-evenly items-center rounded-xl py-3 px-4 gap-x-2 overflow-visible"
+        className="bg-neutral-800 min-w-1/3 flex justify-evenly items-center rounded-xl py-3 px-4 overflow-visible"
       >
-        {items.map((item, idx) => (
-          <div className="relative flex flex-col items-center">
-            <AnimatePresence>
-              {idx == activeId && (
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    scale: 0.9,
-                  }}
-                  animate={{
-                    scale: 1.1,
-                    opacity: 1,
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    ease: "easeInOut",
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.9,
-                  }}
-                  className="absolute -top-15 bg-neutral-700 text-sm px-2 py-1 rounded-md whitespace-nowrap shadow-lg z-50"
-                >
-                  <span>{item.tooltip}</span>{" "}
-                </motion.div>
-              )}{" "}
-            </AnimatePresence>
+        {items.map((item, idx) => {
+          const distance = activeId === null ? 10 : Math.abs(idx - activeId);
+
+          const getScale = (d: any) =>
+            d === 0 ? 1.5 : d === 1 ? 1.25 : d === 2 ? 1.1 : 1;
+
+          const getY = (d: any) =>
+            d === 0 ? -15 : d === 1 ? -8 : d === 2 ? -4 : 0;
+          return (
             <motion.div
               key={idx}
-              whileHover={{
-                scale: 1.5,
-                y: -15,
+              animate={{
+                scale: getScale(distance),
+                y: getY(distance),
+              }}
+              transition={{
+                duration: 0.3,
+                ease: "easeInOut",
               }}
               onHoverStart={() => {
                 setActiveId(idx);
@@ -86,12 +72,39 @@ const FloatingDock = () => {
               onHoverEnd={() => {
                 setActiveId(null);
               }}
-              className="rounded-full bg-neutral-700 p-2"
+              className="relative flex flex-col items-center"
             >
-              <div>{item.icon}</div>
+              <AnimatePresence>
+                {idx == activeId && (
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      scale: 0.9,
+                    }}
+                    animate={{
+                      scale: 1.1,
+                      opacity: 1,
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      ease: "easeInOut",
+                    }}
+                    exit={{
+                      opacity: 0,
+                      scale: 0.9,
+                    }}
+                    className="absolute -top-4 bg-neutral-700 px-2 inline-flex rounded-md whitespace-nowrap shadow-lg z-50"
+                  >
+                    <span className="text-[6px]">{item.tooltip}</span>{" "}
+                  </motion.div>
+                )}{" "}
+              </AnimatePresence>
+              <motion.div className="rounded-full bg-neutral-700 p-2">
+                <div>{item.icon}</div>
+              </motion.div>
             </motion.div>
-          </div>
-        ))}
+          );
+        })}
       </motion.div>
     </div>
   );
