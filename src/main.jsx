@@ -20,6 +20,7 @@ import UnderlineEffect from './components/UnderlineEffect.js';
 import { CompareCard } from './components/CompareCard.js';
 import { Responsive } from './components/Responsive.js';
 import Progress from './components/Progress.js';
+import { Particles } from './components/Particles.js';
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
   {
     path: "/progress",
     element: <Progress />
+  },
+  {
+    path: "/particles",
+    element: <Particles />
   }
 ]);
 
