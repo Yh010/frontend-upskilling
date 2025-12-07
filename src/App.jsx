@@ -1,47 +1,60 @@
 import {
-  ArrowBigRight,
   ArrowRightCircle,
   GithubIcon,
   LinkedinIcon,
   TwitterIcon,
 } from "lucide-react";
 import "./App.css";
-import MovingButton from "./components/MovingButton";
+import { useState } from "react";
+
+const Links = [
+  {
+    icon: <GithubIcon />,
+    url: "https://github.com/yh010",
+  },
+  {
+    icon: <TwitterIcon />,
+    url: "https://x.com/YashHegde7",
+  },
+  {
+    icon: <LinkedinIcon />,
+    url: "https://www.linkedin.com/in/yash-hegde-927721201/",
+  },
+];
+
+const TopPicks = [
+  {
+    id: 1,
+    component: "Component1",
+    url: "/Crazy.png",
+    description: "hello hello",
+  },
+  {
+    id: 2,
+    component: "Component2",
+    url: "/vite.svg",
+    description: "hello hello",
+  },
+  {
+    id: 3,
+    component: "Component3",
+    url: "/Crazy.png",
+    description: "hello hello",
+  },
+  {
+    id: 4,
+    component: "Component4",
+    url: "/Crazy.png",
+    description: "hello hello",
+  },
+];
 
 function App() {
-  const Links = [
-    {
-      icon: <GithubIcon />,
-      url: "https://github.com/yh010",
-    },
-    {
-      icon: <TwitterIcon />,
-      url: "https://x.com/YashHegde7",
-    },
-    {
-      icon: <LinkedinIcon />,
-      url: "https://www.linkedin.com/in/yash-hegde-927721201/",
-    },
-  ];
-
-  const TopPicks = [
-    {
-      component: "Component1",
-    },
-    {
-      component: "Component2",
-    },
-    {
-      component: "Component3",
-    },
-    {
-      component: "Component4",
-    },
-  ];
-
+  const [activeId, setActiveId] = useState(1);
+  const activeItem = TopPicks.find((item) => item.id === activeId);
   return (
-    <div className="min-h-screen flex flex-col bg-[#fbf7ef] text-black px-6">
-      <nav className="border-b-[#d6ccc2] border-b w-full border-dashed flex justify-between items-center py-4">
+    <div className="min-h-screen flex flex-col bg-[#f8f9fa] text-black px-6">
+      <nav className="w-full  bg-size-[6px_2px] bg-repeat-x bg-bottom bg-[radial-gradient(circle,#d6ccc2_1px,transparent_1px)] flex justify-between items-center py-4">
         <div className="font-playwrite">yash hegde</div>
 
         <div className="flex justify-center items-center gap-x-9">
@@ -80,23 +93,99 @@ function App() {
       </div>
       <div className="flex h-96">
         <div className="w-2/5 h-full relative flex flex-col px-6">
-          <div className="p-4 underline">My top picks</div>
+          <div className="py-2 underline">My top picks</div>
           <div className="flex-1 flex flex-col justify-evenly divide-y">
-            {TopPicks.map((item, idx) => (
-              <div key={idx} className="p-4">
-                {item.component}
-              </div>
+            {TopPicks.map((item) => (
+              <button
+                key={item.id}
+                className="w-full text-start py-2"
+                onClick={() => {
+                  setActiveId(item.id);
+                }}
+              >
+                <div>{item.component}</div>
+                {activeItem.id === item.id && <div>{item.description}</div>}
+              </button>
             ))}
           </div>
-          <button className="p-4 hover:bg-[#1b263b] text-white bg-[#0d1b2a] w-fit rounded-full flex justify-center items-center space-x-1">
-            <span>Take a detailed look</span>
+        </div>
+        <div className="w-3/5 bg-white relative shadow-lg rounded-lg flex flex-col justify-center items-center overflow-hidden">
+          <button
+            className="p-4 hover:bg-[#1b263b] text-white absolute top-10 right-40  bg-[#0d1b2a] w-fit rounded-full flex justify-center items-center space-x-1"
+            onClick={() => (window.location.href = activeItem.url)}
+          >
+            <span> go to page</span>
             <ArrowRightCircle className="h-4 w-4" />
           </button>
-        </div>
-        <div className="w-3/5 bg-white rounded-lg flex justify-center items-center overflow-hidden">
-          <img src="/Crazy.png" className="rounded-lg h-80" />
+          {activeItem && (
+            <img src={activeItem.url} className="rounded-lg h-80" />
+          )}
         </div>
       </div>
+      <footer className="border-t border-dashed border-[#d6ccc2] mt-20 py-12">
+        <div className="flex justify-between items-start">
+          <div className="flex flex-col space-y-4">
+            <div className="font-playwrite text-2xl">yash hegde</div>
+            <p className="text-sm text-gray-600 max-w-xs">
+              Crafting interactive experiences with motion and creativity.
+            </p>
+          </div>
+
+          <div className="flex flex-col space-y-3">
+            <h3 className="font-semibold text-sm uppercase tracking-wider">
+              Connect
+            </h3>
+            <div className="flex flex-col space-y-2">
+              {Links.map((item, idx) => (
+                <a
+                  href={item.url}
+                  key={idx}
+                  className="flex items-center space-x-2 text-gray-600 hover:text-black transition-colors"
+                >
+                  <span className="w-4 h-4">{item.icon}</span>
+                  <span className="text-sm">
+                    {item.url.includes("github")
+                      ? "GitHub"
+                      : item.url.includes("twitter") ||
+                        item.url.includes("x.com")
+                      ? "Twitter"
+                      : "LinkedIn"}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col space-y-3">
+            <h3 className="font-semibold text-sm uppercase tracking-wider">
+              Quick Links
+            </h3>
+            <div className="flex flex-col space-y-2 text-sm text-gray-600">
+              <a href="#" className="hover:text-black transition-colors">
+                Projects
+              </a>
+              <a href="#" className="hover:text-black transition-colors">
+                About
+              </a>
+              <a href="#" className="hover:text-black transition-colors">
+                Contact
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-dashed border-[#d6ccc2] flex justify-between items-center text-sm text-gray-500">
+          <div>© 2024 Yash Hegde. All rights reserved.</div>
+          <div className="flex space-x-6">
+            <a href="#" className="hover:text-black transition-colors">
+              Privacy
+            </a>
+            <a href="#" className="hover:text-black transition-colors">
+              Terms
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
