@@ -107,16 +107,16 @@ function App() {
         </div>
       )}
       <div className={menuState ? "hidden" : "block"}>
-        <div className="flex py-8">
-          <div className="w-3/4 md:text-9xl font-semibold font-fjalla">
+        <div className="md:flex py-8">
+          <div className="w-full md:w-3/4 md:text-9xl md:text-start text-5xl font-semibold font-fjalla">
             Crazy Portfolio
           </div>
-          <div>
+          <div className="pt-4">
             <span>
               Welcome to my portfolio of animated components using motion.dev
               and tailwind
             </span>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-start items-center pt-4">
               <div className="border rounded-xl py-2 px-4">Get started</div>
             </div>
           </div>
