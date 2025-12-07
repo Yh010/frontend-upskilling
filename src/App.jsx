@@ -1,7 +1,9 @@
 import {
   ArrowRightCircle,
+  ChevronsUp,
   GithubIcon,
   LinkedinIcon,
+  MenuIcon,
   TwitterIcon,
 } from "lucide-react";
 import "./App.css";
@@ -51,23 +53,48 @@ const TopPicks = [
 
 function App() {
   const [activeId, setActiveId] = useState(1);
+  const [menuState, setMenuState] = useState(false);
   const activeItem = TopPicks.find((item) => item.id === activeId);
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f9fa] text-black px-6">
       <nav className="w-full  bg-size-[6px_2px] bg-repeat-x bg-bottom bg-[radial-gradient(circle,#d6ccc2_1px,transparent_1px)] flex justify-between items-center py-4">
-        <div className="font-playwrite">yash hegde</div>
-
-        <div className="flex justify-center items-center gap-x-9">
+        <div className="font-banger md:text-4xl text-2xl">yash hegde</div>
+        <div className="md:flex justify-center items-center hidden md:gap-x-9">
           {Links.map((item, idx) => (
             <a href={item.url} key={idx}>
               {item.icon}
             </a>
           ))}
         </div>
-        <div>lithouse</div>
+
+        <img
+          src="/yh.png"
+          className="h-12 w-12 rounded-full border hidden md:flex"
+        />
+        <div className="md:hidden">
+          <button
+            className="flex justify-center items-center"
+            onClick={() => {
+              setMenuState((prev) => !prev);
+            }}
+          >
+            {!menuState ? <MenuIcon /> : <ChevronsUp />}
+          </button>
+        </div>
       </nav>
+      {menuState && (
+        <div className="w-full border md:hidden">
+          <div className="flex justify-center items-center gap-x-9">
+            {Links.map((item, idx) => (
+              <a href={item.url} key={idx}>
+                {item.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="flex py-8">
-        <div className="w-3/4 text-9xl font-semibold font-fjalla">
+        <div className="w-3/4 md:text-9xl font-semibold font-fjalla">
           Crazy Portfolio
         </div>
         <div>

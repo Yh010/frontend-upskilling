@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Orbitron:wght@400..900&family=Playwrite+NO:wght@100..400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 @import "tailwindcss";
 @theme {
     --shadow-input:
@@ -12,5 +13,6 @@
     --font-playwrite: "Playwrite NO", cursive;
     --font-geist: "Geist Mono", monospace;
     --font-fjalla:"Fjalla One", sans-serif;
+    --font-banger: "Bangers", system-ui;
     /* --font-custom: "Orbitron", sans-serif; */
 }
