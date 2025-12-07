@@ -106,7 +106,7 @@ function App() {
           </div>
         </div>
       )}
-      {!menuState && (
+      <div className={menuState ? "hidden" : "block"}>
         <div className="flex py-8">
           <div className="w-3/4 md:text-9xl font-semibold font-fjalla">
             Crazy Portfolio
@@ -121,13 +121,11 @@ function App() {
             </div>
           </div>
         </div>
-      )}
-      {!menuState && (
+
         <div className="flex justify-center items-center">
           <img src="/Crazy.png" className="rounded-lg h-120 w-full" />
         </div>
-      )}
-      {!menuState && (
+
         <div className="flex flex-col items-center py-30">
           <div className="text-4xl">From pixels to worlds</div>
           <div>
@@ -136,8 +134,7 @@ function App() {
             edit, and inhabit.
           </div>
         </div>
-      )}
-      {!menuState && (
+
         <div className="flex h-96">
           <div className="w-2/5 h-full relative flex flex-col px-6">
             <div className="py-2 underline">My top picks</div>
@@ -169,8 +166,7 @@ function App() {
             )}
           </div>
         </div>
-      )}
-      {!menuState && (
+
         <footer className="border-t border-dashed border-[#d6ccc2] mt-20 py-12">
           <div className="flex justify-between items-start">
             <div className="flex flex-col space-y-4">
@@ -235,7 +231,7 @@ function App() {
             </div>
           </div>
         </footer>
-      )}
+      </div>
     </div>
   );
 }
