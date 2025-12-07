@@ -108,13 +108,14 @@ function App() {
       )}
       <div className={menuState ? "hidden" : "block"}>
         <div className="md:flex py-8">
-          <div className="w-full md:w-3/4 md:text-9xl md:text-start text-5xl font-semibold font-fjalla">
+          <div className="w-full md:w-3/4 md:text-8xl 2xl:text-9xl md:text-start text-5xl font-semibold font-fjalla">
             Crazy Portfolio
           </div>
-          <div className="pt-4">
+          <div className="pt-4 md:pl-4">
             <span>
-              Welcome to my portfolio of animated components using motion.dev
-              and tailwind
+              Explore a collection of motion-powered UI experiments, interactive
+              components, and creative builds crafted with Tailwind CSS and
+              Motion.dev.
             </span>
             <div className="flex justify-start items-center pt-4">
               <div className="border rounded-xl py-2 px-4">Get started</div>
@@ -126,12 +127,11 @@ function App() {
           <img src="/Crazy.png" className="rounded-lg md:h-120 w-full" />
         </div>
 
-        <div className="flex flex-col items-center py-30">
-          <div className="text-4xl">From pixels to worlds</div>
-          <div>
-            Marble, our first product, generates spatially consistent,
-            high-fidelity, and persistent 3D worlds that you can move through,
-            edit, and inhabit.
+        <div className="flex flex-col items-center md:py-30 py-15 text-center">
+          <div className="text-4xl font-sketch">From pixels to worlds</div>
+          <div className="text-sm md:text-base text-[#6c757d]">
+            These components represent my ongoing practice with Motion.dev and
+            Tailwind, focusing on motion, responsiveness, and clarity.
           </div>
         </div>
 

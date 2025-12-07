@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
 @import "tailwindcss";
 @theme {
     --shadow-input:
@@ -14,5 +16,7 @@
     --font-geist: "Geist Mono", monospace;
     --font-fjalla:"Fjalla One", sans-serif;
     --font-banger: "Bangers", system-ui;
+    --font-bebas: "Bebas Neue", sans-serif;
+    --font-sketch: "Cabin Sketch", sans-serif;
     /* --font-custom: "Orbitron", sans-serif; */
 }
