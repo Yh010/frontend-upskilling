@@ -123,7 +123,7 @@ function App() {
         </div>
 
         <div className="flex justify-center items-center">
-          <img src="/Crazy.png" className="rounded-lg h-120 w-full" />
+          <img src="/Crazy.png" className="rounded-lg md:h-120 w-full" />
         </div>
 
         <div className="flex flex-col items-center py-30">
