@@ -1,8 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Orbitron:wght@400..900&family=Playwrite+NO:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 @import "tailwindcss";
-
 @theme {
     --shadow-input:
         0px 2px 3px -1px rgba(0, 0, 0, 0.1),
         0px 1px 0px 0px rgba(25, 28, 33, 0.02),
         0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+    --font-roboto: "Roboto", sans-serif;
+    --font-playwrite: "Playwrite NO", cursive;
+    --font-geist: "Geist Mono", monospace;
+    --font-fjalla:"Fjalla One", sans-serif;
+    /* --font-custom: "Orbitron", sans-serif; */
 }
