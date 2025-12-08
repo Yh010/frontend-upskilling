@@ -63,6 +63,7 @@ const TopPicks = [
 function App() {
   const [activeId, setActiveId] = useState(1);
   const [menuState, setMenuState] = useState(false);
+  //const [gotoHover, setGotoHover] = useState(false);
   const activeItem = TopPicks.find((item) => item.id === activeId);
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f9fa] text-black px-6">
@@ -135,57 +136,173 @@ function App() {
           </div>
         </div>
 
-        <div className="flex h-96">
-          <div className="w-2/5 h-full relative flex flex-col px-6">
-            <div className="py-2 underline">My top picks</div>
-            <div className="flex-1 flex flex-col justify-evenly divide-y">
+        {/* <div className="flex h-54 lg:h-96">
+          <div className="md:w-2/5 w-full h-full border relative flex flex-col px-1">
+            <div className="md:py-2 underline w-full text-center md:text-start">
+              My top picks
+            </div>
+            <div className="flex-1 flex flex-col justify-evenly divide-y divide-[#dee2e6] md:pr-6">
               {TopPicks.map((item) => (
                 <button
                   key={item.id}
-                  className="w-full text-start py-2"
+                  className="w-full text-start md:py-2"
                   onClick={() => {
                     setActiveId(item.id);
                   }}
                 >
-                  <div>{item.component}</div>
-                  {activeItem.id === item.id && <div>{item.description}</div>}
+                  <div className="text-sm md:text-base">{item.component}</div>
+                  {activeItem?.id === item.id && (
+                    <div className="text-xs md:text-sm text-[#6c757d]">
+                      {item.description}
+                    </div>
+                  )}
+                  {activeItem?.id === item.id && (
+                    <div className="md:hidden bg-white relative shadow-lg h-2/5 border border-red-500 rounded-lg flex flex-col justify-center items-center">
+                      <button
+                        className="px-4 py-2 hover:bg-[#1b263b] text-white absolute top-2 right-2  bg-[#0d1b2a] w-fit rounded-full flex justify-center items-center space-x-1"
+                        onMouseEnter={() => {
+                          setGotoHover(true);
+                        }}
+                        onMouseLeave={() => {
+                          setGotoHover(false);
+                        }}
+                        onTouchStart={() => setGotoHover(true)}
+                        onTouchEnd={() => setGotoHover(false)}
+                        onClick={() =>
+                          (window.location.href = activeItem?.url || "")
+                        }
+                      >
+                        {gotoHover && <span> go to page</span>}
+                        <ArrowRightCircle className="h-4 w-4" />
+                      </button>
+                      {activeItem && (
+                        <img
+                          src={activeItem.url}
+                          className="rounded-lg h-9/10 w-9/10 lg:h-80"
+                        />
+                      )}
+                    </div>
+                  )}
                 </button>
               ))}
             </div>
           </div>
-          <div className="w-3/5 bg-white relative shadow-lg rounded-lg flex flex-col justify-center items-center overflow-hidden">
+          <div className="w-3/5 bg-white relative shadow-lg rounded-lg hidden md:flex flex-col justify-center items-center overflow-hidden">
             <button
-              className="p-4 hover:bg-[#1b263b] text-white absolute top-10 right-40  bg-[#0d1b2a] w-fit rounded-full flex justify-center items-center space-x-1"
-              onClick={() => (window.location.href = activeItem.url)}
+              className="px-4 py-2 hover:bg-[#1b263b] text-white absolute top-2 right-2  bg-[#0d1b2a] w-fit rounded-full flex justify-center items-center space-x-1"
+              onMouseEnter={() => {
+                setGotoHover(true);
+              }}
+              onMouseLeave={() => {
+                setGotoHover(false);
+              }}
+              onTouchStart={() => setGotoHover(true)}
+              onTouchEnd={() => setGotoHover(false)}
+              onClick={() => (window.location.href = activeItem?.url || "")}
             >
-              <span> go to page</span>
+              {gotoHover && <span> go to page</span>}
               <ArrowRightCircle className="h-4 w-4" />
             </button>
             {activeItem && (
               <img src={activeItem.url} className="rounded-lg h-80" />
             )}
           </div>
+        </div> */}
+        <div className="flex flex-col md:flex-row min-h-[400px] md:h-96 gap-4 md:gap-0">
+          {/* Left Column - Component List */}
+          <div className="w-full md:w-2/5 h-full relative flex flex-col px-4 md:px-6">
+            <div className="py-2 md:p-4 underline text-center md:text-left md:text-3xl">
+              My top picks
+            </div>
+            <div className="flex-1 flex flex-col justify-evenly divide-y divide-[#dee2e6]">
+              {TopPicks.map((item) => (
+                <button
+                  key={item.id}
+                  className="p-3 md:p-4 text-left hover:bg-gray-50 transition-colors"
+                  onClick={() => {
+                    setActiveId(item.id);
+                  }}
+                >
+                  <div
+                    className={`text-sm md:text-base ${
+                      activeId === item.id ? "font-semibold" : ""
+                    }`}
+                  >
+                    {item.component}
+                  </div>
+                  <div
+                    className={`text-sm md:text-base ${
+                      activeId === item.id
+                        ? "text-xs md:text-sm text-[#6c757d]"
+                        : "hidden"
+                    }`}
+                  >
+                    {item.description}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column - Image Display (Desktop) */}
+          <div className="hidden md:flex w-full md:w-3/5 bg-white relative shadow-lg rounded-lg flex-col justify-center items-center overflow-hidden">
+            <button
+              className="px-4 py-2 hover:bg-[#1b263b] text-white absolute top-4 right-4 bg-[#0d1b2a] w-fit rounded-full flex justify-center items-center space-x-1 transition-all group"
+              onClick={() => (window.location.href = activeItem?.url || "")}
+            >
+              <span className="hidden group-hover:inline">go to page</span>
+              <ArrowRightCircle className="h-4 w-4" />
+            </button>
+            {activeItem && (
+              <img
+                src={activeItem.url}
+                alt={activeItem.component}
+                className="rounded-lg h-80 object-cover"
+              />
+            )}
+          </div>
+
+          {/* Image Display (Mobile) - Shows below selected item */}
+          <div className="md:hidden w-full bg-white shadow-lg rounded-lg flex flex-col justify-center items-center overflow-hidden min-h-[250px] relative">
+            <button
+              className="px-3 py-1.5 hover:bg-[#1b263b] text-white absolute top-2 right-2 bg-[#0d1b2a] rounded-full flex justify-center items-center z-10"
+              onClick={() => (window.location.href = activeItem?.url || "")}
+            >
+              <ArrowRightCircle className="h-4 w-4" />
+            </button>
+            {activeItem && (
+              <img
+                src={activeItem.url}
+                alt={activeItem.component}
+                className="rounded-lg w-full h-full object-contain p-4"
+              />
+            )}
+          </div>
         </div>
 
-        <footer className="border-t border-dashed border-[#d6ccc2] mt-20 py-12">
-          <div className="flex justify-between items-start">
+        <footer className="border-t border-dashed border-[#d6ccc2] mt-20 py-8 md:py-12 px-4 md:px-0">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8 md:gap-4">
+            {/* Brand Section */}
             <div className="flex flex-col space-y-4">
-              <div className="font-playwrite text-2xl">yash hegde</div>
+              <div className="font-playwrite text-xl md:text-2xl">
+                yash hegde
+              </div>
               <p className="text-sm text-gray-600 max-w-xs">
                 Crafting interactive experiences with motion and creativity.
               </p>
             </div>
 
+            {/* Connect Section */}
             <div className="flex flex-col space-y-3">
               <h3 className="font-semibold text-sm uppercase tracking-wider">
                 Connect
               </h3>
-              <div className="flex flex-col space-y-2">
+              <div className="grid grid-cols-2 md:flex gap-4">
                 {Links.map((item, idx) => (
                   <a
                     href={item.url}
                     key={idx}
-                    className="flex items-center space-x-2 text-gray-600 hover:text-black transition-colors"
+                    className="flex items-center space-x-2 text-gray-600 hover:text-black transition-colors border"
                   >
                     <span className="w-4 h-4">{item.icon}</span>
                     <span className="text-sm">
@@ -200,34 +317,12 @@ function App() {
                 ))}
               </div>
             </div>
-
-            <div className="flex flex-col space-y-3">
-              <h3 className="font-semibold text-sm uppercase tracking-wider">
-                Quick Links
-              </h3>
-              <div className="flex flex-col space-y-2 text-sm text-gray-600">
-                <a href="#" className="hover:text-black transition-colors">
-                  Projects
-                </a>
-                <a href="#" className="hover:text-black transition-colors">
-                  About
-                </a>
-                <a href="#" className="hover:text-black transition-colors">
-                  Contact
-                </a>
-              </div>
-            </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-dashed border-[#d6ccc2] flex justify-between items-center text-sm text-gray-500">
-            <div>© 2024 Yash Hegde. All rights reserved.</div>
-            <div className="flex space-x-6">
-              <a href="#" className="hover:text-black transition-colors">
-                Privacy
-              </a>
-              <a href="#" className="hover:text-black transition-colors">
-                Terms
-              </a>
+          {/* Bottom Section */}
+          <div className="mt-8 pt-8 border-t border-dashed border-[#d6ccc2] flex flex-col md:flex-row md:justify-between md:items-center gap-4 text-xs md:text-sm text-gray-500">
+            <div className="text-center md:text-left">
+              © 2024 Yash Hegde. All rights reserved.
             </div>
           </div>
         </footer>
