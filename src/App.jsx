@@ -8,7 +8,8 @@ import {
   TwitterIcon,
 } from "lucide-react";
 import "./App.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { motion, useInView, useScroll, useTransform } from "motion/react";
 
 const Links = [
   {
@@ -28,6 +29,21 @@ const Links = [
   },
   {
     icon: <MailIcon />,
+    desc: "Email",
+    url: "https://www.linkedin.com/in/yash-hegde-927721201/",
+  },
+  {
+    icon: <div>Experience</div>,
+    desc: "Email",
+    url: "https://www.linkedin.com/in/yash-hegde-927721201/",
+  },
+  {
+    icon: <div>Projects</div>,
+    desc: "Email",
+    url: "https://www.linkedin.com/in/yash-hegde-927721201/",
+  },
+  {
+    icon: <div>Lithouse</div>,
     desc: "Email",
     url: "https://www.linkedin.com/in/yash-hegde-927721201/",
   },
@@ -65,6 +81,11 @@ function App() {
   const [menuState, setMenuState] = useState(false);
   //const [gotoHover, setGotoHover] = useState(false);
   const activeItem = TopPicks.find((item) => item.id === activeId);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll();
+  const scale1 = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const scale2 = useTransform(scrollYProgress, [0.5, 1], [0.5, 1]);
+
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f9fa] text-black px-6">
       <nav className="w-full  bg-size-[6px_2px] bg-repeat-x bg-bottom bg-[radial-gradient(circle,#d6ccc2_1px,transparent_1px)] flex justify-between items-center py-4">
@@ -109,9 +130,29 @@ function App() {
       )}
       <div className={menuState ? "hidden" : "block"}>
         <div className="md:flex py-8">
-          <div className="w-full md:w-3/4 md:text-8xl 2xl:text-9xl md:text-start text-5xl font-semibold font-fjalla">
+          <motion.div
+            initial={{
+              opacity: 0.5,
+              scale: 1.1,
+              y: -10,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: 0,
+            }}
+            transition={{
+              ease: "easeInOut",
+              duration: 1,
+            }}
+            className="w-full md:w-3/4 md:text-8xl 2xl:text-9xl md:text-start text-5xl text-[#250902] font-semibold font-fjalla"
+            style={{
+              WebkitTextStroke: "0.75px #003566",
+              color: "#250902",
+            }}
+          >
             Crazy Portfolio
-          </div>
+          </motion.div>
           <div className="pt-4 md:pl-4">
             <span>
               Explore a collection of motion-powered UI experiments, interactive
@@ -119,21 +160,49 @@ function App() {
               Motion.dev.
             </span>
             <div className="flex justify-start items-center pt-4">
-              <div className="border rounded-xl py-2 px-4">Get started</div>
+              <motion.div
+                className="border-2 border-[#fca311] text-white rounded-xl py-2 px-4 bg-[#0a2463] cursor-pointer"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                Get started
+              </motion.div>
             </div>
           </div>
         </div>
 
-        <div className="flex justify-center items-center">
-          <img src="/Crazy.png" className="rounded-lg md:h-120 w-full" />
-        </div>
-
-        <div className="flex flex-col items-center md:py-30 py-15 text-center">
-          <div className="text-4xl font-sketch">From pixels to worlds</div>
-          <div className="text-sm md:text-base text-[#6c757d]">
-            These components represent my ongoing practice with Motion.dev and
-            Tailwind, focusing on motion, responsiveness, and clarity.
+        <motion.div
+          whileHover={{ scale: 1.01 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="p-1 rounded-4xl bg-linear-to-r from-[#252323] to-[#1282a2]"
+        >
+          <div className="p-1 rounded-4xl bg-[#ffdd00]">
+            <div className="flex justify-center items-center">
+              <img src="/Crazy.png" className="rounded-4xl md:h-120 w-full" />
+            </div>
           </div>
+        </motion.div>
+
+        <div
+          ref={ref}
+          className="flex flex-col items-center md:py-30 py-15 text-center border border-red-300 h-400 justify-center"
+        >
+          <motion.div
+            className="text-4xl sticky  top-1/2 -translate-y-1/2"
+            style={{ opacity: scale1, scale: scale1 }}
+            // initial={{ scale: 1 }}
+            // whileInView={{ scale: 1.5 }}
+            // transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            From pixels to worlds
+          </motion.div>
+          <motion.div
+            className="text-sm md:text-base text-[#6c757d] sticky top-3/5 mt-4 -translate-y-1/4"
+            style={{ opacity: scale2, scale: scale2 }}
+          >
+            These components represent my ongoing practice with Motion.dev and
+            Tailwind, focusing on motion, responsiveness, and clarity.{" "}
+          </motion.div>
         </div>
 
         {/* <div className="flex h-54 lg:h-96">
