@@ -1,6 +1,8 @@
 import {
   ArrowRightCircle,
   ChevronsUp,
+  Copy,
+  CopyCheck,
   GithubIcon,
   LinkedinIcon,
   MailIcon,
@@ -9,7 +11,8 @@ import {
 } from "lucide-react";
 import "./App.css";
 import { useRef, useState } from "react";
-import { motion, useInView, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import WorkExperience from "./components/WorkExperience";
 
 const Links = [
   {
@@ -88,6 +91,25 @@ function App() {
   });
   const scale1 = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
   const scale2 = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
+  const [copied, setIsCopied] = useState(false);
+
+  const SetCopyUrl = async (url) => {
+    //copy to clipboard fn
+    const textToCopy = url;
+
+    try {
+      await navigator.clipboard.writeText(
+        import.meta.env.VITE_FE_URL + textToCopy
+      );
+      setIsCopied(true);
+
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } catch (e) {
+      console.error("Failed to copy:", e);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f9fa] text-black px-6">
@@ -207,79 +229,7 @@ function App() {
           </div>
         </div>
 
-        {/* <div className="flex h-54 lg:h-96">
-          <div className="md:w-2/5 w-full h-full border relative flex flex-col px-1">
-            <div className="md:py-2 underline w-full text-center md:text-start">
-              My top picks
-            </div>
-            <div className="flex-1 flex flex-col justify-evenly divide-y divide-[#dee2e6] md:pr-6">
-              {TopPicks.map((item) => (
-                <button
-                  key={item.id}
-                  className="w-full text-start md:py-2"
-                  onClick={() => {
-                    setActiveId(item.id);
-                  }}
-                >
-                  <div className="text-sm md:text-base">{item.component}</div>
-                  {activeItem?.id === item.id && (
-                    <div className="text-xs md:text-sm text-[#6c757d]">
-                      {item.description}
-                    </div>
-                  )}
-                  {activeItem?.id === item.id && (
-                    <div className="md:hidden bg-white relative shadow-lg h-2/5 border border-red-500 rounded-lg flex flex-col justify-center items-center">
-                      <button
-                        className="px-4 py-2 hover:bg-[#1b263b] text-white absolute top-2 right-2  bg-[#0d1b2a] w-fit rounded-full flex justify-center items-center space-x-1"
-                        onMouseEnter={() => {
-                          setGotoHover(true);
-                        }}
-                        onMouseLeave={() => {
-                          setGotoHover(false);
-                        }}
-                        onTouchStart={() => setGotoHover(true)}
-                        onTouchEnd={() => setGotoHover(false)}
-                        onClick={() =>
-                          (window.location.href = activeItem?.url || "")
-                        }
-                      >
-                        {gotoHover && <span> go to page</span>}
-                        <ArrowRightCircle className="h-4 w-4" />
-                      </button>
-                      {activeItem && (
-                        <img
-                          src={activeItem.url}
-                          className="rounded-lg h-9/10 w-9/10 lg:h-80"
-                        />
-                      )}
-                    </div>
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="w-3/5 bg-white relative shadow-lg rounded-lg hidden md:flex flex-col justify-center items-center overflow-hidden">
-            <button
-              className="px-4 py-2 hover:bg-[#1b263b] text-white absolute top-2 right-2  bg-[#0d1b2a] w-fit rounded-full flex justify-center items-center space-x-1"
-              onMouseEnter={() => {
-                setGotoHover(true);
-              }}
-              onMouseLeave={() => {
-                setGotoHover(false);
-              }}
-              onTouchStart={() => setGotoHover(true)}
-              onTouchEnd={() => setGotoHover(false)}
-              onClick={() => (window.location.href = activeItem?.url || "")}
-            >
-              {gotoHover && <span> go to page</span>}
-              <ArrowRightCircle className="h-4 w-4" />
-            </button>
-            {activeItem && (
-              <img src={activeItem.url} className="rounded-lg h-80" />
-            )}
-          </div>
-        </div> */}
-        <div className="flex flex-col md:flex-row min-h-[400px] md:h-96 gap-4 md:gap-0">
+        <div className="flex flex-col md:flex-row min-h-[400px] md:h-96 gap-4 md:gap-0 py-4">
           {/* Left Column - Component List */}
           <div className="w-full md:w-2/5 h-full relative flex flex-col px-4 md:px-6">
             <div className="py-2 md:p-4 underline text-center md:text-left md:text-3xl">
@@ -324,6 +274,10 @@ function App() {
               <span className="hidden group-hover:inline">go to page</span>
               <ArrowRightCircle className="h-4 w-4" />
             </button>
+            <button onClick={() => SetCopyUrl(activeItem?.url)}>
+              {copied ? <CopyCheck /> : <Copy />}
+            </button>
+
             {activeItem && (
               <img
                 src={activeItem.url}
@@ -350,6 +304,8 @@ function App() {
             )}
           </div>
         </div>
+
+        <WorkExperience />
 
         <footer className="border-t border-dashed border-[#d6ccc2] mt-20 py-8 md:py-12 px-4 md:px-0">
           <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-8 md:gap-4">
