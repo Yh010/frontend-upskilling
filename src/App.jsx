@@ -82,7 +82,10 @@ function App() {
   //const [gotoHover, setGotoHover] = useState(false);
   const activeItem = TopPicks.find((item) => item.id === activeId);
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start center", "end 200%"],
+  });
   const scale1 = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
   const scale2 = useTransform(scrollYProgress, [0.5, 1], [0.5, 1]);
 
@@ -185,24 +188,26 @@ function App() {
 
         <div
           ref={ref}
-          className="flex flex-col items-center md:py-30 py-15 text-center border border-red-300 h-400 justify-center"
+          className=" md:py-30 py-15 border border-red-300 h-[350vh]"
         >
-          <motion.div
-            className="text-4xl sticky  top-1/2 -translate-y-1/2"
-            style={{ opacity: scale1, scale: scale1 }}
-            // initial={{ scale: 1 }}
-            // whileInView={{ scale: 1.5 }}
-            // transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            From pixels to worlds
-          </motion.div>
-          <motion.div
-            className="text-sm md:text-base text-[#6c757d] sticky top-3/5 mt-4 -translate-y-1/4"
-            style={{ opacity: scale2, scale: scale2 }}
-          >
-            These components represent my ongoing practice with Motion.dev and
-            Tailwind, focusing on motion, responsiveness, and clarity.{" "}
-          </motion.div>
+          <div className="flex flex-col items-center gap-4 sticky top-1/2 -translate-y-1/2 text-center">
+            <motion.div
+              className="text-4xl"
+              style={{ opacity: scale1, scale: scale1 }}
+              // initial={{ scale: 1 }}
+              // whileInView={{ scale: 1.5 }}
+              // transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              From pixels to worlds
+            </motion.div>
+            <motion.div
+              className="text-sm md:text-base text-[#6c757d] mt-4"
+              style={{ opacity: scale2, scale: scale2 }}
+            >
+              These components represent my ongoing practice with Motion.dev and
+              Tailwind, focusing on motion, responsiveness, and clarity.{" "}
+            </motion.div>
+          </div>
         </div>
 
         {/* <div className="flex h-54 lg:h-96">
