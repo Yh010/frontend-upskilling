@@ -87,7 +87,7 @@ function App() {
     offset: ["start center", "end 200%"],
   });
   const scale1 = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-  const scale2 = useTransform(scrollYProgress, [0.5, 1], [0.5, 1]);
+  const scale2 = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f9fa] text-black px-6">
@@ -186,10 +186,7 @@ function App() {
           </div>
         </motion.div>
 
-        <div
-          ref={ref}
-          className=" md:py-30 py-15 border border-red-300 h-[350vh]"
-        >
+        <div ref={ref} className=" md:py-30 py-15 h-[350vh]">
           <div className="flex flex-col items-center gap-4 sticky top-1/2 -translate-y-1/2 text-center">
             <motion.div
               className="text-4xl"
