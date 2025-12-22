@@ -1,6 +1,6 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 
 const WorkExperienceItems = [
   {
@@ -137,13 +137,26 @@ const WorkExperience = () => {
                   </button>
                 )}
               </div>
-              {activeWorkEx === idx && (
-                <ul className="mt-3 list-disc list-inside space-y-1 text-sm text-[#495057]">
-                  {item.Description.map((point, i) => (
-                    <li key={i}>{point}</li>
-                  ))}
-                </ul>
-              )}
+              <AnimatePresence>
+                {activeWorkEx === idx && (
+                  <motion.ul
+                    className="mt-3 list-disc list-inside space-y-1 text-sm text-[#495057]"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      duration: 0.3,
+                      ease: "easeInOut",
+                    }}
+                    exit={{
+                      opacity: 0,
+                    }}
+                  >
+                    {item.Description.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </motion.ul>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         ))}
