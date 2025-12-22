@@ -22,7 +22,8 @@ import { Responsive } from './components/Responsive.js';
 import Progress from './components/Progress.js';
 import { Particles } from './components/Particles.js';
 import FloatingDock from './components/FloatingDock.js';
-import CertificationsPage from './pages/CertificationsPage.js';
+import CertificationsPage from './pages/CertificationsPage.tsx';
+import ProjectsPage from './pages/ProjectsPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/certifications",
     element: <CertificationsPage />
+  },
+  {
+    path: "/projects",
+    element: <ProjectsPage />
   }, {
     path: "/movingbutton",
     element: <MovingButtonPage />
