@@ -8,6 +8,10 @@ export const Navbar = () => {
       href: "/",
     },
     {
+      title: "Certifications",
+      href: "/certifications",
+    },
+    {
       title: "movingbutton",
       href: "/movingbutton",
     },
@@ -28,7 +32,7 @@ export const Navbar = () => {
       href: "/layout",
     },
   ];
-  const [hovered, setHovered] = useState<number | null>(null);
+  const [hovered, setHovered] = useState(null);
   return (
     <div className="py-40">
       <nav className="max-w-xl mx-auto bg-gray-100 rounded-full px-2 py-1 flex h-12 justify-center items-center">

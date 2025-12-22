@@ -22,18 +22,23 @@ import { Responsive } from './components/Responsive.js';
 import Progress from './components/Progress.js';
 import { Particles } from './components/Particles.js';
 import FloatingDock from './components/FloatingDock.js';
+import CertificationsPage from './pages/CertificationsPage.js';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/certifications",
+    element: <CertificationsPage />
   }, {
     path: "/movingbutton",
     element: <MovingButtonPage />
-  },{
+  }, {
     path: "/animatedcard",
     element: <AnimatedCardPage />
-  },{
+  }, {
     path: "/sidebar",
     element: <SidebarAnimationPage />
   },
@@ -59,7 +64,7 @@ const router = createBrowserRouter([
   {
     path: "/toolTip",
     element: <ToolTip />
-  },{
+  }, {
     path: "/card",
     element: <ThreeDCard />
   },
@@ -97,6 +102,6 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />,
-    
+
   </StrictMode>,
 )
