@@ -55,6 +55,21 @@ const Links = [
     desc: "Certifications",
     url: "/certifications",
   },
+  {
+    icon: <div>Labs</div>,
+    desc: "Certifications",
+    url: "/certifications",
+  },
+  {
+    icon: <div>Blogs</div>,
+    desc: "Certifications",
+    url: "/certifications",
+  },
+  {
+    icon: <div>News</div>,
+    desc: "Certifications",
+    url: "/certifications",
+  },
 ];
 
 const TopPicks = [
@@ -218,9 +233,9 @@ function App() {
             <motion.div
               className="text-4xl"
               style={{ opacity: scale1, scale: scale1 }}
-            // initial={{ scale: 1 }}
-            // whileInView={{ scale: 1.5 }}
-            // transition={{ duration: 0.3, ease: "easeInOut" }}
+              // initial={{ scale: 1 }}
+              // whileInView={{ scale: 1.5 }}
+              // transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               From pixels to worlds
             </motion.div>
@@ -250,16 +265,18 @@ function App() {
                   }}
                 >
                   <div
-                    className={`text-sm md:text-base ${activeId === item.id ? "font-semibold" : ""
-                      }`}
+                    className={`text-sm md:text-base ${
+                      activeId === item.id ? "font-semibold" : ""
+                    }`}
                   >
                     {item.component}
                   </div>
                   <div
-                    className={`text-sm md:text-base ${activeId === item.id
-                      ? "text-xs md:text-sm text-[#6c757d]"
-                      : "hidden"
-                      }`}
+                    className={`text-sm md:text-base ${
+                      activeId === item.id
+                        ? "text-xs md:text-sm text-[#6c757d]"
+                        : "hidden"
+                    }`}
                   >
                     {item.description}
                   </div>
@@ -340,8 +357,8 @@ function App() {
                         ? "GitHub"
                         : item.url.includes("twitter") ||
                           item.url.includes("x.com")
-                          ? "Twitter"
-                          : "LinkedIn"}
+                        ? "Twitter"
+                        : "LinkedIn"}
                     </span>
                   </a>
                 ))}
