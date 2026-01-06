@@ -9,10 +9,9 @@ import {
   MenuIcon,
   TwitterIcon,
 } from "lucide-react";
-import "./App.css";
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import WorkExperience from "./components/WorkExperience";
+import WorkExperience from "../components/WorkExperience";
 
 const Links = [
   {
@@ -99,7 +98,7 @@ const TopPicks = [
   },
 ];
 
-function App() {
+export default function Dummy() {
   const [activeId, setActiveId] = useState(1);
   const [menuState, setMenuState] = useState(false);
   //const [gotoHover, setGotoHover] = useState(false);
@@ -113,7 +112,7 @@ function App() {
   const scale2 = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
   const [copied, setIsCopied] = useState(false);
 
-  const SetCopyUrl = async (url) => {
+  const SetCopyUrl = async (url: any) => {
     //copy to clipboard fn
     const textToCopy = url;
 
@@ -377,5 +376,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
