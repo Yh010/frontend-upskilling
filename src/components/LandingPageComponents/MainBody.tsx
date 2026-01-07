@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ContentContext } from "../../contentContext.js";
 import WhatsAppChat from "./WhatsappChat.js";
+import CalInvite from "./CalInvite.js";
 
 const MainBody = () => {
   const content = useContext(ContentContext);
@@ -11,7 +12,7 @@ const MainBody = () => {
       output = <WhatsAppChat />;
       break;
     case "experience":
-      output = <p> experience</p>;
+      output = <CalInvite />;
       break;
     case "motion":
       output = <p> motion</p>;
