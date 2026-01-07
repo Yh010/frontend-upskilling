@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ContentContext } from "../../contentContext.js";
+import WhatsAppChat from "./WhatsappChat.js";
 
 const MainBody = () => {
   const content = useContext(ContentContext);
@@ -7,7 +8,7 @@ const MainBody = () => {
   let output;
   switch (content) {
     case "home":
-      output = <p>home</p>;
+      output = <WhatsAppChat />;
       break;
     case "experience":
       output = <p> experience</p>;
@@ -33,7 +34,7 @@ const MainBody = () => {
       break;
 
     default:
-      output = <p>home</p>;
+      output = <WhatsAppChat />;
       break;
   }
 
