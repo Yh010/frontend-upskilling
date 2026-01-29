@@ -23,6 +23,7 @@ import Progress from './components/Progress.js';
 import { Particles } from './components/Particles.js';
 import FloatingDock from './components/FloatingDock.js';
 import SonnerToast from './components/SonnerToast.js';
+import TrashAnimation from './components/TrashAnimation.js';
 import CertificationsPage from './pages/CertificationsPage.tsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
   {
     path: "/sonnertoast",
     element: <SonnerToast />
+  },
+  {
+    path: "/trashanimation",
+    element: <TrashAnimation />
   }
 ]);
 
