@@ -2,7 +2,10 @@ import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 
 const Hover = () => {
   return (
-    <div className="h-12 w-12 rounded-full bg-[#ffc300] hover:translate-y-[-20%] transition duration-300 ease-in-out">
+    <div className="group border">
+      <div className="h-12 w-12 rounded-full bg-[#ffc300] transition duration-300 ease-in-out group-hover:translate-y-[-20%]">
+
+      </div>
       
     </div>
   )
