@@ -13,8 +13,15 @@ const Hover = () => {
 
 const CardHover = () => {
   return (
-    <div>
-      CardHover
+    <div className="border h-4/5 w-1/2 rounded-2xl border-[#b1a7a6] shadow-xs relative px-2 pb-2 flex items-center justify-center">
+      <div className="absolute bottom-2 w-[calc(100%-1rem)] px-4 py-2 border border-[#dad7cd] rounded-lg bg-[#edede9] flex flex-col">
+        <span className="">
+          Project Name
+        </span>
+        <span className="">
+          Project Description
+        </span>
+      </div>
     </div>
   )
 }
@@ -48,7 +55,7 @@ const TransitionPractice = () => {
 
   const transitionDescriptions = {
     hover: "The end goal is to move the ball 20% upwards on hover.",
-    CardHover: <CardHover />,
+    CardHover: " Description of the project revealed when you hover over the card.",
     DownloadArrow: <DownloadArrow />,
     Toast : <Toast/>
   };
