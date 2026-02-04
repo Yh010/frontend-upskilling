@@ -26,73 +26,90 @@ const Card = ({ idx, selectedItems, setSelectedItems }: CardProps) => {
     </div>
   );
 };
+const Hover = () => {
+  return (
+    <div>
+      hover
+    </div>
+  )
+}
+
+const CardHover = () => {
+  return (
+    <div>
+      CardHover
+    </div>
+  )
+}
+const DownloadArrow = () => {
+  return (
+    <div>
+      DownloadArrow
+    </div>
+  )
+}
+
+const Toast = () => {
+  return (
+    <div>
+      Toast
+    </div>
+  )
+}
 
 const TransitionPractice = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [confirmDelete, setConfirmDelete] = useState<Boolean>(false);
   const [showOnlySelected, setShowOnlySelected] = useState<boolean>(false);
+  const [transitionType, setTransitionType] = useState<
+    "hover" | "CardHover" | "DownloadArrow" | "Toast"
+  >("hover");
 
   const cards = [1, 2, 3, 4];
 
-  const visibleCards = showOnlySelected ? cards.filter((id) => selectedItems.includes(id)): cards;
+  const visibleCards = showOnlySelected
+    ? cards.filter((id) => selectedItems.includes(id))
+    : cards;
+  const transitions = {
+    hover: <Hover />,
+    CardHover: <CardHover />,
+    DownloadArrow: <DownloadArrow />,
+    Toast : <Toast/>
+    
+  };
+
+
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-neutral-100">
-        <div className="flex justify-center items-center space-x-4">
-            <div>
-                simple
-            </div>
-            <div>
-                simple
-            </div>
-            <div>
-                simple
-            </div>
-            <div>
-                simple
-            </div>
-        </div>
-      <div className="border h-100 w-1/2 flex flex-col rounded-3xl border-[#b1a7a6] shadow-xs">
-        <div className="flex-1 flex justify-center items-center">
-          <div className="w-full flex justify-center grid grid-cols-2 gap-4 px-4">
-           {visibleCards.map((id) => (
-              <Card
-                key={id}
-                idx={id}
-                selectedItems={selectedItems}
-                setSelectedItems={setSelectedItems}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="h-16 flex justify-center items-center mb-4 relative">
-          {selectedItems.length !== 0 && !confirmDelete && (
-            <button
-              className="absolute px-4 py-2 self-center mb-4 border hover:bg-[#fae1dd] font-inter
- rounded-xl hover:text-[#f94144] font-semibold flex justify-center items-center duration-140 ease-out bg-[#f5f3f4] text-[#252422] shadow-xs border-[#d3d3d3]"
-              onClick={() => {
-                setConfirmDelete(true)
-                setShowOnlySelected(true);
-              }}
-            >
-              <div className="flex justify-center items-center space-x-2">
-                <TrashIcon />
-                <span>Add to Trash</span>
-              </div>
-            </button>
-          )}
-          {confirmDelete && (
-            <button
-              className="absolute px-4 py-2 self-center mb-4 border bg-[#ef233c] font-inter
- rounded-xl font-semibold flex justify-center items-center duration-140 ease-out text-white shadow-xs border-[#d3d3d3]"
-            >
-              <div className="flex justify-center items-center">
-                <span>Trash collectibles</span>
-              </div>
-            </button>
-          )}
-        </div>
+      <div className="flex justify-between w-1/2 px-4 py-1 items-center space-x-4 rounded-xl border border-[#b1a7a6] shadow-xs mb-2">
+        <button
+          className={`rounded-lg border shadow-xs py-1 px-4 font-semibold text-[#66666e] ${transitionType==="hover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("hover")}
+        >
+          hover
+        </button>
+       <button
+          className={`rounded-lg border shadow-xs py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="CardHover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("CardHover")}
+        >
+          CardHover
+        </button>
+         <button
+          className={`rounded-lg border shadow-xs py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="DownloadArrow" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("DownloadArrow")}
+        >
+          DownloadArrow
+        </button>
+         <button
+          className={`rounded-lg border shadow-xs py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="Toast" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("Toast")}
+        >
+          Toast
+        </button>
+      </div>
+      <div className="border h-100 w-1/2 flex justify-center items-center rounded-3xl border-[#b1a7a6] shadow-xs">
+        {transitions[transitionType] ?? null}
       </div>
     </div>
   );
