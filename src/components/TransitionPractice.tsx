@@ -13,12 +13,12 @@ const Hover = () => {
 
 const CardHover = () => {
   return (
-    <div className="border h-4/5 w-1/2 rounded-2xl border-[#b1a7a6] shadow-xs relative px-2 pb-2 flex items-center justify-center">
-      <div className="absolute bottom-2 w-[calc(100%-1rem)] px-4 py-2 border border-[#dad7cd] rounded-lg bg-[#edede9] flex flex-col">
-        <span className="">
+    <div className="border h-4/5 w-1/2 rounded-2xl border-[#b1a7a6] shadow-sm px-2 pb-2 flex items-end justify-center overflow-hidden group">
+      <div className="w-full px-4 py-2 border border-[#dad7cd] rounded-lg bg-[#edede9] flex flex-col translate-y-[calc(100%+10px)] group-hover:translate-y-0 transition duration-300 cubic-bezier(0.19, 1, 0.22, 1)">
+        <span className="text-sm font-medium">
           Project Name
         </span>
-        <span className="">
+        <span className="text-[#66666e] text-sm font-light">
           Project Description
         </span>
       </div>
@@ -55,7 +55,7 @@ const TransitionPractice = () => {
 
   const transitionDescriptions = {
     hover: "The end goal is to move the ball 20% upwards on hover.",
-    CardHover: " Description of the project revealed when you hover over the card.",
+    CardHover: " Description of the project is revealed when you hover over the card.",
     DownloadArrow: <DownloadArrow />,
     Toast : <Toast/>
   };
@@ -65,33 +65,33 @@ const TransitionPractice = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-neutral-100">
-      <div className="flex justify-between w-1/2 px-4 py-1 items-center space-x-4 rounded-xl border border-[#b1a7a6] shadow-xs mb-2">
+      <div className="flex justify-between w-1/2 px-4 py-1 items-center space-x-4 rounded-xl border border-[#b1a7a6] shadow-sm mb-2">
         <button
-          className={`rounded-lg border shadow-xs py-1 px-4 font-semibold text-[#66666e] ${transitionType==="hover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e] ${transitionType==="hover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("hover")}
         >
           hover
         </button>
        <button
-          className={`rounded-lg border shadow-xs py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="CardHover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="CardHover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("CardHover")}
         >
           CardHover
         </button>
          <button
-          className={`rounded-lg border shadow-xs py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="DownloadArrow" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="DownloadArrow" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("DownloadArrow")}
         >
           DownloadArrow
         </button>
          <button
-          className={`rounded-lg border shadow-xs py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="Toast" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="Toast" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("Toast")}
         >
           Toast
         </button>
       </div>
-      <div className="border h-100 w-1/2 flex justify-center items-center rounded-3xl border-[#b1a7a6] shadow-xs">
+      <div className="border h-100 w-1/2 flex justify-center items-center rounded-3xl border-[#b1a7a6] shadow-sm">
         {transitions[transitionType] ?? null}
       </div>
       <div className="w-1/2 text-center text-[#66666e]">
