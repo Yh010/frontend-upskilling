@@ -25,6 +25,7 @@ import FloatingDock from './components/FloatingDock.js';
 import SonnerToast from './components/SonnerToast.js';
 import TrashAnimation from './components/TrashAnimation.js';
 import TransitionPractice from './components/TransitionPractice.js';
+import KeyframePractice from './components/KeyframePractice.js';
 import CertificationsPage from './pages/CertificationsPage.tsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 
@@ -115,6 +116,10 @@ const router = createBrowserRouter([
   {
     path: "/transition",
     element: <TransitionPractice />
+  },
+  {
+    path: "/keyframe",
+    element: <KeyframePractice />
   }
 ]);
 

@@ -6,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
 @import "tailwindcss";
+
 @theme {
     --shadow-input:
         0px 2px 3px -1px rgba(0, 0, 0, 0.1),
@@ -14,9 +15,20 @@
     --font-roboto: "Roboto", sans-serif;
     --font-playwrite: "Playwrite NO", cursive;
     --font-geist: "Geist Mono", monospace;
-    --font-fjalla:"Fjalla One", sans-serif;
+    --font-fjalla: "Fjalla One", sans-serif;
     --font-banger: "Bangers", system-ui;
     --font-bebas: "Bebas Neue", sans-serif;
     --font-sketch: "Cabin Sketch", sans-serif;
+    --animate-yashmarquee: yashmarquee 10s linear infinite;
     /* --font-custom: "Orbitron", sans-serif; */
+}
+
+@keyframes yashmarquee {
+    from {
+        transform: translateX(50%);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
 }
