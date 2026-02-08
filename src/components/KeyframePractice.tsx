@@ -44,7 +44,7 @@ const Toast = () => {
 
 const TextReveal = () => {
   const [count, setCount] = useState(0);
-  const paragraph = "Text";
+  const paragraph = "Text animation";
   const wordArray = paragraph.split("");
   return (
     <div className="relative h-4/5 w-full">
@@ -72,21 +72,34 @@ const TextReveal = () => {
   )
 }
 
+const Orbit = () => {
+  return (
+    <div className="relative h-full w-full transform-3d perspective-[700px]">
+      <div className="bg-yellow-400 h-18 w-18 rounded-full absolute inset-0 mx-auto my-auto">
+
+      </div>
+      <div className="bg-blue-400 h-8 w-8 rounded-full absolute inset-0 mx-auto my-auto animate-orbit">
+
+      </div>
+    </div>
+  )
+}
+
 const KeyframePractice = () => {
   const [transitionType, setTransitionType] = useState<
-    "TextReveal" | "CursorBlink" | "DownloadArrow" | "Toast"
+    "TextReveal" | "Orbit" | "DownloadArrow" | "Toast"
   >("TextReveal");
 
   const transitions = {
     TextReveal: <TextReveal />,
-    CursorBlink: <CursorBlink />,
+    Orbit: <Orbit />,
     DownloadArrow: <DownloadArrow />,
     Toast: <Toast />
   };
 
   const transitionDescriptions = {
     TextReveal: "Each letter in the word is shown with a slight delay",
-    CursorBlink: " Description of the project is revealed when you hover over the card.",
+    Orbit: "Element orbiting around another element",
     DownloadArrow: "The angry face moves down when you hover over the button, and there's the happy one coming from the top at the same time.",
     Toast: <Toast />
   };
@@ -104,10 +117,10 @@ const KeyframePractice = () => {
           Text Reveal
         </button>
         <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "CursorBlink" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
-          onClick={() => setTransitionType("CursorBlink")}
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "Orbit" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("Orbit")}
         >
-          Cursor blink
+          Orbiting animation
         </button>
         <button
           className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "DownloadArrow" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}

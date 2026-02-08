@@ -24,6 +24,7 @@
     --animate-fadeOut: fadeOut 700ms ease-out forwards;
     --animate-xTranslate: xTranslate 2s cubic-bezier(0.645, 0.045, 0.355, 1) infinite alternate;
     --animate-textReveal: textReveal 1.3s cubic-bezier(0.19, 1, 0.22, 1) backwards;
+    --animate-orbit: orbit 6s linear infinite;
 }
 
 @keyframes yashmarquee {
@@ -70,5 +71,15 @@
 
     100% {
         transform: translateY(0%);
+    }
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotateY(0deg) translateZ(72px) rotateY(360deg);
+    }
+
+    100% {
+        transform: rotateY(360deg) translateZ(72px) rotateY(0deg);
     }
 }
