@@ -14,7 +14,7 @@ const IterationCount = () => {
       <Code2Icon />
       <DownloadIcon />
       <BotIcon />
-      
+
     </div>
   )
 }
@@ -22,7 +22,7 @@ const IterationCount = () => {
 const CursorBlink = () => {
   return (
     <div className="animate-blink">
-      |      
+      |
     </div>
   )
 }
@@ -42,23 +42,53 @@ const Toast = () => {
   )
 }
 
+const TextReveal = () => {
+  const [count, setCount] = useState(0);
+  const paragraph = "Text";
+  const wordArray = paragraph.split("");
+  return (
+    <div className="relative h-4/5 w-full">
+      <div key={count} className="absolute inset-0 flex items-center justify-center">
+        <h1 className="text-4xl font-bold overflow-hidden">
+          {wordArray.map((char, i) => (
+            <span
+              key={i}
+              className="inline-block animate-textReveal"
+              style={{ animationDelay: `${i * 0.03}s` }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </h1>
+
+      </div>
+
+      <button className="absolute bottom-0 inset-x-0 mx-auto w-fit px-4 py-2 self-center mb-4 border hover:bg-[#f8f9fa] font-inter
+ rounded-xl hover:text-black font-semibold flex justify-center items-center hover:scale-[1.01] duration-150 ease-out active:scale-[0.97] bg-[#f5f3f4] text-[#252422] shadow-xs border-[#d3d3d3]" onClick={() => setCount((prev) => prev + 1)}>
+        Replay animation
+      </button>
+
+    </div>
+  )
+}
+
 const KeyframePractice = () => {
   const [transitionType, setTransitionType] = useState<
-    "IterationCount" | "CursorBlink" | "DownloadArrow" | "Toast"
-  >("IterationCount");
+    "TextReveal" | "CursorBlink" | "DownloadArrow" | "Toast"
+  >("TextReveal");
 
   const transitions = {
-    IterationCount: <IterationCount />,
+    TextReveal: <TextReveal />,
     CursorBlink: <CursorBlink />,
     DownloadArrow: <DownloadArrow />,
-    Toast : <Toast/>
+    Toast: <Toast />
   };
 
   const transitionDescriptions = {
-    IterationCount: "Infinite iteration count",
+    TextReveal: "Each letter in the word is shown with a slight delay",
     CursorBlink: " Description of the project is revealed when you hover over the card.",
     DownloadArrow: "The angry face moves down when you hover over the button, and there's the happy one coming from the top at the same time.",
-    Toast : <Toast/>
+    Toast: <Toast />
   };
 
 
@@ -68,25 +98,25 @@ const KeyframePractice = () => {
     <div className="min-h-screen flex flex-col justify-center items-center bg-neutral-100">
       <div className="flex justify-between w-1/2 px-4 py-1 items-center space-x-4 rounded-xl border border-[#c7c7d0] shadow-sm mb-2">
         <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e] ${transitionType==="IterationCount" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
-          onClick={() => setTransitionType("IterationCount")}
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e] ${transitionType === "TextReveal" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("TextReveal")}
         >
-          Iteration Count
+          Text Reveal
         </button>
-       <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="CursorBlink" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+        <button
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "CursorBlink" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("CursorBlink")}
         >
           Cursor blink
         </button>
-         <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="DownloadArrow" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+        <button
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "DownloadArrow" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("DownloadArrow")}
         >
           Animation fill mode
         </button>
-         <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="Toast" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+        <button
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "Toast" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("Toast")}
         >
           Toast
@@ -96,7 +126,7 @@ const KeyframePractice = () => {
         {transitions[transitionType] ?? null}
       </div>
       <div className="w-1/2 text-center text-[#66666e]">
-         {transitionDescriptions[transitionType] ?? null}
+        {transitionDescriptions[transitionType] ?? null}
       </div>
     </div>
   );
