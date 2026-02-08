@@ -34,14 +34,6 @@ const DownloadArrow = () => {
   )
 }
 
-const Toast = () => {
-  return (
-    <div>
-      Toast
-    </div>
-  )
-}
-
 const TextReveal = () => {
   const [count, setCount] = useState(0);
   const paragraph = "Text animation";
@@ -85,23 +77,39 @@ const Orbit = () => {
   )
 }
 
+const HeartBeatCoin = () => {
+  return (
+    <div className="relative w-full h-full flex justify-center items-center">
+      <div className="absolute bg-blue-600 rounded-full h-6 w-6 animate-heartbeat">
+
+      </div>
+      <div className="absolute bg-blue-600 rounded-full h-6 w-6 animate-heartbeat" style={{ animationDelay: '2s' }}>
+
+      </div>
+      <div className="absolute bg-amber-500 rounded-full h-12 w-12 flex justify-center items-center animate-CoinRotate">
+        <span>$</span>
+      </div>
+
+    </div>
+
+  )
+}
+
 const KeyframePractice = () => {
   const [transitionType, setTransitionType] = useState<
-    "TextReveal" | "Orbit" | "DownloadArrow" | "Toast"
+    "TextReveal" | "Orbit" | "HeartBeatCoin"
   >("TextReveal");
 
   const transitions = {
     TextReveal: <TextReveal />,
     Orbit: <Orbit />,
-    DownloadArrow: <DownloadArrow />,
-    Toast: <Toast />
+    HeartBeatCoin: <HeartBeatCoin />,
   };
 
   const transitionDescriptions = {
     TextReveal: "Each letter in the word is shown with a slight delay",
     Orbit: "Element orbiting around another element",
-    DownloadArrow: "The angry face moves down when you hover over the button, and there's the happy one coming from the top at the same time.",
-    Toast: <Toast />
+    HeartBeatCoin: "Rotating coin with heartbeat background",
   };
 
 
@@ -123,16 +131,10 @@ const KeyframePractice = () => {
           Orbiting animation
         </button>
         <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "DownloadArrow" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
-          onClick={() => setTransitionType("DownloadArrow")}
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "HeartBeatCoin" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("HeartBeatCoin")}
         >
-          Animation fill mode
-        </button>
-        <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "Toast" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
-          onClick={() => setTransitionType("Toast")}
-        >
-          Toast
+          heartbeat coin
         </button>
       </div>
       <div className="border h-100 w-1/2 flex justify-center items-center rounded-3xl border-[#c7c7d0] shadow-sm overflow-hidden">

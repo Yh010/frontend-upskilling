@@ -7,7 +7,7 @@ const Hover = () => {
       <div className="h-12 w-12 rounded-full bg-[#ffc300] transition duration-300 ease-in-out group-hover:translate-y-[-20%]">
 
       </div>
-      
+
     </div>
   )
 }
@@ -29,37 +29,27 @@ const CardHover = () => {
 const DownloadArrow = () => {
   return (
     <div className="border border-[#c7c7d0] shadow-sm h-30 w-30 rounded-full overflow-hidden group flex flex-col justify-center items-center relative">
-       <SmileIcon className="absolute h-20 w-20 translate-y-[calc(-150%)] group-hover:translate-y-0 transition duration-300 cubic-bezier(0.19, 1, 0.22, 1) fill-amber-400"/> 
-       <AngryIcon className="absolute h-20 w-20 group-hover:translate-y-[calc(150%)] transition duration-300 cubic-bezier(0.19, 1, 0.22, 1) fill-red-600"/>  
-    </div>
-  )
-}
-
-const Toast = () => {
-  return (
-    <div>
-      Toast
+      <SmileIcon className="absolute h-20 w-20 translate-y-[calc(-150%)] group-hover:translate-y-0 transition duration-300 cubic-bezier(0.19, 1, 0.22, 1) fill-amber-400" />
+      <AngryIcon className="absolute h-20 w-20 group-hover:translate-y-[calc(150%)] transition duration-300 cubic-bezier(0.19, 1, 0.22, 1) fill-red-600" />
     </div>
   )
 }
 
 const TransitionPractice = () => {
   const [transitionType, setTransitionType] = useState<
-    "hover" | "CardHover" | "DownloadArrow" | "Toast"
+    "hover" | "CardHover" | "DownloadArrow"
   >("hover");
 
   const transitions = {
     hover: <Hover />,
     CardHover: <CardHover />,
     DownloadArrow: <DownloadArrow />,
-    Toast : <Toast/>
   };
 
   const transitionDescriptions = {
     hover: "The end goal is to move the ball 20% upwards on hover.",
     CardHover: " Description of the project is revealed when you hover over the card.",
     DownloadArrow: "The angry face moves down when you hover over the button, and there's the happy one coming from the top at the same time.",
-    Toast : <Toast/>
   };
 
 
@@ -69,35 +59,29 @@ const TransitionPractice = () => {
     <div className="min-h-screen flex flex-col justify-center items-center bg-neutral-100">
       <div className="flex justify-between w-1/2 px-4 py-1 items-center space-x-4 rounded-xl border border-[#c7c7d0] shadow-sm mb-2">
         <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e] ${transitionType==="hover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e] ${transitionType === "hover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("hover")}
         >
           hover
         </button>
-       <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="CardHover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+        <button
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "CardHover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("CardHover")}
         >
           CardHover
         </button>
-         <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="DownloadArrow" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+        <button
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "DownloadArrow" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("DownloadArrow")}
         >
           DownloadArrow
-        </button>
-         <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="Toast" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
-          onClick={() => setTransitionType("Toast")}
-        >
-          Toast
         </button>
       </div>
       <div className="border h-100 w-1/2 flex justify-center items-center rounded-3xl border-[#c7c7d0] shadow-sm">
         {transitions[transitionType] ?? null}
       </div>
       <div className="w-1/2 text-center text-[#66666e]">
-         {transitionDescriptions[transitionType] ?? null}
+        {transitionDescriptions[transitionType] ?? null}
       </div>
     </div>
   );
