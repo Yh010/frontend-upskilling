@@ -3,7 +3,7 @@ import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 
 const IterationCount = () => {
   return (
-    <div className="flex space-x-6 animate-yashmarquee border">
+    <div className="flex space-x-6 animate-yashmarquee border hover:[animation-play-state:paused]">
       <AppleIcon />
       <Microscope />
       <Code2Icon />
@@ -19,25 +19,17 @@ const IterationCount = () => {
   )
 }
 
-const CardHover = () => {
+const CursorBlink = () => {
   return (
-    <div className="border h-4/5 w-1/2 rounded-2xl border-[#b1a7a6] shadow-sm px-2 pb-2 flex items-end justify-center overflow-hidden group">
-      <div className="w-full px-4 py-2 border border-[#dad7cd] rounded-lg bg-[#edede9] flex flex-col translate-y-[calc(100%+10px)] group-hover:translate-y-0 transition duration-300 cubic-bezier(0.19, 1, 0.22, 1)">
-        <span className="text-sm font-medium">
-          Project Name
-        </span>
-        <span className="text-[#66666e] text-sm font-light">
-          Project Description
-        </span>
-      </div>
+    <div className="animate-blink">
+      |      
     </div>
   )
 }
 const DownloadArrow = () => {
   return (
-    <div className="border border-[#c7c7d0] shadow-sm h-30 w-30 rounded-full overflow-hidden group flex flex-col justify-center items-center relative">
-       <SmileIcon className="absolute h-20 w-20 translate-y-[calc(-150%)] group-hover:translate-y-0 transition duration-300 cubic-bezier(0.19, 1, 0.22, 1) fill-amber-400"/> 
-       <AngryIcon className="absolute h-20 w-20 group-hover:translate-y-[calc(150%)] transition duration-300 cubic-bezier(0.19, 1, 0.22, 1) fill-red-600"/>  
+    <div className="animate-xTranslate hover:[animation-play-state:paused] border bg-amber-900 h-12 w-12 rounded-xl">
+
     </div>
   )
 }
@@ -52,19 +44,19 @@ const Toast = () => {
 
 const KeyframePractice = () => {
   const [transitionType, setTransitionType] = useState<
-    "IterationCount" | "CardHover" | "DownloadArrow" | "Toast"
+    "IterationCount" | "CursorBlink" | "DownloadArrow" | "Toast"
   >("IterationCount");
 
   const transitions = {
     IterationCount: <IterationCount />,
-    CardHover: <CardHover />,
+    CursorBlink: <CursorBlink />,
     DownloadArrow: <DownloadArrow />,
     Toast : <Toast/>
   };
 
   const transitionDescriptions = {
     IterationCount: "Infinite iteration count",
-    CardHover: " Description of the project is revealed when you hover over the card.",
+    CursorBlink: " Description of the project is revealed when you hover over the card.",
     DownloadArrow: "The angry face moves down when you hover over the button, and there's the happy one coming from the top at the same time.",
     Toast : <Toast/>
   };
@@ -82,16 +74,16 @@ const KeyframePractice = () => {
           Iteration Count
         </button>
        <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="CardHover" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
-          onClick={() => setTransitionType("CardHover")}
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="CursorBlink" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("CursorBlink")}
         >
-          CardHover
+          Cursor blink
         </button>
          <button
           className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="DownloadArrow" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
           onClick={() => setTransitionType("DownloadArrow")}
         >
-          DownloadArrow
+          Animation fill mode
         </button>
          <button
           className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType==="Toast" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}

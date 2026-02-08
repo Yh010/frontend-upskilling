@@ -20,7 +20,9 @@
     --font-bebas: "Bebas Neue", sans-serif;
     --font-sketch: "Cabin Sketch", sans-serif;
     --animate-yashmarquee: yashmarquee 10s linear infinite;
-    /* --font-custom: "Orbitron", sans-serif; */
+    --animate-blink: blink 1s steps(1, end) infinite;
+    --animate-fadeOut: fadeOut 700ms ease-out forwards;
+    --animate-xTranslate: xTranslate 2s cubic-bezier(0.645, 0.045, 0.355, 1) infinite alternate;
 }
 
 @keyframes yashmarquee {
@@ -30,5 +32,32 @@
 
     to {
         transform: translateX(-50%);
+    }
+}
+
+@keyframes blink {
+    50% {
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        scale: 1.5;
+    }
+
+    to {
+        scale: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes xTranslate {
+    0% {
+        transform: translateX(-150px);
+    }
+
+    100% {
+        transform: translateX(150px);
     }
 }
