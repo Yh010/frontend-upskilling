@@ -1,5 +1,5 @@
-import { AngryIcon, AppleIcon, BotIcon, Code2Icon, DownloadIcon, Microscope, SmileIcon } from "lucide-react";
-import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import { AppleIcon, BotIcon, Code2Icon, DownloadIcon, Microscope } from "lucide-react";
+import { useState } from "react";
 
 const IterationCount = () => {
   return (
