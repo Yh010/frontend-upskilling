@@ -1,5 +1,5 @@
 import { TrashIcon } from "lucide-react";
-import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 
 interface CardProps {
   idx: number;
@@ -34,14 +34,14 @@ const TrashAnimation = () => {
 
   const cards = [1, 2, 3, 4];
 
-  const visibleCards = showOnlySelected ? cards.filter((id) => selectedItems.includes(id)): cards;
+  const visibleCards = showOnlySelected ? cards.filter((id) => selectedItems.includes(id)) : cards;
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-neutral-100">
       <div className="border h-100 w-1/2 flex flex-col rounded-3xl border-[#b1a7a6] shadow-xs">
         <div className="flex-1 flex justify-center items-center">
-          <div className="w-full flex justify-center grid grid-cols-2 gap-4 px-4">
-           {visibleCards.map((id) => (
+          <div className="w-full justify-center grid grid-cols-2 gap-4 px-4">
+            {visibleCards.map((id) => (
               <Card
                 key={id}
                 idx={id}
