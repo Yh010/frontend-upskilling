@@ -27,6 +27,7 @@ import TrashAnimation from './components/TrashAnimation.js';
 import TransitionPractice from './components/TransitionPractice.js';
 import KeyframePractice from './components/KeyframePractice.js';
 import ClippathPractice from './components/ClippathPractice.js';
+import Onboarding from './components/Onboarding.js';
 import CertificationsPage from './pages/CertificationsPage.tsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 
@@ -125,6 +126,10 @@ const router = createBrowserRouter([
   {
     path: "/clippath",
     element: <ClippathPractice />
+  },
+  {
+    path: "/onboarding",
+    element: <Onboarding />
   }
 ]);
 

@@ -34,6 +34,9 @@
     --animate-loadimage: loadimage 2.5s linear 1s both;
     --animate-progressFill: progressFill 2.5s linear 1s both;
     --animate-imageloadcomplete: imageloadcomplete 500ms ease-in-out 3.6s both;
+    --animate-bangalorecard: bangalorecard 700ms ease-in-out 500ms forwards;
+    --animate-dubaicard: dubaicard 500ms ease-in 500ms both, bangalorecard 500ms ease-in-out 1.5s both;
+    --animate-mexicocardenter: mexicocardenter 500ms ease-in-out 1.5s both;
 }
 
 
@@ -191,5 +194,33 @@
 
     100% {
         transform: scale(1);
+    }
+}
+
+@keyframes bangalorecard {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes dubaicard {
+    from {
+        transform: scale(0.8) translateY(-40px);
+
+    }
+
+    to {
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes mexicocardenter {
+    from {
+        transform: scale(0.8) translateY(-40px);
+
+    }
+
+    to {
+        transform: scale(1) translateY(0);
     }
 }
