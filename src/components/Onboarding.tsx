@@ -82,7 +82,7 @@ const ItalyCard = () => {
 
 const BangalorePaymentCard = () => {
   return (
-    <div className="h-full w-50 bg-white flex flex-col px-4 py-2 justify-between items-center shadow-sm rounded-lg mx-auto inset-0">
+    <div className="h-full w-50 bg-white flex flex-col px-4 py-2 justify-between items-center shadow-sm rounded-lg mx-auto inset-0 animate-ItalyPaymentCard">
       <div className="w-full flex flex-col justify-center items-center py-2 space-y-1">
         <div className="h-1 w-1/2 bg-[#e7ecef] rounded-full"></div>
         <div className="h-1 w-3/4 bg-[#e7ecef] rounded-full"></div>
@@ -108,7 +108,7 @@ const BangalorePaymentCard = () => {
 
 const DubaiPaymentCard = () => {
   return (
-    <div className="mx-auto inset-0 h-full w-50 bg-white flex flex-col py-2 px-4 justify-between items-center shadow-sm rounded-lg">
+    <div className="mx-auto inset-0 h-full w-50 bg-white flex flex-col py-2 px-4 justify-between items-center shadow-sm rounded-lg animate-ItalyPaymentCard">
       <div className="w-full flex flex-col justify-center items-center py-2 space-y-1">
         <div className="h-1 w-1/2 bg-[#e7ecef] rounded-full"></div>
         <div className="h-1 w-3/4 bg-[#e7ecef] rounded-full"></div>
@@ -136,7 +136,7 @@ const DubaiPaymentCard = () => {
 
 const ItalyPaymentCard = () => {
   return (
-    <div className="mx-auto inset-0 h-full w-50 bg-white flex flex-col px-4 py-2 justify-between items-center shadow-sm rounded-lg">
+    <div className="mx-auto inset-0 h-full w-50 bg-white flex flex-col px-4 py-2 justify-between items-center shadow-sm rounded-lg animate-ItalyPaymentCard">
       <div className="w-full flex flex-col justify-center items-center py-2 space-y-1">
         <div className="h-1 w-1/2 bg-[#e7ecef] rounded-full"></div>
         <div className="h-1 w-3/4 bg-[#e7ecef] rounded-full"></div>
@@ -237,7 +237,7 @@ const Onboarding = () => {
               <BangaloreCard />
             </div>
           </div>
-          <div className="h-80 bg-[#eff1ed] w-72 rounded-xl flex flex-col items-center justify-center py-2 px-4">
+          <div className="h-80 bg-[#eff1ed] w-72 rounded-xl flex flex-col items-center justify-center py-2 px-4 overflow-hidden">
             <div className="h-1/9 w-full">
               <div className="h-6 w-6 rounded-full bg-white text-blue-400 text-center">
                 2
@@ -251,7 +251,7 @@ const Onboarding = () => {
                 The hover states your website is missing
               </div>
             </div>
-            <div className="h-1/2 w-full overflow-hidden flex">
+            <div className="flex h-1/2 gap-x-2 animate-paymentSlider">
               <ItalyPaymentCard />
               <DubaiPaymentCard />
               <BangalorePaymentCard />

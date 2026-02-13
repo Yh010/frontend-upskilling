@@ -42,36 +42,70 @@
     --animate-check: check 300ms ease-in-out 1.3s both;
     --animate-checktranslate: checktranslate 200ms ease-in-out 1.7s both;
     --animate-checktext: checktext 300ms ease-in-out 2s both;
-
+    --animate-paymentSlider: paymentSlider 8s ease-in-out forwards;
 }
+
+@keyframes paymentSlider {
+
+    0% {
+        transform: translateX(200px);
+    }
+
+    20% {
+        transform: translateX(200px);
+    }
+
+    30% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    60% {
+        transform: translateX(-200px);
+    }
+
+    100% {
+        transform: translateX(-200px);
+    }
+}
+
 @keyframes checktext {
-    from{
+    from {
         transform: scale(0.005);
     }
-    to{
+
+    to {
         transform: scale(1);
     }
 }
 
-@keyframes checktranslate{
-    from{
+@keyframes checktranslate {
+    from {
         transform: translateX(150%);
     }
+
     to {
         transform: translateX(0%);
     }
 }
+
 @keyframes check {
-    0%{
+    0% {
         transform: scale(0.005);
     }
-    90%{
+
+    90% {
         transform: scale(1.2);
     }
-    100%{
+
+    100% {
         transform: scale(1);
     }
 }
+
 @keyframes loader {
     to {
         transform: scale(0);
@@ -79,12 +113,13 @@
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes yashmarquee {
