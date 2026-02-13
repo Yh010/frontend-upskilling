@@ -25,14 +25,32 @@ const Onboarding = () => {
                             </div>
                         </div>
                         <div className="h-1/2 w-full relative">
-                            <div className="mx-auto inset-0 h-full w-4/5 bg-white shadow-sm rounded-lg absolute animate-mexicocardenter">
+                            <div className="mx-auto inset-0 h-full w-4/5 bg-white flex px-4 justify-center items-center shadow-sm rounded-lg absolute animate-mexicocardenter">
+                                <div className="w-1/4 border">
+                                    <img src='/italy.png' className="h-12 w-12" />
+                                </div>
+                                <div className="w-3/4 border h-12 flex flex-col px-3">
+                                    <div>
+                                        italy
+                                    </div>
+                                    <div>
+                                        $4250
+                                    </div>
+
+                                </div>
 
                             </div>
-                            <div className="mx-auto inset-0 h-full w-4/5 bg-white shadow-sm rounded-lg absolute animate-dubaicard">
+                            <div className="mx-auto inset-0 h-full w-4/5 bg-white flex px-4 justify-center items-center shadow-sm rounded-lg absolute animate-dubaicard">
 
                             </div>
-                            <div className="h-full w-4/5 bg-white shadow-sm rounded-lg absolute mx-auto inset-0 animate-bangalorecard">
+                            <div className="h-full w-4/5 bg-white flex px-4 justify-center items-center shadow-sm rounded-lg absolute mx-auto inset-0 animate-bangalorecard">
+                                <div className="w-1/4 border">
+                                    image
+                                </div>
+                                <div className="w-3/4 border">
+                                    description
 
+                                </div>
                             </div>
                         </div>
                     </div>
