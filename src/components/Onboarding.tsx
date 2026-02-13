@@ -1,4 +1,4 @@
-import { Check, LoaderCircleIcon } from "lucide-react";
+import { BedSingle, Car, Check, Hotel, HotelIcon, LoaderCircleIcon, Plane } from "lucide-react";
 
 const BangaloreCard = () => {
   return (
@@ -28,7 +28,7 @@ const BangaloreCard = () => {
 
 const DubaiCard = () => {
   return (
-    <div className="mx-auto inset-0 h-full w-4/5 bg-white flex flex-col px-4 py-2 px-4 justify-between items-center shadow-sm rounded-lg absolute animate-dubaicard">
+    <div className="mx-auto inset-0 h-full w-4/5 bg-white flex flex-col px-4 py-2 justify-between items-center shadow-sm rounded-lg absolute animate-dubaicard">
       <div className="w-full flex flex-col justify-center items-center py-2 space-y-1">
         <div className="h-1 w-1/2 bg-[#e7ecef] rounded-full"></div>
         <div className="h-1 w-3/4 bg-[#e7ecef] rounded-full"></div>
@@ -108,7 +108,7 @@ const BangalorePaymentCard = () => {
 
 const DubaiPaymentCard = () => {
   return (
-    <div className="mx-auto inset-0 h-full w-50 bg-white flex flex-col px-4 py-2 px-4 justify-between items-center shadow-sm rounded-lg">
+    <div className="mx-auto inset-0 h-full w-50 bg-white flex flex-col py-2 px-4 justify-between items-center shadow-sm rounded-lg">
       <div className="w-full flex flex-col justify-center items-center py-2 space-y-1">
         <div className="h-1 w-1/2 bg-[#e7ecef] rounded-full"></div>
         <div className="h-1 w-3/4 bg-[#e7ecef] rounded-full"></div>
@@ -181,6 +181,36 @@ const BookingConfirmedButton = () => {
     </div>
   );
 };
+
+const FurtherBookings = () => {
+  return (
+    <div className="grid grid-cols-7 gap-6 w-full opacity-60">
+      <div className="flex space-x-1 col-start-1 col-end-6 bg-white px-1 py-2 shadow-sm rounded-lg">
+        <div className="w-1/4 flex justify-center items-center">
+          <Plane className="text-[#4361ee] bg-[#caf0f8] p-1 rounded-md fill-[#4361ee]" />
+        </div>
+        <div className="w-3/4 flex flex-col space-y-1">
+          <span className="text-xs font-semibold">
+            Plane tickets
+          </span>
+          <div className="h-1 w-full bg-[#e7ecef] rounded-full"></div>
+        </div>
+      </div>
+
+      <div className="flex space-x-1 col-start-3 col-end-8 bg-white px-1 py-2 shadow-sm rounded-lg">
+        <div className="w-1/4 flex justify-center items-center">
+          <BedSingle className="text-[#4361ee] bg-[#caf0f8] p-1 rounded-md fill-[#4361ee]" />
+        </div>
+        <div className="w-3/4 flex flex-col space-y-1">
+          <span className="text-xs font-semibold">
+            Hotel tickets
+          </span>
+          <div className="h-1 w-full bg-[#e7ecef] rounded-full"></div>
+        </div>
+      </div>
+    </div>
+  )
+}
 const Onboarding = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-neutral-100">
@@ -241,8 +271,9 @@ const Onboarding = () => {
                 The hover states your website is missing
               </div>
             </div>
-            <div className="h-1/2 w-full flex flex-col justify-center items-center">
+            <div className="h-1/2 w-full flex flex-col justify-center items-center space-y-4">
               <BookingConfirmedButton />
+              <FurtherBookings />
             </div>
           </div>
         </div>
