@@ -37,8 +37,55 @@
     --animate-bangalorecard: bangalorecard 700ms ease-in-out 500ms both;
     --animate-dubaicard: dubaicard 500ms ease-in 500ms both, bangalorecard 500ms ease-in-out 1.5s both;
     --animate-mexicocardenter: mexicocardenter 500ms ease-in-out 1.5s both;
+    --animate-loader: loader 300ms ease-in-out 1s both;
+    --animate-spin: spin 300ms linear infinite;
+    --animate-check: check 300ms ease-in-out 1.3s both;
+    --animate-checktranslate: checktranslate 200ms ease-in-out 1.7s both;
+    --animate-checktext: checktext 300ms ease-in-out 2s both;
+
+}
+@keyframes checktext {
+    from{
+        transform: scale(0.005);
+    }
+    to{
+        transform: scale(1);
+    }
 }
 
+@keyframes checktranslate{
+    from{
+        transform: translateX(150%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+@keyframes check {
+    0%{
+        transform: scale(0.005);
+    }
+    90%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes loader {
+    to {
+        transform: scale(0);
+    }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 @keyframes yashmarquee {
     from {
