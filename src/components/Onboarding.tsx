@@ -44,21 +44,21 @@ const Onboarding = () => {
                   <div className="h-1 w-1/2 bg-[#eef4ed] rounded-full"></div>
                 </div>
               </div>
-              <div className="mx-auto inset-0 h-full w-4/5 bg-white flex flex-col px-4 py-2 px-4 justify-center items-center shadow-sm rounded-lg absolute animate-dubaicard">
+              <div className="mx-auto inset-0 h-full w-4/5 bg-white flex flex-col px-4 py-2 px-4 justify-between items-center shadow-sm rounded-lg absolute animate-dubaicard">
                 <div className="w-full flex flex-col justify-center items-center py-2 space-y-1">
                   <div className="h-1 w-1/2 bg-[#e7ecef] rounded-full"></div>
                   <div className="h-1 w-3/4 bg-[#e7ecef] rounded-full"></div>
                 </div>
                 <div className="flex w-full">
                   <div className="w-1/4">
-                    <img src="/italy.png" className="h-12 w-12 rounded-md" />
+                    <img src="/dubai.png" className="h-12 w-12 rounded-md" />
                   </div>
                   <div className="w-3/4 h-10 flex flex-col px-3">
                     <div className="font-light text-sm text-[#8d99ae] font-roboto">
-                      Italy
+                      Dubai
                     </div>
                     <div className="font-bold text-lg text-black font-roboto">
-                      $4,250
+                      $10,250
                     </div>
                   </div>
                 </div>
@@ -67,21 +67,21 @@ const Onboarding = () => {
                   <div className="h-1 w-1/2 bg-[#eef4ed] rounded-full"></div>
                 </div>
               </div>
-              <div className="h-full w-4/5 bg-white flex flex-col px-4 py-2 justify-center items-center shadow-sm rounded-lg absolute mx-auto inset-0 animate-bangalorecard">
+              <div className="h-full w-4/5 bg-white flex flex-col px-4 py-2 justify-between items-center shadow-sm rounded-lg absolute mx-auto inset-0 animate-bangalorecard">
                 <div className="w-full flex flex-col justify-center items-center py-2 space-y-1">
                   <div className="h-1 w-1/2 bg-[#e7ecef] rounded-full"></div>
                   <div className="h-1 w-3/4 bg-[#e7ecef] rounded-full"></div>
                 </div>
                 <div className="flex w-full">
                   <div className="w-1/4">
-                    <img src="/italy.png" className="h-12 w-12 rounded-md" />
+                    <img src="/bangalore.png" className="h-12 w-12 rounded-md" />
                   </div>
                   <div className="w-3/4 h-10 flex flex-col px-3">
                     <div className="font-light text-sm text-[#8d99ae] font-roboto">
-                      Italy
+                      Bangalore
                     </div>
                     <div className="font-bold text-lg text-black font-roboto">
-                      $4,250
+                      $1,250
                     </div>
                   </div>
                 </div>

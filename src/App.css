@@ -34,7 +34,7 @@
     --animate-loadimage: loadimage 2.5s linear 1s both;
     --animate-progressFill: progressFill 2.5s linear 1s both;
     --animate-imageloadcomplete: imageloadcomplete 500ms ease-in-out 3.6s both;
-    --animate-bangalorecard: bangalorecard 700ms ease-in-out 500ms forwards;
+    --animate-bangalorecard: bangalorecard 700ms ease-in-out 500ms both;
     --animate-dubaicard: dubaicard 500ms ease-in 500ms both, bangalorecard 500ms ease-in-out 1.5s both;
     --animate-mexicocardenter: mexicocardenter 500ms ease-in-out 1.5s both;
 }
