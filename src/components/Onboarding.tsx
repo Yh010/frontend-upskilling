@@ -167,16 +167,6 @@ const BookingConfirmedButton = () => {
         <div className="animate-loader absolute">
           <LoaderCircleIcon className="animate-spin" color="#d3d3d3" />
         </div>
-        {/* <div className="absolute flex justify-center items-center space-x-2 w-full">
-          <div className="relative border h-8 w-full flex justify-between items-center">
-            <div className="animate-checktranslate absolute">
-              <Check className="text-white bg-green-400 rounded-full p-1 animate-check" />
-            </div>
-            <span className="text-xs animate-checktext absolute">
-              Booking confirmed!
-            </span>
-          </div>
-        </div> */}
         <div className="absolute w-full">
           <div className="flex justify-between items-center space-x-1">
             <div className="animate-checktranslate w-1/4 flex justify-center items-center">
