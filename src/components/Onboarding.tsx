@@ -98,9 +98,9 @@ const BangalorePaymentCard = () => {
           <div className="font-bold text-lg text-black font-roboto">$1,250</div>
         </div>
       </div>
-      <div className="w-full flex flex-col justify-center items-start py-2 space-y-1">
-        <div className="h-1 w-3/4 bg-[#eef4ed] rounded-full"></div>
-        <div className="h-1 w-1/2 bg-[#eef4ed] rounded-full"></div>
+      <div className="w-full flex justify-between items-center py-2 gap-x-1 animate-paynow">
+        <div className="px-2 py-1 opacity-80 font-semibold bg-black text-white rounded-lg text-xs flex justify-center items-center">Pay now</div>
+        <div className="h-1 rounded-full text-xs flex justify-center items-center text-[#8d99ae]">Feb 14 - Feb 16</div>
       </div>
     </div>
   );
@@ -185,7 +185,7 @@ const BookingConfirmedButton = () => {
 const FurtherBookings = () => {
   return (
     <div className="grid grid-cols-7 gap-6 w-full opacity-60">
-      <div className="flex space-x-1 col-start-1 col-end-6 bg-white px-1 py-2 shadow-sm rounded-lg">
+      <div className="flex space-x-1 col-start-1 col-end-6 bg-white px-1 py-2 shadow-sm rounded-lg animate-enjoytripplane">
         <div className="w-1/4 flex justify-center items-center">
           <Plane className="text-[#4361ee] bg-[#caf0f8] p-1 rounded-md fill-[#4361ee]" />
         </div>
@@ -197,7 +197,7 @@ const FurtherBookings = () => {
         </div>
       </div>
 
-      <div className="flex space-x-1 col-start-3 col-end-8 bg-white px-1 py-2 shadow-sm rounded-lg">
+      <div className="flex space-x-1 col-start-3 col-end-8 bg-white px-1 py-2 shadow-sm rounded-lg animate-enjoytriphotel">
         <div className="w-1/4 flex justify-center items-center">
           <BedSingle className="text-[#4361ee] bg-[#caf0f8] p-1 rounded-md fill-[#4361ee]" />
         </div>
@@ -215,7 +215,7 @@ const Onboarding = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-neutral-100">
       <div className="border h-130 w-3/4 flex flex-col justify-around items-center rounded-3xl border-[#c7c7d0] shadow-sm overflow-hidden">
-        <span className="font-[inter] text-4xl">What is the process ?</span>
+        <span className="font-sans text-4xl">What is the <span className="font-serif italic text-[#8d99ae]">process ?</span></span>
         <div className="flex space-x-3">
           <div className="h-80 bg-[#eff1ed] w-72 rounded-xl flex flex-col items-center justify-center py-2 px-4">
             <div className="h-1/9 w-full">
@@ -224,14 +224,14 @@ const Onboarding = () => {
               </div>
             </div>
             <div className="h-1/3 w-full space-y-3">
-              <div className="font-semibold text-2xl font-roboto">
+              <div className="font-semibold text-2xl font-sans">
                 Get a Quote
               </div>
               <div className="font-medium text-sm text-[#8d99ae] font-roboto">
-                The hover states your website is missing
+                To receive a quote, find a hotel or <span className="text-blue-500">shoot us an email</span>.
               </div>
             </div>
-            <div className="h-1/2 w-full relative">
+            <div className="h-1/2 w-full relative mt-2 pt-3">
               <ItalyCard />
               <DubaiCard />
               <BangaloreCard />
@@ -244,41 +244,41 @@ const Onboarding = () => {
               </div>
             </div>
             <div className="h-1/3 w-full space-y-3">
-              <div className="font-semibold text-2xl font-roboto">
+              <div className="font-semibold text-2xl font-sans">
                 Confirm and pay
               </div>
               <div className="font-medium text-sm text-[#8d99ae] font-roboto">
-                The hover states your website is missing
+                Happy with the quote? We'll collect your payment information and take care of the rest.
               </div>
             </div>
-            <div className="flex h-1/2 gap-x-2 animate-paymentSlider">
+            <div className="flex h-1/2 gap-x-2 animate-paymentSlider mt-2">
               <ItalyPaymentCard />
               <DubaiPaymentCard />
               <BangalorePaymentCard />
             </div>
           </div>{" "}
-          <div className="h-80 bg-[#eff1ed] w-72 rounded-xl flex flex-col items-center justify-center py-2 px-4">
+          <div className="h-80 bg-[#eff1ed] w-72 rounded-xl flex flex-col items-center justify-center py-2 px-4 overflow-hidden">
             <div className="h-1/9 w-full">
               <div className="h-6 w-6 rounded-full bg-white text-blue-400 text-center">
                 3
               </div>
             </div>
             <div className="h-1/3 w-full space-y-3">
-              <div className="font-semibold text-2xl font-roboto">
+              <div className="font-semibold text-2xl font-sans">
                 Enjoy your trip
               </div>
               <div className="font-medium text-sm text-[#8d99ae] font-roboto">
-                The hover states your website is missing
+                That's it! You're all set.Sit back, relax, and get ready for your trip!
               </div>
             </div>
-            <div className="h-1/2 w-full flex flex-col justify-center items-center space-y-4">
+            <div className="h-1/2 w-full flex flex-col justify-center items-center space-y-4 animate-enjoytrip">
               <BookingConfirmedButton />
               <FurtherBookings />
             </div>
           </div>
         </div>
       </div>
-      <div className="w-1/2 text-center text-[#66666e]">hou</div>
+      <div className="w-1/2 text-center text-[#66666e]">Hotel Checkout process animation</div>
     </div>
   );
 };
