@@ -28,6 +28,7 @@ import TransitionPractice from './components/TransitionPractice.js';
 import KeyframePractice from './components/KeyframePractice.js';
 import ClippathPractice from './components/ClippathPractice.js';
 import Onboarding from './components/Onboarding.js';
+import MotionLearning from './components/MotionLearning.js';
 import CertificationsPage from './pages/CertificationsPage.tsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 
@@ -130,6 +131,10 @@ const router = createBrowserRouter([
   {
     path: "/onboarding",
     element: <Onboarding />
+  },
+  {
+    path: "/motion/learning",
+    element: <MotionLearning />
   }
 ]);
 
