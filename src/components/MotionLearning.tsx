@@ -40,39 +40,53 @@ const Switch = () => {
   )
 }
 
-const HeartBeatCoin = () => {
+const AppStoreCard = () => {
+  const [expand, setExpand] = useState(false);
   return (
-    <div className="relative w-full h-full flex justify-center items-center">
-      <div className="absolute bg-blue-600 rounded-full h-6 w-6 animate-heartbeat">
+    <div className="w-full h-full flex justify-center items-center">
+      <motion.button layout onClick={() => setExpand(!expand)} className={`relative ${expand ? "fixed inset-0 mx-auto my-auto w-2/5 h-full" : "h-1/2 w-1/4"}`}>
+        <img src="/COC.png" className="absolute inset-0 rounded-lg h-full w-full" />
+        {expand && (
+          <motion.div
+            initial={{ y: 50, opacity: 0, scale: 0.005 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="text-white absolute bottom-0 w-full text-sm"
+          >
+            <div className="relative w-full text-left">
+              <div className="absolute inset-0 bg-black/50 rounded-lg"></div>
 
-      </div>
-      <div className="absolute bg-blue-600 rounded-full h-6 w-6 animate-heartbeat" style={{ animationDelay: '2s' }}>
+              <span className="relative px-4 block py-3">
+                Clash of Clans is a popular mobile strategy game developed by Supercell.
+                In the game, players build and upgrade their own village, train troops,
+                and attack other players to earn resources.
+              </span>
+            </div>
+          </motion.div>
+        )}
 
-      </div>
-      <div className="absolute bg-amber-500 rounded-full h-12 w-12 flex justify-center items-center animate-CoinRotate">
-        <span>$</span>
-      </div>
 
-    </div>
+      </motion.button>
+    </div >
 
   )
 }
 
 const KeyframePractice = () => {
   const [transitionType, setTransitionType] = useState<
-    "SimpleButton" | "Switch" | "HeartBeatCoin"
+    "SimpleButton" | "Switch" | "AppStoreCard"
   >("SimpleButton");
 
   const transitions = {
     SimpleButton: <SimpleButton />,
     Switch: <Switch />,
-    HeartBeatCoin: <HeartBeatCoin />,
+    AppStoreCard: <AppStoreCard />,
   };
 
   const transitionDescriptions = {
     SimpleButton: "Simple scale-up and translate animation.",
     Switch: "Switch animation",
-    HeartBeatCoin: "Rotating coin with heartbeat background",
+    AppStoreCard: "Rotating coin with heartbeat background",
   };
 
 
@@ -94,10 +108,10 @@ const KeyframePractice = () => {
           Switch animation
         </button>
         <button
-          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "HeartBeatCoin" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
-          onClick={() => setTransitionType("HeartBeatCoin")}
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "AppStoreCard" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("AppStoreCard")}
         >
-          heartbeat coin
+          Simple card
         </button>
       </div>
       <div className="border h-100 w-1/2 flex justify-center items-center rounded-3xl border-[#c7c7d0] shadow-sm overflow-hidden">
