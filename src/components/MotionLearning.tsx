@@ -56,7 +56,7 @@ const AppStoreCard = () => {
             <div className="relative w-full text-left">
               <div className="absolute inset-0 bg-black/50 rounded-lg"></div>
 
-              <span className="relative px-4 block py-3">
+              <span className="relative px-4 block py-3 font-semibold">
                 Clash of Clans is a popular mobile strategy game developed by Supercell.
                 In the game, players build and upgrade their own village, train troops,
                 and attack other players to earn resources.
@@ -72,21 +72,32 @@ const AppStoreCard = () => {
   )
 }
 
+const Tabs = () => {
+  const [expand, setExpand] = useState(false);
+  return (
+    <div className="w-full h-full flex justify-center items-center">
+      tabs
+    </div >
+
+  )
+}
 const KeyframePractice = () => {
   const [transitionType, setTransitionType] = useState<
-    "SimpleButton" | "Switch" | "AppStoreCard"
+    "SimpleButton" | "Switch" | "AppStoreCard" | "Tabs"
   >("SimpleButton");
 
   const transitions = {
     SimpleButton: <SimpleButton />,
     Switch: <Switch />,
     AppStoreCard: <AppStoreCard />,
+    Tabs: <Tabs />
   };
 
   const transitionDescriptions = {
     SimpleButton: "Simple scale-up and translate animation.",
     Switch: "Switch animation",
     AppStoreCard: "Rotating coin with heartbeat background",
+    Tabs: "Tabs"
   };
 
 
@@ -112,6 +123,12 @@ const KeyframePractice = () => {
           onClick={() => setTransitionType("AppStoreCard")}
         >
           Simple card
+        </button>
+        <button
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "Tabs" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("Tabs")}
+        >
+          Tabs
         </button>
       </div>
       <div className="border h-100 w-1/2 flex justify-center items-center rounded-3xl border-[#c7c7d0] shadow-sm overflow-hidden">
