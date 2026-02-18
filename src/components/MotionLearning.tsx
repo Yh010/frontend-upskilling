@@ -114,7 +114,7 @@ const KeyframePractice = () => {
     SimpleButton: "Simple scale-up and translate animation.",
     Switch: "Switch animation",
     AppStoreCard: "Rotating coin with heartbeat background",
-    Tabs: "Tabs"
+    Tabs: "Switching between Tabs animation"
   };
 
 
