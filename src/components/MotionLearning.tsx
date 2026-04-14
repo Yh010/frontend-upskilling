@@ -98,26 +98,53 @@ const Tabs = () => {
 
   )
 }
+
+const Invite = () => {
+
+  const TABS = ["Button1", "Button2", "Button3", "Button4"] as const;
+  const [transitionType, setTransitionType] = useState<
+    "Button1" | "Button2" | "Button3" | "Button4"
+  >("Button1");
+
+
+
+  return (
+    <div className="w-full h-full flex justify-center items-center">
+      <div className="flex justify-between w-fit px-4 py-1 items-center space-x-4 rounded-xl border border-[#c7c7d0] shadow-sm mb-2">
+        {TABS.map((tab) => (
+          <motion.button className="relative rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e] border-[#b1a7a6]"
+            onClick={() => setTransitionType(tab)}>
+            {transitionType === tab ? (
+              <motion.div layoutId="tab-indicator" className="absolute inset-0 rounded-lg bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black flex justify-center items-center">
+              </motion.div>) : null}
+            <span className="relative text-inherit">{tab}</span>
+          </motion.button>
+        ))}
+      </div>
+    </div >
+
+  )
+}
 const KeyframePractice = () => {
   const [transitionType, setTransitionType] = useState<
-    "SimpleButton" | "Switch" | "AppStoreCard" | "Tabs"
+    "SimpleButton" | "Switch" | "AppStoreCard" | "Tabs" | "Invite"
   >("SimpleButton");
 
   const transitions = {
     SimpleButton: <SimpleButton />,
     Switch: <Switch />,
     AppStoreCard: <AppStoreCard />,
-    Tabs: <Tabs />
+    Tabs: <Tabs />,
+    Invite: <Invite />
   };
 
   const transitionDescriptions = {
     SimpleButton: "Simple scale-up and translate animation.",
     Switch: "Switch animation",
     AppStoreCard: "Rotating coin with heartbeat background",
-    Tabs: "Switching between Tabs animation"
+    Tabs: "Switching between Tabs animation",
+    Invite: "Invite"
   };
-
-
 
 
   return (
@@ -146,6 +173,12 @@ const KeyframePractice = () => {
           onClick={() => setTransitionType("Tabs")}
         >
           Tabs
+        </button>
+        <button
+          className={`rounded-lg border shadow-sm py-1 px-4 font-semibold text-[#66666e]  ${transitionType === "Invite" ? "bg-[#ffc300]  hover:bg-[#ffd60a]  border-[#fb8500] text-black" : "border-[#b1a7a6]"}`}
+          onClick={() => setTransitionType("Invite")}
+        >
+          Send Invite
         </button>
       </div>
       <div className="border h-100 w-1/2 flex justify-center items-center rounded-3xl border-[#c7c7d0] shadow-sm overflow-hidden">
