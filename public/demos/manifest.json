@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Animated Card",
+    "slug": "animated-card",
+    "route": "/animatedcard",
+    "description": "Blurred entrance, hover reveal, and exit/reopen state transitions.",
+    "webm": "public/demos/animated-card.webm",
+    "gif": "public/demos/animated-card.gif"
+  },
+  {
+    "title": "Payment Sequence",
+    "slug": "payment-sequence",
+    "route": "/animatedsequence",
+    "description": "A chained useAnimate sequence: loader, morph, bounce, gradient, and checkmark draw.",
+    "webm": "public/demos/payment-sequence.webm",
+    "gif": "public/demos/payment-sequence.gif"
+  },
+  {
+    "title": "Floating Dock",
+    "slug": "floating-dock",
+    "route": "/floatingdock",
+    "description": "Dock icons scale and lift based on cursor proximity, with tooltips.",
+    "webm": "public/demos/floating-dock.webm",
+    "gif": "public/demos/floating-dock.gif"
+  },
+  {
+    "title": "Sidebar Stagger",
+    "slug": "sidebar-stagger",
+    "route": "/sidebar",
+    "description": "Expandable sidebar with staggered item entrance and compact/expanded states.",
+    "webm": "public/demos/sidebar-stagger.webm",
+    "gif": "public/demos/sidebar-stagger.gif"
+  },
+  {
+    "title": "Smart Tooltip",
+    "slug": "tooltip-placement",
+    "route": "/toolTip",
+    "description": "Tooltip placement follows the cursor and springs into view.",
+    "webm": "public/demos/tooltip-placement.webm",
+    "gif": "public/demos/tooltip-placement.gif"
+  },
+  {
+    "title": "Toast Stack",
+    "slug": "toast-stack",
+    "route": "/sonnertoast",
+    "description": "Stacking toast cards with depth scaling and smooth enter transitions.",
+    "webm": "public/demos/toast-stack.webm",
+    "gif": "public/demos/toast-stack.gif"
+  },
+  {
+    "title": "Trash Flow",
+    "slug": "trash-flow",
+    "route": "/trashanimation",
+    "description": "Selection-driven UI state: cards collapse into a focused delete confirmation.",
+    "webm": "public/demos/trash-flow.webm",
+    "gif": "public/demos/trash-flow.gif"
+  },
+  {
+    "title": "Particle Button",
+    "slug": "particle-button",
+    "route": "/particles",
+    "description": "Button dissolves into generated particles with randomized timing.",
+    "webm": "public/demos/particle-button.webm",
+    "gif": "public/demos/particle-button.gif"
+  },
+  {
+    "title": "Motion Progress",
+    "slug": "motion-progress",
+    "route": "/progress",
+    "description": "Segmented circular progress control with hover focus states.",
+    "webm": "public/demos/motion-progress.webm",
+    "gif": "public/demos/motion-progress.gif"
+  },
+  {
+    "title": "Text Reveal",
+    "slug": "text-reveal",
+    "route": "/animatedText",
+    "description": "Character-level text reveal using Motion's useAnimate and stagger.",
+    "webm": "public/demos/text-reveal.webm",
+    "gif": "public/demos/text-reveal.gif"
+  }
+]
