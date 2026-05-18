@@ -5,9 +5,9 @@ export const ToolTip = () => {
   const [hovered, setHovered] = useState(false);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [placement, setPlacement] = useState("right");
+  const [placement, setPlacement] = useState<"top" | "bottom" | "left" | "right">("right");
 
-  const handleMouseMove = (e: any) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -27,7 +27,11 @@ export const ToolTip = () => {
     else if (min === distRight) setPlacement("right");
   };
 
-  const calculatePosition = (x: number, y: number, placement: string) => {
+  const calculatePosition = (
+    x: number,
+    y: number,
+    placement: "top" | "bottom" | "left" | "right",
+  ) => {
     const offset = 10;
 
     switch (placement) {

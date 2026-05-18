@@ -29,12 +29,14 @@ const Card = ({ idx, selectedItems, setSelectedItems }: CardProps) => {
 
 const TrashAnimation = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
-  const [confirmDelete, setConfirmDelete] = useState<Boolean>(false);
+  const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const [showOnlySelected, setShowOnlySelected] = useState<boolean>(false);
 
   const cards = [1, 2, 3, 4];
 
-  const visibleCards = showOnlySelected ? cards.filter((id) => selectedItems.includes(id)) : cards;
+  const visibleCards = showOnlySelected
+    ? cards.filter((id) => selectedItems.includes(id))
+    : cards;
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-neutral-100">

@@ -1,0 +1,19 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#F6F6F4"/>
+  <rect x="36" y="36" width="1528" height="928" rx="40" fill="#FBFBFA" stroke="#D8D8D4"/>
+  <rect x="108" y="116" width="242" height="42" rx="21" fill="#111111"/>
+  <text x="144" y="144" fill="#F6F6F4" font-family="Georgia, serif" font-size="24" letter-spacing="4">AI PRODUCT</text>
+  <text x="108" y="338" fill="#111111" font-family="Georgia, serif" font-size="136" letter-spacing="-5">VitalFlow</text>
+  <text x="114" y="406" fill="#5A5A57" font-family="Arial, sans-serif" font-size="30" letter-spacing="3">VOICE-FIRST HEALTHCARE ASSISTANT</text>
+  <text x="108" y="514" fill="#3F3F3B" font-family="Arial, sans-serif" font-size="34">Patients, doctors, voice booking, AI chat, document context.</text>
+  <rect x="108" y="616" width="282" height="156" rx="30" fill="#111111"/>
+  <rect x="426" y="616" width="282" height="156" rx="30" fill="#CFCFCA"/>
+  <rect x="744" y="616" width="282" height="156" rx="30" fill="#E8E8E3" stroke="#D0D0CB"/>
+  <circle cx="1320" cy="266" r="156" fill="#111111"/>
+  <circle cx="1320" cy="266" r="112" fill="#F6F6F4"/>
+  <circle cx="1320" cy="266" r="48" fill="#111111"/>
+  <path d="M1204 616C1204 569.072 1242.07 531 1289 531H1378C1424.93 531 1463 569.072 1463 616V773H1204V616Z" fill="#111111"/>
+  <path d="M1287 694C1287 670.804 1305.8 652 1329 652H1338C1361.2 652 1380 670.804 1380 694V773H1287V694Z" fill="#F6F6F4"/>
+  <line x1="109" y1="853.5" x2="1491" y2="853.5" stroke="#D8D8D4"/>
+  <text x="108" y="910" fill="#7A7A75" font-family="Arial, sans-serif" font-size="24" letter-spacing="5">REAL-TIME VOICE UX / RAG / LIVEKIT / AWS</text>
+</svg>

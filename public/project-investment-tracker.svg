@@ -1,0 +1,21 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#F5F5F3"/>
+  <rect x="36" y="36" width="1528" height="928" rx="40" fill="#FCFCFB" stroke="#D8D8D4"/>
+  <rect x="110" y="116" width="182" height="42" rx="21" fill="#111111"/>
+  <text x="145" y="144" fill="#F5F5F3" font-family="Georgia, serif" font-size="24" letter-spacing="4">FINTECH</text>
+  <text x="108" y="300" fill="#111111" font-family="Georgia, serif" font-size="118" letter-spacing="-5">Real-Time</text>
+  <text x="108" y="416" fill="#111111" font-family="Georgia, serif" font-size="118" letter-spacing="-5">Investment Tracker</text>
+  <text x="114" y="494" fill="#5A5A57" font-family="Arial, sans-serif" font-size="30" letter-spacing="3">UPLOAD HOLDINGS, TRACK PRICES, NEWS, EXPORT DATA</text>
+  <rect x="1040" y="118" width="420" height="644" rx="38" fill="#111111"/>
+  <rect x="1082" y="160" width="338" height="84" rx="22" fill="#ECECE8"/>
+  <path d="M1106 612C1142 560 1190 580 1222 520C1254 460 1292 478 1324 420C1356 362 1390 370 1420 318" stroke="#ECECE8" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="1106" cy="612" r="15" fill="#ECECE8"/>
+  <circle cx="1222" cy="520" r="15" fill="#ECECE8"/>
+  <circle cx="1324" cy="420" r="15" fill="#ECECE8"/>
+  <circle cx="1420" cy="318" r="15" fill="#ECECE8"/>
+  <rect x="108" y="628" width="284" height="144" rx="28" fill="#111111"/>
+  <rect x="428" y="628" width="284" height="144" rx="28" fill="#D7D7D2"/>
+  <rect x="748" y="628" width="284" height="144" rx="28" fill="#EFEFEC" stroke="#D0D0CB"/>
+  <line x1="109" y1="853.5" x2="1491" y2="853.5" stroke="#D8D8D4"/>
+  <text x="108" y="910" fill="#7A7A75" font-family="Arial, sans-serif" font-size="24" letter-spacing="5">XLSX / SERPAPI / REACT / EDITABLE PORTFOLIO DATA</text>
+</svg>

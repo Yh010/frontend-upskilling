@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const Progress = () => {
   const [progress1, setProgress1] = useState(75);
@@ -15,7 +15,7 @@ const Progress = () => {
   const segmentLength = circumference * 0.3;
   const gapLength = circumference * 0.0333;
 
-  const createSegmentProps = (progress: any, startOffset: any) => {
+  const createSegmentProps = (progress: number, startOffset: number) => {
     const filledLength = (segmentLength * progress) / 100;
     return {
       strokeDasharray: `${filledLength} ${circumference}`,

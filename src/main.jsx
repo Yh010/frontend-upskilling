@@ -1,147 +1,49 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-
-import { createBrowserRouter } from "react-router";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, redirect } from "react-router";
 import { RouterProvider } from "react-router/dom";
-import MovingButtonPage from './pages/MovingButtonPage.js';
-import AnimatedCardPage from './pages/AnimatedCardPage.js';
-import SidebarAnimationPage from './pages/SidebarAnimationPage.js';
-import MotionHooksPage from './pages/MotionHooksPage.js';
-import LayoutCardsPage from './pages/LayoutCardsPage.js';
-import { Navbar } from './components/Navbar.js';
-import { AnimatedTextPage } from './pages/AnimatedTextPage.js';
-import { AnimationSequencesPage } from './pages/AnimationSequencesPage.js';
-import { ToolTip } from './components/ToolTip.js';
-import { ThreeDCard } from './components/ThreeDCard.js';
-import { Testimonials } from './components/Testimonials.js';
-import UnderlineEffect from './components/UnderlineEffect.js';
-import { CompareCard } from './components/CompareCard.js';
-import { Responsive } from './components/Responsive.js';
-import Progress from './components/Progress.js';
-import { Particles } from './components/Particles.js';
-import FloatingDock from './components/FloatingDock.js';
-import SonnerToast from './components/SonnerToast.js';
-import TrashAnimation from './components/TrashAnimation.js';
-import TransitionPractice from './components/TransitionPractice.js';
-import KeyframePractice from './components/KeyframePractice.js';
-import ClippathPractice from './components/ClippathPractice.js';
-import Onboarding from './components/Onboarding.js';
-import MotionLearning from './components/MotionLearning.js';
-import CertificationsPage from './pages/CertificationsPage.tsx';
-import ProjectsPage from './pages/ProjectsPage.jsx';
+import "./index.css";
+import SiteLayout from "./components/site/SiteLayout";
+import { labsMotionEntries } from "./content/labs";
+import CertificationsPage from "./pages/CertificationsPage";
+import ContactPage from "./pages/ContactPage";
+import ExperiencePage from "./pages/ExperiencePage";
+import HomePage from "./pages/HomePage";
+import LabsMotionPage from "./pages/labs/LabsMotionPage";
+import LabDetailPage from "./pages/labs/LabDetailPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ProjectsPage from "./pages/ProjectsPage";
+
+const legacyLabRoutes = labsMotionEntries.flatMap((lab) =>
+  (lab.legacyPaths ?? []).map((legacyPath) => ({
+    path: legacyPath,
+    loader: () => redirect(lab.route),
+  })),
+);
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <SiteLayout />,
+    errorElement: <NotFoundPage />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "experience", element: <ExperiencePage /> },
+      { path: "projects", element: <ProjectsPage /> },
+      { path: "certifications", element: <CertificationsPage /> },
+      { path: "contact", element: <ContactPage /> },
+      { path: "labs", loader: () => redirect("/labs/motion") },
+      { path: "labs/motion", element: <LabsMotionPage /> },
+      { path: "labs/motion/:slug", element: <LabDetailPage /> },
+      { path: "navbar", loader: () => redirect("/") },
+      ...legacyLabRoutes,
+      { path: "*", element: <NotFoundPage /> },
+    ],
   },
-  {
-    path: "/certifications",
-    element: <CertificationsPage />
-  },
-  {
-    path: "/projects",
-    element: <ProjectsPage />
-  }, {
-    path: "/movingbutton",
-    element: <MovingButtonPage />
-  }, {
-    path: "/animatedcard",
-    element: <AnimatedCardPage />
-  }, {
-    path: "/sidebar",
-    element: <SidebarAnimationPage />
-  },
-  {
-    path: "/motionhooks",
-    element: <MotionHooksPage />
-  },
-  {
-    path: "/layout",
-    element: <LayoutCardsPage />
-  }, {
-    path: "/navbar",
-    element: <Navbar />
-  },
-  {
-    path: "/animatedText",
-    element: <AnimatedTextPage />
-  },
-  {
-    path: "/animatedsequence",
-    element: <AnimationSequencesPage />
-  },
-  {
-    path: "/toolTip",
-    element: <ToolTip />
-  }, {
-    path: "/card",
-    element: <ThreeDCard />
-  },
-  {
-    path: "/testimonials",
-    element: <Testimonials />
-  },
-  {
-    path: "/animatedunderline",
-    element: <UnderlineEffect />
-  },
-  {
-    path: "/compare",
-    element: <CompareCard />
-  },
-  {
-    path: "/responsive",
-    element: <Responsive />
-  },
-  {
-    path: "/progress",
-    element: <Progress />
-  },
-  {
-    path: "/particles",
-    element: <Particles />
-  },
-  {
-    path: "/floatingdock",
-    element: <FloatingDock />
-  },
-  {
-    path: "/sonnertoast",
-    element: <SonnerToast />
-  },
-  {
-    path: "/trashanimation",
-    element: <TrashAnimation />
-  },
-  {
-    path: "/transition",
-    element: <TransitionPractice />
-  },
-  {
-    path: "/keyframe",
-    element: <KeyframePractice />
-  },
-  {
-    path: "/clippath",
-    element: <ClippathPractice />
-  },
-  {
-    path: "/onboarding",
-    element: <Onboarding />
-  },
-  {
-    path: "/motion/learning",
-    element: <MotionLearning />
-  }
 ]);
 
-
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />,
-
   </StrictMode>,
-)
+);

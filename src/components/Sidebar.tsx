@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AnimatePresence, motion, stagger } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -45,53 +45,49 @@ export default function Sidebar() {
       animate={open ? "open" : "closed"}
       transition={{ duration: 0.3 }}
     >
-      {/* Sidebar */}
       <motion.div
         variants={sidebarVariants}
         className="fixed top-0 left-0 h-full bg-white shadow-xl"
       >
-        {/* Toggle Button */}
         <button
           onClick={() => setOpen((prev) => !prev)}
-          className="absolute top-4 right-4 px-3 py-1 bg-neutral-900 text-white rounded-md z-10"
+          className="absolute top-4 right-4 rounded-md bg-neutral-900 px-3 py-1 text-white z-10"
         >
-          {open ? "✕" : "☰"}
+          {open ? "Close" : "Menu"}
         </button>
 
-        {/* Animated Title */}
         <AnimatePresence>
           {open && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="p-4 font-bold text-neutral-900 text-lg"
+              className="p-4 text-lg font-bold text-neutral-900"
             >
               Sidebar
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Navigation Items */}
         <motion.nav
           variants={listAnimation}
-          className="divide-y divide-neutral-200 mt-8"
+          className="mt-8 divide-y divide-neutral-200"
         >
           <motion.button
             variants={itemVariants}
-            className="w-full text-left p-4 hover:bg-neutral-100"
+            className="w-full p-4 text-left hover:bg-neutral-100"
           >
             Dashboard
           </motion.button>
           <motion.button
             variants={itemVariants}
-            className="w-full text-left p-4 hover:bg-neutral-100"
+            className="w-full p-4 text-left hover:bg-neutral-100"
           >
             Settings
           </motion.button>
           <motion.button
             variants={itemVariants}
-            className="w-full text-left p-4 hover:bg-neutral-100"
+            className="w-full p-4 text-left hover:bg-neutral-100"
           >
             Profile
           </motion.button>

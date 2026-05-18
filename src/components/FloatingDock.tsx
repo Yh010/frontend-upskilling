@@ -37,7 +37,7 @@ const items = [
 ];
 
 const FloatingDock = () => {
-  const [activeId, setActiveId] = useState<any>(null);
+  const [activeId, setActiveId] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-neutral-100 dark:bg-neutral-900 p-6 dark:text-neutral-100">
@@ -50,10 +50,10 @@ const FloatingDock = () => {
         {items.map((item, idx) => {
           const distance = activeId === null ? 10 : Math.abs(idx - activeId);
 
-          const getScale = (d: any) =>
+          const getScale = (d: number) =>
             d === 0 ? 1.5 : d === 1 ? 1.25 : d === 2 ? 1.1 : 1;
 
-          const getY = (d: any) =>
+          const getY = (d: number) =>
             d === 0 ? -15 : d === 1 ? -8 : d === 2 ? -4 : 0;
           return (
             <motion.div

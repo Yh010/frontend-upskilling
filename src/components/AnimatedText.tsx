@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 export const AnimatedText = () => {
   const text =
-    "Yash is the best designer the world has ever seen. Whoever thinks otherwise, F*#K Y@&";
+    "Craft product experiences that feel considered, readable, and unmistakably alive.";
   const [scope, animate] = useAnimate();
 
   useEffect(() => {

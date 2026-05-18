@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
+type Particle = {
+  id: string;
+  startX: number;
+  startY: number;
+  endX: number;
+  endY: number;
+  size: number;
+  delay: number;
+  duration: number;
+};
+
 export const Particles = () => {
   const [exploding, setIsExploding] = useState(false);
-  const [particles, setParticles] = useState<any>([]);
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   const generateParticles = () => {
     const newParticles = [];
@@ -64,7 +75,7 @@ export const Particles = () => {
         </motion.button>
         <AnimatePresence>
           {exploding &&
-            particles.map((particle: any) => (
+            particles.map((particle) => (
               <motion.div
                 key={particle.id}
                 className="absolute bg-black rounded-full pointer-events-none"
