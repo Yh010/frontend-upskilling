@@ -138,8 +138,8 @@ export default function HomePage() {
         <Reveal>
           <SectionIntro
             eyebrow="Selected Projects"
-            title="A quick scan of the work that best represents product range and execution quality."
-            body="The homepage only carries the sharpest signals. Each featured project is positioned as evidence of how I think about systems, UI polish, and product storytelling."
+            title="Work across healthcare, AI, developer tooling, and fintech."
+            body="A few projects that show product, systems, and interface work."
           />
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-2">
@@ -163,8 +163,8 @@ export default function HomePage() {
         <Reveal>
           <SectionIntro
             eyebrow="Experience"
-            title="Built for recruiters who want proof, not filler."
-            body="The experience section is structured around impact, systems, and collaboration context rather than long chronological text blocks."
+            title="Experience shaped by product delivery and real systems."
+            body="Enterprise, startup, freelance, and operations experience across frontend-heavy and full-stack work."
           />
         </Reveal>
         <div className="grid gap-5">
@@ -210,8 +210,8 @@ export default function HomePage() {
         <Reveal>
           <SectionIntro
             eyebrow="Labs > Motion"
-            title="A curated motion playground that shows how interaction quality gets built."
-            body="The labs are where I test motion patterns, UI behavior, and small product moments. The main portfolio stays minimal; the labs prove the craft behind it."
+            title="Motion studies that support the product work."
+            body="This section holds the interaction experiments separately so the portfolio stays clean while still showing frontend depth."
           />
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-3">
@@ -235,8 +235,8 @@ export default function HomePage() {
         <Reveal>
           <SectionIntro
             eyebrow="Certifications"
-            title="Supporting signals for continuous learning."
-            body="Certifications are secondary to shipped work, but they still help frame the technical topics I have invested in across frontend engineering, JavaScript, TypeScript, and cloud fundamentals."
+            title="Certifications in AI, backend, and cloud-native systems."
+            body="Supporting context alongside shipped work."
           />
         </Reveal>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -269,10 +269,10 @@ export default function HomePage() {
                 Contact
               </span>
               <h2 className="max-w-3xl font-display text-4xl leading-none text-[var(--color-ink)] md:text-5xl">
-                If you want someone who cares about product feel as much as implementation, let's talk.
+                Open to full-stack and frontend product roles.
               </h2>
               <p className="max-w-2xl text-sm leading-7 text-[var(--color-muted)] md:text-base">
-                The fastest recruiter path is email, LinkedIn, GitHub, and the downloadable resume. WhatsApp and Cal are also available when a faster back-and-forth helps.
+                Email or LinkedIn is the easiest way to reach me. Resume and GitHub are linked here.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 lg:justify-end">

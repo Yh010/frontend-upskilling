@@ -136,13 +136,13 @@ export default function SiteLayout() {
           <div className="grid gap-8 md:grid-cols-[1.3fr_1fr_1fr]">
             <div className="space-y-4">
               <span className="inline-flex rounded-full border border-[var(--color-line)] bg-white px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
-                Recruiter Friendly
+                Overview
               </span>
               <h3 className="font-display text-3xl text-[var(--color-ink)]">
-                A portfolio built to show product depth, motion craft, and engineering range quickly.
+                Work, experience, and motion studies.
               </h3>
               <p className="max-w-xl text-sm leading-7 text-[var(--color-muted)]">
-                This site is intentionally structured so someone scanning in a few seconds can understand my positioning, then dive deeper into work experience, projects, and labs.
+                Quick to scan. Easy to explore.
               </p>
             </div>
 

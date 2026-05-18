@@ -26,8 +26,8 @@ export default function LabsMotionPage() {
         <Reveal>
           <SectionIntro
             eyebrow="Labs > Motion"
-            title="A curated motion archive that turns isolated experiments into a coherent body of work."
-            body="This page separates polished highlights from the wider archive so it reads like a productized lab, not a loose folder of demos. Each entry is framed around technique, product relevance, and implementation intent."
+            title="Motion studies and interaction experiments."
+            body="Featured items are the most product-ready. The archive shows the broader range behind them."
           />
         </Reveal>
 
@@ -54,8 +54,8 @@ export default function LabsMotionPage() {
           <Reveal>
             <SectionIntro
               eyebrow="Featured"
-              title="The most portfolio-ready motion studies."
-              body="These are the interactions that best balance technical craft, presentability, and product value."
+              title="The most product-ready studies."
+              body="These demos best balance interaction quality, technical clarity, and product relevance."
             />
           </Reveal>
           <div className="grid gap-6 lg:grid-cols-3">
@@ -71,8 +71,8 @@ export default function LabsMotionPage() {
           <Reveal>
             <SectionIntro
               eyebrow="Archive"
-              title="Foundational studies, learning sandboxes, and pattern experiments."
-              body="The archive makes the process visible. It shows breadth, iteration, and a willingness to explore beyond only the finished-looking pieces."
+              title="Earlier studies, sandboxes, and smaller pattern experiments."
+              body="These make the process visible without competing with the featured work."
             />
           </Reveal>
           <div className="grid gap-6 lg:grid-cols-3">

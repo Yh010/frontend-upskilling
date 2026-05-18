@@ -13,8 +13,8 @@ export default function ContactPage() {
         <Reveal>
           <SectionIntro
             eyebrow="Contact"
-            title="A direct recruiter path: resume, contact, and the links that matter most."
-            body="The main CTA path is email, LinkedIn, GitHub, and a downloadable resume. WhatsApp and Cal remain available as secondary convenience options when quick coordination is helpful."
+            title="Direct contact and the links that matter most."
+            body="Email, LinkedIn, GitHub, and resume first. Everything else is optional."
           />
         </Reveal>
 
@@ -27,7 +27,7 @@ export default function ContactPage() {
                   Primary CTA
                 </span>
                 <h2 className="font-display text-5xl leading-none text-[var(--color-ink)]">
-                  Reach out for product, frontend, or full-stack opportunities.
+                  Open to full-stack and frontend product roles.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-[var(--color-muted)]">
                   {profile.summary}
@@ -71,7 +71,7 @@ export default function ContactPage() {
                   {profile.availability}
                 </p>
                 <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                  The cleanest recruiter path is resume plus direct email first, with LinkedIn and GitHub immediately available for quick proof of work.
+                  Best first step is email. LinkedIn and GitHub are there for quick background and work review.
                 </p>
               </article>
 

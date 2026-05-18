@@ -9,8 +9,8 @@ export default function ExperiencePage() {
         <Reveal>
           <SectionIntro
             eyebrow="Experience"
-            title="Experience framed around impact, product context, and collaboration."
-            body="This page is intentionally concise. Recruiters should be able to understand the environments I’ve worked in, the kind of systems I touch, and where I tend to add value."
+            title="Experience across product engineering, enterprise systems, and applied problem solving."
+            body="A concise view of the teams, systems, and responsibilities I have worked across so far."
           />
         </Reveal>
 

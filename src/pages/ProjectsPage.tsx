@@ -20,8 +20,8 @@ export default function ProjectsPage() {
         <Reveal>
           <SectionIntro
             eyebrow="Projects"
-            title="Case-study style projects that balance systems thinking and interface quality."
-            body="A recruiter should be able to skim category, role, outcome, and stack quickly. These cards are structured to highlight product value first and implementation detail second."
+            title="Projects across AI products, developer tooling, healthcare, and fintech."
+            body="Each card keeps the scan simple: what the product is, what I worked on, and what the stack looks like."
           />
         </Reveal>
 

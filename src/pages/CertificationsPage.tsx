@@ -10,8 +10,8 @@ export default function CertificationsPage() {
         <Reveal>
           <SectionIntro
             eyebrow="Certifications"
-            title="A lighter layer of credibility alongside shipped work and hands-on experiments."
-            body="These certifications support the main portfolio story rather than lead it. They show steady investment in frontend engineering, JavaScript foundations, and broader technical context."
+            title="Credentials that support the main work."
+            body="Focused on AI engineering, backend systems, cloud-native tooling, and full-stack development."
           />
         </Reveal>
 

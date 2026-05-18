@@ -11,16 +11,16 @@ import type {
 export const profile: Profile = {
   name: "Yash Hegde",
   shortName: "YH",
-  role: "Full-stack engineer with frontend precision",
+  role: "Full-stack engineer",
   location: "India",
-  availability: "Open to product-focused opportunities",
+  availability: "Open to full-stack and frontend product roles",
   summary:
-    "I build full-stack products across financial workflows, AI interfaces, and real-time systems, with a strong eye for interaction quality and polished execution.",
-  heroTitle: "Building full-stack products that feel as refined as they function.",
+    "Full-stack engineer with experience across banking, AI products, real-time interfaces, and frontend-heavy product work.",
+  heroTitle: "Full-stack engineer building reliable, well-designed products.",
   heroLead:
-    "I design and ship production products that combine frontend craft, AI workflows, real-time interaction, and practical system thinking.",
+    "I work across frontend, backend, and product delivery, with recent experience in digital banking, AI products, and interaction-focused interfaces.",
   heroSubcopy:
-    "From financial workflow UIs and AI-backed products to interaction labs and full-stack delivery, this portfolio is structured to show how I think, build, and polish.",
+    "This portfolio brings together selected projects, work experience, and motion studies to show how I build products end to end.",
   resumeUrl: "/Yash-Hegde-Resume.pdf",
 };
 
@@ -76,17 +76,17 @@ export const metrics: Metric[] = [
   {
     value: "10+",
     label: "interaction labs",
-    detail: "Motion prototypes and UI experiments focused on tactile product moments.",
+    detail: "Motion and interaction studies focused on UI behavior, transitions, and product feel.",
   },
   {
     value: "04",
-    label: "flagship builds",
-    detail: "Healthcare AI, creator tooling, developer tooling, and fintech work selected from the strongest projects in the resume.",
+    label: "selected projects",
+    detail: "Healthcare, AI, developer tooling, and fintech projects chosen for product and engineering range.",
   },
   {
     value: "05",
-    label: "teams shipped with",
-    detail: "Enterprise fintech, startup product teams, freelance AI work, and engineering productivity environments.",
+    label: "work environments",
+    detail: "Enterprise, startup, freelance, and engineering operations environments across different teams and constraints.",
   },
 ];
 
@@ -99,7 +99,7 @@ export const experienceEntries: ExperienceEntry[] = [
     location: "Bengaluru, India",
     team: "Oracle Banking Digital Experience",
     summary:
-      "Own frontend-heavy product development for digital banking workflows, building new transaction experiences in Oracle JET and improving performance, reliability, and team delivery speed in a production financial environment.",
+      "Built frontend-heavy digital banking workflows in Oracle JET, including new transaction flows, API integrations, and performance improvements in a production environment.",
     highlights: [
       "Owned frontend development for a new Cashflow Transaction module in Oracle JET, building the UI from scratch, integrating service APIs, and implementing multi-step transaction workflows.",
       "Integrated backend service APIs into existing transaction flows while preserving backward compatibility across production financial workflows.",
@@ -147,7 +147,7 @@ export const experienceEntries: ExperienceEntry[] = [
     location: "Remote, Canada",
     team: "AI Product Development",
     summary:
-      "Built production-ready full-stack AI product workflows, spanning responsive frontend surfaces, real-time chat, authentication, and modular backend APIs consuming third-party data sources.",
+      "Built full-stack AI product workflows spanning responsive UI, real-time chat, authentication, and backend APIs using third-party data sources.",
     highlights: [
       "Built a production-ready dashboard, chat UI, and AI result table from Figma designs with responsive styling and reusable frontend patterns.",
       "Integrated Redux and WebSockets for state-driven real-time chat updates across AI workflows.",
@@ -173,7 +173,7 @@ export const experienceEntries: ExperienceEntry[] = [
     location: "Remote, SF Bay Area",
     team: "Startup Product Engineering",
     summary:
-      "Worked in a startup-speed environment modernizing frontend architecture and shipping new UI modules for core product workflows.",
+      "Worked on frontend modernization and shipped new UI modules for core product workflows in a startup environment.",
     highlights: [
       "Refactored and migrated legacy frontend features into a more modular React and TypeScript codebase.",
       "Built additional UI modules for core product workflows while adapting to fast-moving startup requirements.",
@@ -221,9 +221,9 @@ export const projectEntries: ProjectEntry[] = [
     year: "2026",
     image: "/project-vitalflow.png",
     summary:
-      "Voice-first healthcare assistant that combines appointment booking, AI chat, document intelligence, and doctor workflows in a single patient-facing and clinician-facing product.",
+      "Healthcare assistant with voice booking, AI chat, doctor workflows, and document intelligence.",
     outcome:
-      "Shows end-to-end product execution across polished frontend UX, real-time voice interaction, RAG-backed medical context, and production-style deployment on AWS.",
+      "Brings together frontend UX, voice interaction, AI workflows, and AWS deployment in one product.",
     technologies: [
       "React 19",
       "TypeScript",
@@ -253,9 +253,9 @@ export const projectEntries: ProjectEntry[] = [
     year: "2025",
     image: "/project-lithouse.png",
     summary:
-      "AI creator platform spanning script generation, description writing, thumbnail generation, personalized media workflows, and collaborative real-time spaces.",
+      "AI creator platform for script writing, descriptions, thumbnails, and real-time collaboration.",
     outcome:
-      "Highlights architecture depth across Redis-backed workers, WebSocket sync, payment flows, AI media pipelines, and cost-aware deployment on a single DigitalOcean setup.",
+      "Covers real-time collaboration, payments, AI media workflows, and background workers in one stack.",
     technologies: [
       "React",
       "TypeScript",
@@ -282,9 +282,9 @@ export const projectEntries: ProjectEntry[] = [
     year: "2024",
     image: "/project-generoid.png",
     summary:
-      "Chat-driven AI assistant that generates frontend UI components, persists conversations, and shows generated code alongside a live component preview.",
+      "AI assistant that generates frontend components and previews the output beside the code.",
     outcome:
-      "Demonstrates developer-tooling thinking through prompt-to-code generation, auth-backed sessions, stateful chat history, and an in-browser code sandbox for fast iteration.",
+      "Shows prompt-to-code generation, authenticated chat history, and a live preview workflow for UI generation.",
     technologies: [
       "Next.js",
       "TypeScript",
@@ -306,9 +306,9 @@ export const projectEntries: ProjectEntry[] = [
     year: "2024",
     image: "/project-investment-tracker.png",
     summary:
-      "Finance tool where users upload Excel holdings, pull live prices and market news, inspect graphs, edit positions, and export updated portfolio data.",
+      "Portfolio tracker for uploaded holdings, live prices, market news, editing, and export.",
     outcome:
-      "Shows practical product thinking around spreadsheet ingestion, live third-party market data, editable portfolio workflows, and recruiter-friendly fintech UI execution.",
+      "Combines spreadsheet ingestion, live market data, editable holdings, and export flows in a finance UI.",
     technologies: [
       "React",
       "TypeScript",
@@ -329,35 +329,61 @@ export const projectEntries: ProjectEntry[] = [
 
 export const certificationEntries: CertificationEntry[] = [
   {
-    id: "react-guide",
-    title: "React - The Complete Guide",
+    id: "llm-engineering",
+    title: "LLM Engineering: Master AI, Large Language Models & Agents",
     issuer: "Udemy",
-    year: "2024",
-    category: "Frontend Development",
-    note: "Hooks, architecture, routing, and production React patterns.",
+    year: "2025",
+    category: "AI Engineering",
+    note: "Issued Oct 2025. Credential ID: UC-187cf3cb-a0ea-4959-8ff0-e6dd0d843b8b.",
+    credentialUrl:
+      "https://www.udemy.com/share/10bOXH3%40YBn0GZ8fQN5kvt2J0036Zw2SeKBPN8A2Qv_MOthb6If0_Bfq9XultaOSgH-8JFhL/",
   },
   {
-    id: "advanced-js",
-    title: "Advanced JavaScript Concepts",
-    issuer: "Coursera",
-    year: "2024",
-    category: "Programming",
-    note: "Closures, async workflows, and modern JavaScript fundamentals.",
+    id: "agent-memory",
+    title: "LLMs as Operating Systems: Agent Memory",
+    issuer: "DeepLearning.AI",
+    year: "2025",
+    category: "AI Engineering",
+    note: "Issued Oct 2025. Credential ID: bfeae57c-dfe2-4ad3-9e57-27ce3be67db.",
+    credentialUrl:
+      "https://www.deeplearning.ai/courses/llms-as-operating-systems-agent-memory",
   },
   {
-    id: "typescript",
-    title: "TypeScript Fundamentals",
-    issuer: "Pluralsight",
+    id: "backend-performance",
+    title: "Troubleshooting Backend Performance",
+    issuer: "Udemy",
+    year: "2025",
+    category: "Backend Systems",
+    note: "Issued Aug 2025. Credential ID: UC-dfc1b26c-4165-4574-b0db-1222984f48ea.",
+    credentialUrl:
+      "https://www.udemy.com/course/discovering-backend-bottlenecks-unlocking-peak-performance/",
+  },
+  {
+    id: "google-adk",
+    title: "Build intelligent agents with Agent Development Kit (ADK)",
+    issuer: "Google Cloud Skills Boost",
+    year: "2025",
+    category: "AI Engineering",
+    note: "Issued Jul 2025. Credential ID: f323e3c1-c8b1-4f88-83a0-62a46804c7b6/badges/17032240.",
+    credentialUrl:
+      "https://www.cloudskillsboost.google/course_templates/1382?linkId=16038701",
+  },
+  {
+    id: "100x-full-stack",
+    title: "Full stack development",
+    issuer: "100xDevs",
+    year: "2025",
+    category: "Full-Stack Development",
+    note: "Issued Jan 2025. Credential ID: 12RRC7S4.",
+    credentialUrl: "https://100xdevs.com/new-courses/2",
+  },
+  {
+    id: "kyverno-fundamentals",
+    title: "Fundamentals for Kyverno",
+    issuer: "Nirmata",
     year: "2023",
-    category: "Programming",
-    note: "Static typing for maintainable frontends and service layers.",
-  },
-  {
-    id: "aws-cloud",
-    title: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    year: "2023",
-    category: "Cloud",
-    note: "Cloud fundamentals for product teams building internet-facing systems.",
+    category: "Cloud Native",
+    note: "Issued May 2023.",
+    credentialUrl: "https://www.credly.com/org/nirmata/badge/fundamentals-for-kyverno",
   },
 ];

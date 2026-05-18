@@ -118,7 +118,7 @@ export default function LabDetailPage() {
                 {lab.coreSnippetTitle}
               </p>
               <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">
-                A minimal snippet that shows the main state, math, or animation idea behind this demo.
+                A small snippet showing the main state, math, or animation idea behind this demo.
               </p>
               <div className="mt-6 overflow-x-auto rounded-[1.5rem] border border-[var(--color-line)] bg-[#121212] p-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
                 <div className="mb-4 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.68rem] uppercase tracking-[0.2em] text-white/60">
