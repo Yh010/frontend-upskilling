@@ -72,7 +72,7 @@ export default function LabsMotionPage() {
             <SectionIntro
               eyebrow="Archive"
               title="Earlier studies, sandboxes, and smaller pattern experiments."
-              body="These make the process visible without competing with the featured work."
+              body="Earlier studies and smaller interaction experiments."
             />
           </Reveal>
           <div className="grid gap-6 lg:grid-cols-3">

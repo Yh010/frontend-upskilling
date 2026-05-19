@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Cormorant+Garamond:wght@400;500;600;700&family=Geist+Mono:wght@100..900&family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&family=Sora:wght@500;600;700;800&family=Geist+Mono:wght@100..900&family=Fjalla+One&family=Roboto:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -19,7 +19,7 @@
         0px 2px 3px -1px rgba(0, 0, 0, 0.1),
         0px 1px 0px 0px rgba(25, 28, 33, 0.02),
         0px 0px 0px 1px rgba(25, 28, 33, 0.08);
-    --font-display: "Cormorant Garamond", serif;
+    --font-display: "Sora", sans-serif;
     --font-sans: "Manrope", sans-serif;
     --font-inter: "Manrope", sans-serif;
     --font-roboto: "Roboto", sans-serif;

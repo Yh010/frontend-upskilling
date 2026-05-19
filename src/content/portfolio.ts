@@ -1,9 +1,11 @@
 import type {
+  AchievementEntry,
   CertificationEntry,
   ContactLink,
   ExperienceEntry,
   Metric,
   NavItem,
+  OnCameraEntry,
   Profile,
   ProjectEntry,
 } from "./types";
@@ -13,12 +15,12 @@ export const profile: Profile = {
   shortName: "YH",
   role: "Full-stack engineer",
   location: "India",
-  availability: "Open to full-stack and frontend product roles",
+  availability: "Open to full-stack product engineering roles",
   summary:
-    "Full-stack engineer with experience across banking, AI products, real-time interfaces, and frontend-heavy product work.",
+    "Full-stack engineer with experience across banking, AI products, real-time interfaces, and production systems.",
   heroTitle: "Full-stack engineer building reliable, well-designed products.",
   heroLead:
-    "I work across frontend, backend, and product delivery, with recent experience in digital banking, AI products, and interaction-focused interfaces.",
+    "I work across backend systems, product interfaces, and end-to-end delivery, with recent experience in digital banking and AI products.",
   heroSubcopy:
     "This portfolio brings together selected projects, work experience, and motion studies to show how I build products end to end.",
   resumeUrl: "/Yash-Hegde-Resume.pdf",
@@ -94,12 +96,13 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     id: "oracle-ofss",
     company: "Oracle Financial Services",
+    logo: "/company-oracle.png",
     title: "Application Developer I",
     period: "Sept 2025 - Present",
     location: "Bengaluru, India",
     team: "Oracle Banking Digital Experience",
     summary:
-      "Built frontend-heavy digital banking workflows in Oracle JET, including new transaction flows, API integrations, and performance improvements in a production environment.",
+      "Built digital banking workflows in Oracle JET, including new transaction flows, API integrations, and performance improvements in a production environment.",
     highlights: [
       "Owned frontend development for a new Cashflow Transaction module in Oracle JET, building the UI from scratch, integrating service APIs, and implementing multi-step transaction workflows.",
       "Integrated backend service APIs into existing transaction flows while preserving backward compatibility across production financial workflows.",
@@ -120,6 +123,7 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     id: "balco",
     company: "Bharat Aluminium Company",
+    logo: "/company-balco.png",
     title: "GET, Commissioning, Potline 3",
     period: "Jan 2025 - Sept 2025",
     location: "Korba, Chhattisgarh, India",
@@ -142,6 +146,7 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     id: "xquare-labs",
     company: "Xquare Labs (Coldbean AI)",
+    logo: "/company-xquare.png",
     title: "Full Stack Developer - Freelance",
     period: "Aug 2024 - Sep 2024",
     location: "Remote, Canada",
@@ -168,6 +173,7 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     id: "persana-ai",
     company: "Persana AI",
+    logo: "/company-persana.png",
     title: "Frontend Intern",
     period: "Feb 2024 - Apr 2024",
     location: "Remote, SF Bay Area",
@@ -191,6 +197,7 @@ export const experienceEntries: ExperienceEntry[] = [
   {
     id: "lnt",
     company: "Larsen and Toubro Energy Hydrocarbon",
+    logo: "/company-lnt.png",
     title: "Software Development Engineer Intern",
     period: "May 2023 - July 2023",
     location: "Powai, Mumbai, India",
@@ -385,5 +392,43 @@ export const certificationEntries: CertificationEntry[] = [
     category: "Cloud Native",
     note: "Issued May 2023.",
     credentialUrl: "https://www.credly.com/org/nirmata/badge/fundamentals-for-kyverno",
+  },
+];
+
+export const onCameraEntries: OnCameraEntry[] = [
+  {
+    id: "harkirat-podcast",
+    title: "Career switch story",
+    platform: "YouTube",
+    host: "Harkirat Singh",
+    summary:
+      "A short conversation on moving from chemical engineering into software.",
+    href: "https://www.youtube.com/watch?feature=shared&v=SI18YDCFEYQ",
+    ctaLabel: "Watch on YouTube",
+    thumbnail: "https://img.youtube.com/vi/SI18YDCFEYQ/maxresdefault.jpg",
+  },
+];
+
+export const achievementEntries: AchievementEntry[] = [
+  {
+    id: "google-agentic-ai",
+    title: "Top 50 Finalist",
+    event: "Google Agentic AI Hackathon",
+    year: "2025",
+    detail: "Selected from 70,000+ developers across India.",
+  },
+  {
+    id: "tata-teleport",
+    title: "Top 50 Finalist",
+    event: "TATA Elxsi TELIPORT Hackathon",
+    year: "2023",
+    detail: "All-India finalist finish.",
+  },
+  {
+    id: "dr-reddys-aspire",
+    title: "Top 10 Finalist",
+    event: "Dr. Reddy's Aspire Challenge",
+    year: "2023",
+    detail: "All-India finalist finish.",
   },
 ];

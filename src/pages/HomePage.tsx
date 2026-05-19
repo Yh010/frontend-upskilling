@@ -1,4 +1,4 @@
-import { ArrowRight, Download, MoveRight } from "lucide-react";
+import { ArrowRight, Download, MoveRight, Play, Trophy } from "lucide-react";
 import { Link } from "react-router";
 import HeroSpotlight from "../components/portfolio/HeroSpotlight";
 import LabCard from "../components/portfolio/LabCard";
@@ -6,10 +6,12 @@ import ProjectCard from "../components/portfolio/ProjectCard";
 import Reveal from "../components/site/Reveal";
 import SectionIntro from "../components/site/SectionIntro";
 import {
+  achievementEntries,
   certificationEntries,
   contactLinks,
   experienceEntries,
   metrics,
+  onCameraEntries,
   profile,
   projectEntries,
 } from "../content/portfolio";
@@ -47,6 +49,7 @@ const spotlightCards = [
 
 const featuredProjects = projectEntries.filter((project) => project.featured);
 const primaryContact = contactLinks.filter((link) => link.type === "primary");
+const featuredConversation = onCameraEntries[0];
 
 export default function HomePage() {
   return (
@@ -164,7 +167,7 @@ export default function HomePage() {
           <SectionIntro
             eyebrow="Experience"
             title="Experience shaped by product delivery and real systems."
-            body="Enterprise, startup, freelance, and operations experience across frontend-heavy and full-stack work."
+            body="Enterprise, startup, freelance, and operations experience across full-stack product and systems work."
           />
         </Reveal>
         <div className="grid gap-5">
@@ -173,14 +176,25 @@ export default function HomePage() {
               <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/90 p-6 shadow-[var(--shadow-soft)]">
                 <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-muted)]">
-                      {entry.team}
-                    </p>
+                    <div className="flex items-center gap-3">
+                      {entry.logo ? (
+                        <div className="flex h-12 w-12 items-center justify-center overflow-hidden p-1">
+                          <img
+                            src={entry.logo}
+                            alt={`${entry.company} logo`}
+                            className="h-full w-full object-contain"
+                          />
+                        </div>
+                      ) : null}
+                      <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)] md:text-base">
+                        {entry.company}
+                      </p>
+                    </div>
                     <h3 className="mt-3 font-display text-3xl leading-none text-[var(--color-ink)]">
                       {entry.title}
                     </h3>
-                    <p className="mt-3 text-sm text-[var(--color-muted)]">
-                      {entry.company} / {entry.location}
+                    <p className="mt-2 text-sm text-[var(--color-muted)]">
+                      {entry.location}
                     </p>
                   </div>
                   <span className="rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-3 py-1 text-xs text-[var(--color-muted)]">
@@ -209,9 +223,44 @@ export default function HomePage() {
       <section className="space-y-10">
         <Reveal>
           <SectionIntro
+            eyebrow="Achievements"
+            title="Hackathon and challenge results."
+            body="Selected finalist finishes from national competitions."
+          />
+        </Reveal>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {achievementEntries.map((item, index) => (
+            <Reveal key={item.id} delay={index * 0.06}>
+              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/90 p-6 shadow-[var(--shadow-soft)]">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-muted)]">
+                      {item.event}
+                    </p>
+                    <h3 className="mt-3 font-display text-3xl leading-none text-[var(--color-ink)]">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)] text-[var(--color-ink)]">
+                    <Trophy className="h-5 w-5" />
+                  </div>
+                </div>
+                <p className="mt-4 text-sm text-[var(--color-muted)]">{item.year}</p>
+                <p className="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+                  {item.detail}
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-10">
+        <Reveal>
+          <SectionIntro
             eyebrow="Labs > Motion"
-            title="Motion studies that support the product work."
-            body="This section holds the interaction experiments separately so the portfolio stays clean while still showing frontend depth."
+            title="Interaction and motion experiments."
+            body="A selection of UI studies focused on timing, transitions, and interface behavior."
           />
         </Reveal>
         <div className="grid gap-6 lg:grid-cols-3">
@@ -230,6 +279,62 @@ export default function HomePage() {
           </Link>
         </Reveal>
       </section>
+
+      <Reveal>
+        <section className="mx-auto max-w-4xl rounded-[2rem] border border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(236,236,235,0.96))] p-6 shadow-[var(--shadow-panel)] md:p-7">
+          <div className="flex items-center justify-between gap-4 text-[0.74rem] font-semibold uppercase tracking-[0.28em] text-[var(--color-muted)]">
+            <span>On Camera</span>
+            <span>{featuredConversation.platform}</span>
+          </div>
+
+          <div className="mt-6 max-w-2xl space-y-3">
+            <h2 className="font-display text-[1.85rem] leading-[0.96] tracking-[-0.05em] text-[var(--color-ink)] md:text-[2.45rem]">
+              {featuredConversation.title}
+            </h2>
+            <p className="max-w-xl text-sm leading-7 text-[var(--color-muted)] md:text-[0.98rem]">
+              {featuredConversation.summary}
+            </p>
+          </div>
+
+          <a
+            href={featuredConversation.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-6 block overflow-hidden rounded-[1.55rem] border border-[var(--color-line)] bg-[#111] shadow-[0_20px_44px_rgba(0,0,0,0.14)]"
+          >
+            <div className="relative aspect-[16/9]">
+              {featuredConversation.thumbnail ? (
+                <img
+                  src={featuredConversation.thumbnail}
+                  alt={featuredConversation.title}
+                  className="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.02]"
+                />
+              ) : null}
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.46))]" />
+              <div className="absolute inset-x-5 top-5 flex items-start justify-between gap-4">
+                <div className="rounded-full bg-[rgba(10,10,10,0.6)] px-4 py-2 text-sm font-medium text-white backdrop-blur">
+                  {featuredConversation.host}
+                </div>
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-white text-[var(--color-ink)] shadow-[0_18px_36px_rgba(0,0,0,0.28)] transition duration-300 group-hover:scale-105">
+                  <Play className="ml-1 h-7 w-7 fill-current" />
+                </div>
+              </div>
+              <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
+                <div className="max-w-xl text-white">
+                  <div className="text-base font-semibold leading-tight md:text-lg">
+                    {featuredConversation.title}
+                  </div>
+                </div>
+                <div className="rounded-full bg-[rgba(10,10,10,0.65)] px-4 py-2.5 text-sm font-medium text-white backdrop-blur">
+                  {featuredConversation.ctaLabel}
+                </div>
+              </div>
+            </div>
+          </a>
+        </section>
+      </Reveal>
 
       <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
         <Reveal>
@@ -269,7 +374,7 @@ export default function HomePage() {
                 Contact
               </span>
               <h2 className="max-w-3xl font-display text-4xl leading-none text-[var(--color-ink)] md:text-5xl">
-                Open to full-stack and frontend product roles.
+                Open to full-stack product engineering roles.
               </h2>
               <p className="max-w-2xl text-sm leading-7 text-[var(--color-muted)] md:text-base">
                 Email or LinkedIn is the easiest way to reach me. Resume and GitHub are linked here.

@@ -27,7 +27,7 @@ export default function ContactPage() {
                   Primary CTA
                 </span>
                 <h2 className="font-display text-5xl leading-none text-[var(--color-ink)]">
-                  Open to full-stack and frontend product roles.
+                  Open to full-stack product engineering roles.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-[var(--color-muted)]">
                   {profile.summary}

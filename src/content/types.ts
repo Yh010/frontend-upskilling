@@ -34,6 +34,7 @@ export interface Metric {
 export interface ExperienceEntry {
   id: string;
   company: string;
+  logo?: string;
   title: string;
   period: string;
   location: string;
@@ -75,6 +76,26 @@ export interface CertificationEntry {
   category: string;
   note: string;
   credentialUrl?: string;
+}
+
+export interface OnCameraEntry {
+  id: string;
+  title: string;
+  platform: string;
+  host: string;
+  summary: string;
+  note?: string;
+  href: string;
+  ctaLabel: string;
+  thumbnail?: string;
+}
+
+export interface AchievementEntry {
+  id: string;
+  title: string;
+  event: string;
+  year: string;
+  detail: string;
 }
 
 export interface LabDeepDive {
