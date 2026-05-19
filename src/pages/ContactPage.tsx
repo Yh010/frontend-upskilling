@@ -9,7 +9,7 @@ const secondaryLinks = contactLinks.filter((link) => link.type === "secondary");
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 pb-24 pt-12 md:px-8 md:pt-16">
-      <div className="space-y-12">
+      <div className="space-y-10 sm:space-y-12">
         <Reveal>
           <SectionIntro
             eyebrow="Contact"
@@ -20,24 +20,24 @@ export default function ContactPage() {
 
         <div className="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
           <Reveal>
-            <section className="rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[var(--shadow-panel)]">
+            <section className="rounded-[1.8rem] border border-[var(--color-line)] bg-white p-6 shadow-[var(--shadow-panel)] sm:rounded-[2rem] sm:p-8">
               <div className="space-y-5">
                 <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
                   <Mail className="h-3.5 w-3.5" />
                   Primary CTA
                 </span>
-                <h2 className="font-display text-5xl leading-none text-[var(--color-ink)]">
+                <h2 className="font-display text-[2.25rem] leading-[0.96] text-[var(--color-ink)] sm:text-4xl md:text-5xl">
                   Open to full-stack product engineering roles.
                 </h2>
-                <p className="max-w-2xl text-base leading-8 text-[var(--color-muted)]">
+                <p className="max-w-2xl text-[0.98rem] leading-7 text-[var(--color-muted)] md:text-base md:leading-8">
                   {profile.summary}
                 </p>
 
-                <div className="flex flex-wrap gap-3 pt-2">
+                <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
                   <a
                     href={profile.resumeUrl}
                     download
-                    className="inline-flex items-center gap-2 rounded-full bg-[var(--color-ink)] px-5 py-3 text-sm text-[var(--color-bg)] transition hover:bg-[var(--color-accent)]"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-ink)] px-5 py-3 text-sm text-[var(--color-bg)] transition hover:bg-[var(--color-accent)] sm:w-auto"
                   >
                     Download Resume <Download className="h-4 w-4" />
                   </a>
@@ -51,7 +51,7 @@ export default function ContactPage() {
                           ? "noopener noreferrer"
                           : undefined
                       }
-                      className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] bg-white px-5 py-3 text-sm text-[var(--color-ink)] transition hover:border-[var(--color-accent)]"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--color-line)] bg-white px-5 py-3 text-sm text-[var(--color-ink)] transition hover:border-[var(--color-accent)] sm:w-auto"
                     >
                       {link.label} <MoveUpRight className="h-4 w-4" />
                     </a>
@@ -63,7 +63,7 @@ export default function ContactPage() {
 
           <Reveal delay={0.08}>
             <section className="grid gap-4">
-              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/90 p-6 shadow-[var(--shadow-soft)]">
+              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/90 p-5 shadow-[var(--shadow-soft)] sm:p-6">
                 <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">
                   Availability
                 </p>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                 </p>
               </article>
 
-              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/90 p-6 shadow-[var(--shadow-soft)]">
+              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/90 p-5 shadow-[var(--shadow-soft)] sm:p-6">
                 <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">
                   Secondary convenience
                 </p>

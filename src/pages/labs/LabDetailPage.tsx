@@ -17,7 +17,7 @@ export default function LabDetailPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-5 pb-24 pt-12 md:px-8 md:pt-16">
-      <div className="space-y-12">
+      <div className="space-y-10 sm:space-y-12">
         <Reveal>
           <div className="flex flex-wrap items-center gap-4">
             <Link
@@ -40,16 +40,16 @@ export default function LabDetailPage() {
           </div>
         </Reveal>
 
-        <section className="grid gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
+        <section className="grid gap-8 sm:gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
           <Reveal className="space-y-6">
             <div className="space-y-4">
               <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-muted)]">
                 Labs &gt; Motion
               </p>
-              <h1 className="font-display text-[3.4rem] leading-[0.92] tracking-[-0.03em] text-[var(--color-ink)] md:text-[4.6rem]">
+              <h1 className="font-display text-[2.65rem] leading-[0.94] tracking-[-0.03em] text-[var(--color-ink)] sm:text-[3.4rem] md:text-[4.6rem]">
                 {lab.title}
               </h1>
-              <p className="max-w-xl text-base leading-8 text-[var(--color-muted)]">
+              <p className="max-w-xl text-[0.98rem] leading-7 text-[var(--color-muted)] md:text-base md:leading-8">
                 {lab.summary}
               </p>
             </div>
@@ -66,7 +66,7 @@ export default function LabDetailPage() {
             </div>
 
             <div className="grid gap-4">
-              <article className="rounded-[1.6rem] border border-[var(--color-line)] bg-white p-5 shadow-[var(--shadow-soft)]">
+              <article className="rounded-[1.5rem] border border-[var(--color-line)] bg-white p-4 shadow-[var(--shadow-soft)] sm:rounded-[1.6rem] sm:p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">
                   Technique
                 </p>
@@ -74,7 +74,7 @@ export default function LabDetailPage() {
                   {lab.technique}
                 </p>
               </article>
-              <article className="rounded-[1.6rem] border border-[var(--color-line)] bg-white p-5 shadow-[var(--shadow-soft)]">
+              <article className="rounded-[1.5rem] border border-[var(--color-line)] bg-white p-4 shadow-[var(--shadow-soft)] sm:rounded-[1.6rem] sm:p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">
                   What it demonstrates
                 </p>
@@ -82,7 +82,7 @@ export default function LabDetailPage() {
                   {lab.whatItDemonstrates}
                 </p>
               </article>
-              <article className="rounded-[1.6rem] border border-[var(--color-line)] bg-white p-5 shadow-[var(--shadow-soft)]">
+              <article className="rounded-[1.5rem] border border-[var(--color-line)] bg-white p-4 shadow-[var(--shadow-soft)] sm:rounded-[1.6rem] sm:p-5">
                 <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">
                   Why it matters in product UI
                 </p>
@@ -94,8 +94,8 @@ export default function LabDetailPage() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="overflow-hidden rounded-[2rem] border border-[var(--color-line)] bg-white shadow-[var(--shadow-panel)]">
-              <div className="border-b border-[var(--color-line)] bg-[var(--color-surface)] px-6 py-4">
+            <div className="overflow-hidden rounded-[1.8rem] border border-[var(--color-line)] bg-white shadow-[var(--shadow-panel)] sm:rounded-[2rem]">
+              <div className="border-b border-[var(--color-line)] bg-[var(--color-surface)] px-5 py-4 sm:px-6">
                 <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-muted)]">
                   Live Demo
                 </p>
@@ -109,7 +109,7 @@ export default function LabDetailPage() {
 
         <section className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
           <Reveal>
-            <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[var(--shadow-soft)]">
+            <div className="rounded-[1.8rem] border border-[var(--color-line)] bg-white p-5 shadow-[var(--shadow-soft)] sm:rounded-[2rem] sm:p-8">
               <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-[var(--color-muted)]">
                 <Braces className="h-4 w-4" />
                 Core Logic
@@ -120,7 +120,7 @@ export default function LabDetailPage() {
               <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">
                 A small snippet showing the main state, math, or animation idea behind this demo.
               </p>
-              <div className="mt-6 overflow-x-auto rounded-[1.5rem] border border-[var(--color-line)] bg-[#121212] p-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+              <div className="mt-6 overflow-x-auto rounded-[1.35rem] border border-[var(--color-line)] bg-[#121212] p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:rounded-[1.5rem] sm:p-5">
                 <div className="mb-4 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.68rem] uppercase tracking-[0.2em] text-white/60">
                   {lab.coreSnippetLanguage}
                 </div>
@@ -132,7 +132,7 @@ export default function LabDetailPage() {
           </Reveal>
 
           <Reveal delay={0.06}>
-            <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[var(--shadow-soft)]">
+            <div className="rounded-[1.8rem] border border-[var(--color-line)] bg-white p-5 shadow-[var(--shadow-soft)] sm:rounded-[2rem] sm:p-8">
               <div className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-[var(--color-muted)]">
                 <Lightbulb className="h-4 w-4" />
                 Implementation Notes
@@ -157,7 +157,7 @@ export default function LabDetailPage() {
         <Reveal delay={0.08}>
           <Link
             to={nextLab.route}
-            className="inline-flex items-center gap-2 rounded-full bg-[var(--color-ink)] px-5 py-3 text-sm text-[var(--color-bg)] transition hover:bg-[var(--color-accent)]"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-ink)] px-5 py-3 text-sm text-[var(--color-bg)] transition hover:bg-[var(--color-accent)] sm:w-auto"
           >
             Next lab <MoveRight className="h-4 w-4" />
           </Link>

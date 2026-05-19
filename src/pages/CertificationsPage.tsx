@@ -18,13 +18,13 @@ export default function CertificationsPage() {
         <div className="grid gap-5 md:grid-cols-2">
           {certificationEntries.map((certification, index) => (
             <Reveal key={certification.id} delay={index * 0.06}>
-              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/92 p-6 shadow-[var(--shadow-soft)]">
-                <div className="flex items-start justify-between gap-4">
+              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/92 p-5 shadow-[var(--shadow-soft)] sm:p-6">
+                <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
                   <div>
                     <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">
                       {certification.category}
                     </p>
-                    <h3 className="mt-3 font-display text-3xl leading-none text-[var(--color-ink)]">
+                    <h3 className="mt-3 font-display text-[2rem] leading-[0.96] text-[var(--color-ink)] sm:text-3xl">
                       {certification.title}
                     </h3>
                   </div>

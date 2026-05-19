@@ -16,7 +16,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-5 pb-24 pt-12 md:px-8 md:pt-16">
-      <div className="space-y-12">
+      <div className="space-y-10 sm:space-y-12">
         <Reveal>
           <SectionIntro
             eyebrow="Projects"

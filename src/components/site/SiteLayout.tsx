@@ -15,8 +15,8 @@ export default function SiteLayout() {
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
       <div className="pointer-events-none fixed inset-x-0 top-0 z-0 h-96 bg-[radial-gradient(circle_at_top_left,rgba(17,17,17,0.08),transparent_36%),radial-gradient(circle_at_top_right,rgba(110,110,110,0.08),transparent_28%),linear-gradient(180deg,rgba(243,243,241,0.88),rgba(243,243,241,0))]" />
       <header className="sticky top-0 z-40 border-b border-[var(--color-line)] bg-[rgba(243,243,241,0.86)] backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-          <Link to="/" className="group flex items-center gap-3">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-5 md:px-8">
+          <Link to="/" className="group flex min-w-0 items-center gap-2.5 sm:gap-3">
             <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl border border-[var(--color-line-strong)] bg-white shadow-[var(--shadow-soft)]">
               <img
                 src="/yash-hegde-mark.svg"
@@ -24,8 +24,8 @@ export default function SiteLayout() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="flex flex-col pr-2">
-              <span className="font-display text-xl leading-none tracking-tight">
+            <div className="flex min-w-0 flex-col pr-2">
+              <span className="truncate font-display text-lg leading-none tracking-tight sm:text-xl">
                 {profile.name}
               </span>
             </div>
@@ -84,7 +84,7 @@ export default function SiteLayout() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -18 }}
               transition={{ duration: 0.25 }}
-              className="border-t border-[var(--color-line)] bg-[var(--color-bg)] px-5 py-4 lg:hidden"
+              className="border-t border-[var(--color-line)] bg-[var(--color-bg)] px-4 py-4 sm:px-5 lg:hidden"
             >
               <div className="mx-auto flex max-w-7xl flex-col gap-3">
                 {navItems.map((item) => (
@@ -105,7 +105,7 @@ export default function SiteLayout() {
                   </NavLink>
                 ))}
 
-                <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="grid grid-cols-1 gap-3 pt-2 sm:grid-cols-2">
                   <a
                     href={profile.resumeUrl}
                     download
@@ -132,13 +132,13 @@ export default function SiteLayout() {
       </main>
 
       <footer className="relative z-10 border-t border-[var(--color-line)] bg-[var(--color-surface)]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-10 md:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-10 sm:px-5 md:px-8">
           <div className="grid gap-8 md:grid-cols-[1.3fr_1fr_1fr]">
             <div className="space-y-4">
               <span className="inline-flex rounded-full border border-[var(--color-line)] bg-white px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
                 Overview
               </span>
-              <h3 className="font-display text-3xl text-[var(--color-ink)]">
+              <h3 className="font-display text-[2rem] leading-[0.96] text-[var(--color-ink)] sm:text-3xl">
                 Work, experience, and motion studies.
               </h3>
               <p className="max-w-xl text-sm leading-7 text-[var(--color-muted)]">

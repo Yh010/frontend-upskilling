@@ -39,7 +39,7 @@ function LabLivePreview({
   };
 
   return (
-    <div className="relative h-56 overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(232,232,230,0.82))]">
+    <div className="relative h-48 overflow-hidden bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(232,232,230,0.82))] sm:h-56">
       <div
         key={`${lab.slug}-${previewCycle}`}
         className="pointer-events-none absolute left-1/2 top-1/2 origin-center will-change-transform"
@@ -67,7 +67,7 @@ export default function LabCard({ lab }: LabCardProps) {
 
   return (
     <article
-      className="group flex h-full flex-col overflow-hidden rounded-[1.8rem] border border-[var(--color-line)] bg-white shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-panel)]"
+      className="group flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-[var(--color-line)] bg-white shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-panel)] sm:rounded-[1.8rem]"
       onMouseEnter={() => {
         if (!hasRecordedPreview) {
           setPreviewCycle((cycle) => cycle + 1);
@@ -78,7 +78,7 @@ export default function LabCard({ lab }: LabCardProps) {
         {lab.previewVideo ? (
           <video
             src={lab.previewVideo}
-            className="h-56 w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+            className="h-48 w-full object-cover transition duration-700 group-hover:scale-[1.03] sm:h-56"
             autoPlay
             muted
             loop
@@ -89,20 +89,20 @@ export default function LabCard({ lab }: LabCardProps) {
           <img
             src={lab.previewGif}
             alt={lab.title}
-            className="h-56 w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+            className="h-48 w-full object-cover transition duration-700 group-hover:scale-[1.03] sm:h-56"
           />
         ) : (
           <LabLivePreview lab={lab} previewCycle={previewCycle} />
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-4 p-6">
-        <div className="flex items-start justify-between gap-4">
+      <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
+        <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
           <div>
             <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
               {lab.technique}
             </p>
-            <h3 className="mt-3 font-display text-3xl leading-none text-[var(--color-ink)]">
+            <h3 className="mt-3 font-display text-[2rem] leading-[0.96] text-[var(--color-ink)] sm:text-3xl">
               {lab.title}
             </h3>
           </div>
@@ -124,7 +124,7 @@ export default function LabCard({ lab }: LabCardProps) {
           ))}
         </div>
 
-        <div className="rounded-[1.35rem] border border-[var(--color-line)] bg-[var(--color-surface)] p-4">
+        <div className="rounded-[1.25rem] border border-[var(--color-line)] bg-[var(--color-surface)] p-3.5 sm:rounded-[1.35rem] sm:p-4">
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">
             <Film className="h-3.5 w-3.5" />
             Product relevance

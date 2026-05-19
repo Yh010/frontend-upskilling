@@ -17,14 +17,14 @@ export default function SectionIntro({
       : "max-w-2xl";
 
   return (
-    <div className={`flex flex-col gap-4 ${alignment}`}>
+    <div className={`flex flex-col gap-3 sm:gap-4 ${alignment}`}>
       <span className="inline-flex w-fit items-center rounded-full border border-[var(--color-line)] bg-white/80 px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
         {eyebrow}
       </span>
-      <h2 className="font-display text-4xl leading-none text-[var(--color-ink)] md:text-5xl">
+      <h2 className="font-display text-[2.15rem] leading-[0.96] tracking-[-0.03em] text-[var(--color-ink)] sm:text-4xl md:text-5xl">
         {title}
       </h2>
-      <p className="max-w-2xl text-sm leading-7 text-[var(--color-muted)] md:text-base">
+      <p className="max-w-2xl text-[0.96rem] leading-7 text-[var(--color-muted)] md:text-base">
         {body}
       </p>
     </div>

@@ -22,7 +22,7 @@ export default function LabsMotionPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-5 pb-24 pt-12 md:px-8 md:pt-16">
-      <div className="space-y-14">
+      <div className="space-y-12 sm:space-y-14">
         <Reveal>
           <SectionIntro
             eyebrow="Labs > Motion"

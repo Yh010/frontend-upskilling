@@ -53,26 +53,26 @@ const featuredConversation = onCameraEntries[0];
 
 export default function HomePage() {
   return (
-    <div className="mx-auto flex max-w-7xl flex-col gap-24 px-5 pb-24 pt-10 md:px-8 md:pt-16">
-      <section className="relative overflow-hidden rounded-[2.5rem] border border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(243,243,241,0.96))] px-6 py-8 shadow-[var(--shadow-soft)] md:px-8 md:py-10 lg:px-10 lg:py-12">
-        <div className="pointer-events-none absolute inset-x-8 top-0 h-48 bg-[radial-gradient(circle_at_left_top,rgba(17,17,17,0.08),transparent_42%),radial-gradient(circle_at_right_top,rgba(90,90,90,0.08),transparent_30%)] blur-2xl" />
-        <div className="relative grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-          <Reveal className="flex flex-col gap-8">
+    <div className="mx-auto flex max-w-7xl flex-col gap-20 px-4 pb-24 pt-8 sm:gap-24 sm:px-5 sm:pt-10 md:px-8 md:pt-16">
+      <section className="relative overflow-hidden rounded-[2rem] border border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.72),rgba(243,243,241,0.96))] px-5 py-6 shadow-[var(--shadow-soft)] sm:px-6 sm:py-8 md:px-8 md:py-10 lg:rounded-[2.5rem] lg:px-10 lg:py-12">
+        <div className="pointer-events-none absolute inset-x-4 top-0 h-48 bg-[radial-gradient(circle_at_left_top,rgba(17,17,17,0.08),transparent_42%),radial-gradient(circle_at_right_top,rgba(90,90,90,0.08),transparent_30%)] blur-2xl sm:inset-x-8" />
+        <div className="relative grid gap-10 sm:gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+          <Reveal className="flex flex-col gap-7 sm:gap-8">
             <span className="inline-flex w-fit items-center rounded-full border border-[var(--color-line)] bg-white/90 px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
               {profile.availability}
             </span>
 
             <div className="space-y-5">
-              <p className="max-w-xl text-[0.76rem] uppercase tracking-[0.3em] text-[var(--color-muted)]">
+              <p className="max-w-xl text-[0.68rem] uppercase tracking-[0.28em] text-[var(--color-muted)] sm:text-[0.76rem] sm:tracking-[0.3em]">
                 {profile.role}
               </p>
-              <h1 className="max-w-[8.4ch] font-display text-[3.85rem] leading-[0.9] tracking-[-0.04em] text-[var(--color-ink)] sm:text-[4.5rem] xl:text-[5.35rem]">
+              <h1 className="max-w-[9ch] font-display text-[3rem] leading-[0.9] tracking-[-0.04em] text-[var(--color-ink)] sm:text-[4rem] lg:text-[4.5rem] xl:text-[5.35rem]">
                 {profile.heroTitle}
               </h1>
-              <p className="max-w-xl text-[1.06rem] leading-8 text-[var(--color-muted)] md:text-[1.16rem]">
+              <p className="max-w-xl text-[1rem] leading-7 text-[var(--color-muted)] md:text-[1.16rem] md:leading-8">
                 {profile.heroLead}
               </p>
-              <p className="max-w-2xl text-sm leading-7 text-[var(--color-muted)] md:text-base">
+              <p className="max-w-2xl text-sm leading-6 text-[var(--color-muted)] sm:leading-7 md:text-base">
                 {profile.heroSubcopy}
               </p>
             </div>
@@ -97,7 +97,7 @@ export default function HomePage() {
               {metrics.map((metric) => (
                 <div
                   key={metric.label}
-                  className="rounded-[1.2rem] border border-[var(--color-line)] bg-white/80 px-4 py-3 text-sm text-[var(--color-muted)] shadow-[0_10px_24px_rgba(0,0,0,0.045)]"
+                  className="rounded-[1.2rem] border border-[var(--color-line)] bg-white/80 px-3.5 py-3 text-sm text-[var(--color-muted)] shadow-[0_10px_24px_rgba(0,0,0,0.045)] sm:px-4"
                 >
                   <div className="font-display text-2xl leading-none text-[var(--color-ink)]">
                     {metric.value}
@@ -126,7 +126,7 @@ export default function HomePage() {
               <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-muted)]">
                 {metric.label}
               </p>
-              <p className="mt-4 font-display text-5xl leading-none text-[var(--color-ink)]">
+              <p className="mt-4 font-display text-4xl leading-none text-[var(--color-ink)] sm:text-5xl">
                 {metric.value}
               </p>
               <p className="mt-4 text-sm leading-7 text-[var(--color-muted)]">
@@ -173,8 +173,8 @@ export default function HomePage() {
         <div className="grid gap-5">
           {experienceEntries.map((entry, index) => (
             <Reveal key={entry.id} delay={index * 0.08}>
-              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/90 p-6 shadow-[var(--shadow-soft)]">
-                <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/90 p-5 shadow-[var(--shadow-soft)] sm:p-6">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <div className="flex items-center gap-3">
                       {entry.logo ? (
@@ -186,11 +186,11 @@ export default function HomePage() {
                           />
                         </div>
                       ) : null}
-                      <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)] md:text-base">
+                      <p className="text-[0.82rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)] sm:text-sm md:text-base">
                         {entry.company}
                       </p>
                     </div>
-                    <h3 className="mt-3 font-display text-3xl leading-none text-[var(--color-ink)]">
+                    <h3 className="mt-3 font-display text-[2rem] leading-[0.96] text-[var(--color-ink)] sm:text-3xl">
                       {entry.title}
                     </h3>
                     <p className="mt-2 text-sm text-[var(--color-muted)]">
@@ -231,13 +231,13 @@ export default function HomePage() {
         <div className="grid gap-5 lg:grid-cols-3">
           {achievementEntries.map((item, index) => (
             <Reveal key={item.id} delay={index * 0.06}>
-              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/90 p-6 shadow-[var(--shadow-soft)]">
+              <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white/90 p-5 shadow-[var(--shadow-soft)] sm:p-6">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-xs uppercase tracking-[0.22em] text-[var(--color-muted)]">
                       {item.event}
                     </p>
-                    <h3 className="mt-3 font-display text-3xl leading-none text-[var(--color-ink)]">
+                    <h3 className="mt-3 font-display text-[2rem] leading-[0.96] text-[var(--color-ink)] sm:text-3xl">
                       {item.title}
                     </h3>
                   </div>
@@ -281,17 +281,17 @@ export default function HomePage() {
       </section>
 
       <Reveal>
-        <section className="mx-auto max-w-4xl rounded-[2rem] border border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(236,236,235,0.96))] p-6 shadow-[var(--shadow-panel)] md:p-7">
-          <div className="flex items-center justify-between gap-4 text-[0.74rem] font-semibold uppercase tracking-[0.28em] text-[var(--color-muted)]">
+        <section className="mx-auto max-w-4xl rounded-[1.8rem] border border-[var(--color-line)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(236,236,235,0.96))] p-5 shadow-[var(--shadow-panel)] sm:rounded-[2rem] sm:p-6 md:p-7">
+          <div className="flex flex-col items-start gap-2 text-[0.74rem] font-semibold uppercase tracking-[0.28em] text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <span>On Camera</span>
             <span>{featuredConversation.platform}</span>
           </div>
 
           <div className="mt-6 max-w-2xl space-y-3">
-            <h2 className="font-display text-[1.85rem] leading-[0.96] tracking-[-0.05em] text-[var(--color-ink)] md:text-[2.45rem]">
+            <h2 className="font-display text-[1.7rem] leading-[0.96] tracking-[-0.05em] text-[var(--color-ink)] sm:text-[1.95rem] md:text-[2.45rem]">
               {featuredConversation.title}
             </h2>
-            <p className="max-w-xl text-sm leading-7 text-[var(--color-muted)] md:text-[0.98rem]">
+            <p className="max-w-xl text-sm leading-6 text-[var(--color-muted)] sm:leading-7 md:text-[0.98rem]">
               {featuredConversation.summary}
             </p>
           </div>
@@ -311,23 +311,23 @@ export default function HomePage() {
                 />
               ) : null}
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.46))]" />
-              <div className="absolute inset-x-5 top-5 flex items-start justify-between gap-4">
+              <div className="absolute left-4 top-4 sm:left-5 sm:top-5">
                 <div className="rounded-full bg-[rgba(10,10,10,0.6)] px-4 py-2 text-sm font-medium text-white backdrop-blur">
                   {featuredConversation.host}
                 </div>
               </div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-white text-[var(--color-ink)] shadow-[0_18px_36px_rgba(0,0,0,0.28)] transition duration-300 group-hover:scale-105">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-[var(--color-ink)] shadow-[0_18px_36px_rgba(0,0,0,0.28)] transition duration-300 group-hover:scale-105 sm:h-[4.5rem] sm:w-[4.5rem]">
                   <Play className="ml-1 h-7 w-7 fill-current" />
                 </div>
               </div>
-              <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-4">
+              <div className="absolute inset-x-4 bottom-4 flex flex-col items-start gap-3 sm:inset-x-5 sm:bottom-5 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
                 <div className="max-w-xl text-white">
                   <div className="text-base font-semibold leading-tight md:text-lg">
                     {featuredConversation.title}
                   </div>
                 </div>
-                <div className="rounded-full bg-[rgba(10,10,10,0.65)] px-4 py-2.5 text-sm font-medium text-white backdrop-blur">
+                <div className="rounded-full bg-[rgba(10,10,10,0.65)] px-4 py-2.5 text-xs font-medium text-white backdrop-blur sm:text-sm">
                   {featuredConversation.ctaLabel}
                 </div>
               </div>
@@ -367,13 +367,13 @@ export default function HomePage() {
       </section>
 
       <Reveal>
-        <section className="rounded-[2rem] border border-[var(--color-line)] bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(232,232,230,0.92))] p-8 shadow-[var(--shadow-panel)] md:p-10">
-          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+        <section className="rounded-[1.8rem] border border-[var(--color-line)] bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(232,232,230,0.92))] p-6 shadow-[var(--shadow-panel)] sm:rounded-[2rem] sm:p-8 md:p-10">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="space-y-4">
               <span className="inline-flex rounded-full border border-[var(--color-line)] bg-white/85 px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-[var(--color-muted)]">
                 Contact
               </span>
-              <h2 className="max-w-3xl font-display text-4xl leading-none text-[var(--color-ink)] md:text-5xl">
+              <h2 className="max-w-3xl font-display text-[2.2rem] leading-[0.96] text-[var(--color-ink)] sm:text-4xl md:text-5xl">
                 Open to full-stack product engineering roles.
               </h2>
               <p className="max-w-2xl text-sm leading-7 text-[var(--color-muted)] md:text-base">

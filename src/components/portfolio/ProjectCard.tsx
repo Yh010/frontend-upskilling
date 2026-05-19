@@ -34,23 +34,23 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         ];
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[1.9rem] border border-[var(--color-line)] bg-white shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-panel)]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-[var(--color-line)] bg-white shadow-[var(--shadow-soft)] transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-panel)] sm:rounded-[1.9rem]">
       <div className="relative overflow-hidden border-b border-[var(--color-line)] bg-[var(--color-surface-strong)]">
         <img
           src={project.image}
           alt={project.title}
-          className="h-60 w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+          className="h-52 w-full object-cover transition duration-700 group-hover:scale-[1.03] sm:h-60"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(12,11,10,0.14))]" />
       </div>
 
-      <div className="flex flex-1 flex-col gap-5 p-6">
-        <div className="flex items-start justify-between gap-4">
+      <div className="flex flex-1 flex-col gap-4 p-5 sm:gap-5 sm:p-6">
+        <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
           <div className="space-y-2">
             <span className="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-[var(--color-muted)]">
               {project.category}
             </span>
-            <h3 className="font-display text-3xl leading-none text-[var(--color-ink)]">
+            <h3 className="font-display text-[2rem] leading-[0.96] text-[var(--color-ink)] sm:text-3xl">
               {project.title}
             </h3>
           </div>
@@ -66,7 +66,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {project.summary}
         </p>
 
-        <div className="rounded-[1.4rem] border border-[var(--color-line)] bg-[var(--color-surface)] p-4">
+        <div className="rounded-[1.25rem] border border-[var(--color-line)] bg-[var(--color-surface)] p-3.5 sm:rounded-[1.4rem] sm:p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-muted)]">
             Why it matters
           </p>
@@ -86,7 +86,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 pt-2">
+        <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
           {links.map((link) => {
             const isPrimary = link.variant === "primary";
             const isExternal = link.external ?? link.href.startsWith("http");
@@ -114,8 +114,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                   to={link.href}
                   className={
                     isPrimary
-                      ? "inline-flex items-center gap-2 rounded-full bg-[var(--color-ink)] px-4 py-2 text-sm text-[var(--color-bg)] transition hover:bg-[var(--color-accent)]"
-                      : "inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] px-4 py-2 text-sm text-[var(--color-muted)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-ink)]"
+                      ? "inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-ink)] px-4 py-2 text-sm text-[var(--color-bg)] transition hover:bg-[var(--color-accent)] sm:w-auto"
+                      : "inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--color-line)] px-4 py-2 text-sm text-[var(--color-muted)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-ink)] sm:w-auto"
                   }
                 >
                   {content}
@@ -131,8 +131,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 className={
                   isPrimary
-                    ? "inline-flex items-center gap-2 rounded-full bg-[var(--color-ink)] px-4 py-2 text-sm text-[var(--color-bg)] transition hover:bg-[var(--color-accent)]"
-                    : "inline-flex items-center gap-2 rounded-full border border-[var(--color-line)] px-4 py-2 text-sm text-[var(--color-muted)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-ink)]"
+                    ? "inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-ink)] px-4 py-2 text-sm text-[var(--color-bg)] transition hover:bg-[var(--color-accent)] sm:w-auto"
+                    : "inline-flex w-full items-center justify-center gap-2 rounded-full border border-[var(--color-line)] px-4 py-2 text-sm text-[var(--color-muted)] transition hover:border-[var(--color-accent)] hover:text-[var(--color-ink)] sm:w-auto"
                 }
               >
                 {content}
