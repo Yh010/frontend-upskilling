@@ -8,6 +8,8 @@ import SiteLayout from "./components/site/SiteLayout";
 import { labsMotionEntries } from "./content/labs";
 import CertificationsPage from "./pages/CertificationsPage";
 import ContactPage from "./pages/ContactPage";
+import CoursesPage from "./pages/courses/CoursesPage";
+import CourseDetailPage from "./pages/courses/CourseDetailPage";
 import ExperiencePage from "./pages/ExperiencePage";
 import HomePage from "./pages/HomePage";
 import LabsMotionPage from "./pages/labs/LabsMotionPage";
@@ -36,6 +38,8 @@ const router = createBrowserRouter([
       { path: "labs", loader: () => redirect("/labs/motion") },
       { path: "labs/motion", element: <LabsMotionPage /> },
       { path: "labs/motion/:slug", element: <LabDetailPage /> },
+      { path: "courses", element: <CoursesPage /> },
+      { path: "courses/:slug", element: <CourseDetailPage /> },
       { path: "navbar", loader: () => redirect("/") },
       ...legacyLabRoutes,
       { path: "*", element: <NotFoundPage /> },

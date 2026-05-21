@@ -122,3 +122,93 @@ export interface LabEntry extends LabDeepDive {
   implementationNotes: string;
   component: ComponentType;
 }
+
+export interface CourseSnippet {
+  id: string;
+  title: string;
+  language: string;
+  code: string;
+  note: string;
+  variant?: "good" | "bad" | "starter" | "reference";
+  demoComponent?: ComponentType;
+}
+
+export interface CourseLessonSummaryCard {
+  id: string;
+  label: string;
+  value: string;
+  icon?: "module" | "outcome" | "examples" | "custom";
+  emphasis?: "normal" | "wide";
+}
+
+export interface CourseLessonSectionBase {
+  id: string;
+  title: string;
+  eyebrow?: string;
+  description?: string;
+  tocLabel?: string;
+}
+
+export interface CourseLessonCalloutSection extends CourseLessonSectionBase {
+  type: "callout";
+  content: string;
+  tone?: "surface" | "plain";
+}
+
+export interface CourseLessonListSection extends CourseLessonSectionBase {
+  type: "list";
+  items: string[];
+  style?: "cards" | "plain";
+}
+
+export interface CourseLessonParagraphSection extends CourseLessonSectionBase {
+  type: "paragraphs";
+  paragraphs: string[];
+  style?: "plain" | "cards";
+}
+
+export interface CourseLessonSnippetsSection extends CourseLessonSectionBase {
+  type: "snippets";
+  intro?: string;
+  snippets?: CourseSnippet[];
+  emptyMessage?: string;
+}
+
+export type CourseLessonSection =
+  | CourseLessonCalloutSection
+  | CourseLessonListSection
+  | CourseLessonParagraphSection
+  | CourseLessonSnippetsSection;
+
+export interface CourseLesson {
+  slug: string;
+  title: string;
+  runtime: string;
+  summary: string;
+  goal?: string;
+  notes?: string[];
+  exercise?: string;
+  snippets?: CourseSnippet[];
+  summaryCards?: CourseLessonSummaryCard[];
+  sections?: CourseLessonSection[];
+  status?: "published" | "planned";
+}
+
+export interface CourseModule {
+  id: string;
+  title: string;
+  outcome: string;
+  lessons: CourseLesson[];
+}
+
+export interface CourseEntry {
+  slug: string;
+  title: string;
+  summary: string;
+  promise: string;
+  audience: string;
+  route: string;
+  eyebrow: string;
+  status: "building" | "published";
+  modules: CourseModule[];
+}

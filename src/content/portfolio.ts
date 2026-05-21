@@ -31,6 +31,7 @@ export const navItems: NavItem[] = [
   { label: "Experience", path: "/experience" },
   { label: "Projects", path: "/projects" },
   { label: "Labs", path: "/labs/motion" },
+  { label: "Courses", path: "/courses" },
   { label: "Certifications", path: "/certifications" },
   { label: "Contact", path: "/contact" },
 ];
