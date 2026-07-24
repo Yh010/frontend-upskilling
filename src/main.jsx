@@ -7,6 +7,8 @@ import "./index.css";
 import SiteLayout from "./components/site/SiteLayout";
 import { labsMotionEntries } from "./content/labs";
 import CertificationsPage from "./pages/CertificationsPage";
+import BlogDetailPage from "./pages/BlogDetailPage";
+import BlogsPage from "./pages/BlogsPage";
 import ContactPage from "./pages/ContactPage";
 import CoursesPage from "./pages/courses/CoursesPage";
 import CourseDetailPage from "./pages/courses/CourseDetailPage";
@@ -16,6 +18,7 @@ import LabsMotionPage from "./pages/labs/LabsMotionPage";
 import LabDetailPage from "./pages/labs/LabDetailPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ProjectsPage from "./pages/ProjectsPage";
+import YouTubePage from "./pages/YouTubePage";
 
 const legacyLabRoutes = labsMotionEntries.flatMap((lab) =>
   (lab.legacyPaths ?? []).map((legacyPath) => ({
@@ -33,6 +36,9 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "experience", element: <ExperiencePage /> },
       { path: "projects", element: <ProjectsPage /> },
+      { path: "blogs", element: <BlogsPage /> },
+      { path: "blogs/:category/:slug", element: <BlogDetailPage /> },
+      { path: "youtube", element: <YouTubePage /> },
       { path: "certifications", element: <CertificationsPage /> },
       { path: "contact", element: <ContactPage /> },
       { path: "labs", loader: () => redirect("/labs/motion") },

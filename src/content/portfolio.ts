@@ -13,14 +13,14 @@ import type {
 export const profile: Profile = {
   name: "Yash Hegde",
   shortName: "YH",
-  role: "Full-stack engineer",
+  role: "Software engineer building AI-enabled financial products",
   location: "India",
   availability: "Open to full-stack product engineering roles",
   summary:
-    "Full-stack engineer with experience across banking, AI products, real-time interfaces, and production systems.",
-  heroTitle: "Full-stack engineer building reliable, well-designed products.",
+    "Software engineer building financial workflows, AI-enabled products, real-time interfaces, and production systems.",
+  heroTitle: "Full-stack engineer building reliable financial and AI-enabled products.",
   heroLead:
-    "I work across backend systems, product interfaces, and end-to-end delivery, with recent experience in digital banking and AI products.",
+    "I work across product interfaces, backend systems, and end-to-end delivery, with recent experience in digital banking, document intelligence, and AI products.",
   heroSubcopy:
     "This portfolio brings together selected projects, work experience, and motion studies to show how I build products end to end.",
   resumeUrl: "/Yash-Hegde-Resume.pdf",
@@ -30,6 +30,8 @@ export const navItems: NavItem[] = [
   { label: "Home", path: "/" },
   { label: "Experience", path: "/experience" },
   { label: "Projects", path: "/projects" },
+  { label: "Writing", path: "/blogs" },
+  { label: "Videos", path: "/youtube" },
   { label: "Labs", path: "/labs/motion" },
   { label: "Courses", path: "/courses" },
   { label: "Certifications", path: "/certifications" },
@@ -103,22 +105,24 @@ export const experienceEntries: ExperienceEntry[] = [
     location: "Bengaluru, India",
     team: "Oracle Banking Digital Experience",
     summary:
-      "Built digital banking workflows in Oracle JET, including new transaction flows, API integrations, and performance improvements in a production environment.",
+      "Built digital banking and AI-assisted document workflows spanning cash forecasting, payment receipts, API integrations, and production release support.",
     highlights: [
-      "Owned frontend development for a new Cashflow Transaction module in Oracle JET, building the UI from scratch, integrating service APIs, and implementing multi-step transaction workflows.",
-      "Integrated backend service APIs into existing transaction flows while preserving backward compatibility across production financial workflows.",
-      "Optimized API interactions by reducing redundant service calls and improving response performance across UI and service layers.",
-      "Resolved high-priority production defects in client-facing financial workflows, improving reliability and reducing business impact.",
-      "Created Codex agent skills for team-specific workflows, reducing turnaround time for large user stories from weeks to days and driving AI adoption within the team.",
-      "Led Git workflow adoption by standardizing branching practices and improving collaboration across backend, framework, and QA teams.",
+      "Built a two-stage payment-receipt workflow combining document upload, AI-assisted field extraction, user correction, validation, and payment-record submission.",
+      "Delivered cash-forecasting workflows for recurring schedules, expected-versus-actual cashflows, account and counterparty selection, categorization, and transaction review and edit flows.",
+      "Developed cashflow tracking, filtering, allocation, and reconciliation features that help operations teams investigate projected movements and connect forecasts with completed payments.",
+      "Stabilized customer-facing banking workflows across five production point releases by resolving API, document-ID mapping, external-account, authorization, generated-UI, localization, and deployment defects.",
+      "Contributed to an AI knowledge graph connecting enterprise code, APIs, database objects, UI metadata, security configuration, and documentation into a traceable dependency model.",
+      "Built graph-backed, evidence-first agent workflows for impact analysis, code exploration, bug investigation, security review, and test discovery.",
     ],
     tags: [
       "Oracle JET",
       "JavaScript",
       "Enterprise UI",
-      "API Integration",
+      "REST APIs",
+      "Cash Management",
       "OBDX",
-      "AI Developer Tooling",
+      "Agentic AI",
+      "Graph Retrieval",
     ],
   },
   {
@@ -229,9 +233,9 @@ export const projectEntries: ProjectEntry[] = [
     year: "2026",
     image: "/project-vitalflow.png",
     summary:
-      "Healthcare assistant with voice booking, AI chat, doctor workflows, and document intelligence.",
+      "Voice-first healthcare assistant with appointment booking, doctor discovery, document context, and real-time AI responses.",
     outcome:
-      "Brings together frontend UX, voice interaction, AI workflows, and AWS deployment in one product.",
+      "Pairs Sarvam AI speech-to-text and text-to-speech with a responsive React interface, then ships the frontend on S3 and CloudFront and the backend on EC2.",
     technologies: [
       "React 19",
       "TypeScript",
@@ -263,7 +267,7 @@ export const projectEntries: ProjectEntry[] = [
     summary:
       "AI creator platform for script writing, descriptions, thumbnails, and real-time collaboration.",
     outcome:
-      "Covers real-time collaboration, payments, AI media workflows, and background workers in one stack.",
+      "Uses a Mediasoup SFU, WebSocket synchronization, Redis queue workers, and Dockerized services to support an N:N real-time product stack.",
     technologies: [
       "React",
       "TypeScript",
@@ -292,7 +296,7 @@ export const projectEntries: ProjectEntry[] = [
     summary:
       "AI assistant that generates frontend components and previews the output beside the code.",
     outcome:
-      "Shows prompt-to-code generation, authenticated chat history, and a live preview workflow for UI generation.",
+      "Combines real-time Gemini responses, Google OAuth, persisted sessions, and a prompt-to-code preview workflow for UI generation.",
     technologies: [
       "Next.js",
       "TypeScript",
@@ -316,7 +320,7 @@ export const projectEntries: ProjectEntry[] = [
     summary:
       "Portfolio tracker for uploaded holdings, live prices, market news, editing, and export.",
     outcome:
-      "Combines spreadsheet ingestion, live market data, editable holdings, and export flows in a finance UI.",
+      "Combines spreadsheet ingestion, SerpAPI market data, editable holdings, and export flows in a finance UI.",
     technologies: [
       "React",
       "TypeScript",
