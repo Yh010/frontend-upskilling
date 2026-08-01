@@ -1,6 +1,7 @@
-import { writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 
 const outputFile = new URL("../src/content/notionWriting.generated.ts", import.meta.url);
+const notionImageDirectory = new URL("../public/notion-images/", import.meta.url);
 const apiVersion = "2026-03-11";
 const token = process.env.NOTION_ACCESS_TOKEN;
 const publicSiteOrigin = (process.env.NOTION_PUBLIC_SITE_ORIGIN || "https://yashhegde.notion.site").replace(/\/$/, "");
@@ -33,6 +34,15 @@ const request = async (path, options = {}) => {
 const plainText = (value = []) => value.map((item) => item.plain_text ?? item.text?.content ?? "").join("").trim();
 const propertyText = (property) => plainText(property?.title ?? property?.rich_text ?? []);
 const blockText = (block) => plainText(block[block.type]?.rich_text ?? []);
+const richText = (value = []) => value.map((item) => ({
+  text: item.plain_text ?? item.text?.content ?? "",
+  ...(item.href ? { href: item.href } : {}),
+  ...(item.annotations?.bold ? { bold: true } : {}),
+  ...(item.annotations?.italic ? { italic: true } : {}),
+  ...(item.annotations?.strikethrough ? { strikethrough: true } : {}),
+  ...(item.annotations?.underline ? { underline: true } : {}),
+  ...(item.annotations?.code ? { code: true } : {}),
+}));
 
 if (!dataSourceId) {
   const database = await request(`/databases/${databaseId}`);
@@ -53,6 +63,21 @@ async function getChildren(pageId) {
   } while (cursor);
 
   return blocks;
+}
+
+async function persistImage(sourceUrl, pageId, blockId) {
+  if (!sourceUrl) return undefined;
+
+  const response = await fetch(sourceUrl);
+  if (!response.ok) return sourceUrl;
+
+  const extension = response.headers.get("content-type")?.split("/")[1]?.split(";")[0]?.replace("jpeg", "jpg") || "png";
+  const pageDirectory = new URL(`${pageId.replace(/-/g, "")}/`, notionImageDirectory);
+  const filename = `${blockId.replace(/-/g, "")}.${extension}`;
+
+  await mkdir(pageDirectory, { recursive: true });
+  await writeFile(new URL(filename, pageDirectory), Buffer.from(await response.arrayBuffer()));
+  return `/notion-images/${pageId.replace(/-/g, "")}/${filename}`;
 }
 
 function sectionsFromBlocks(blocks) {
@@ -76,6 +101,24 @@ function sectionsFromBlocks(blocks) {
 
   if (current.paragraphs.length || current.heading) sections.push(current);
   return sections.length ? sections : [{ paragraphs: ["This published Notion post has no supported text blocks yet."] }];
+}
+
+async function notionBlocks(blocks, pageId) {
+  return Promise.all(blocks.map(async (block) => {
+    const data = block[block.type] ?? {};
+    const image = block.type === "image" ? data[data.type] : undefined;
+    const children = block.has_children ? await notionBlocks(await getChildren(block.id), pageId) : undefined;
+
+    return {
+      id: block.id,
+      type: block.type,
+      ...(data.rich_text ? { richText: richText(data.rich_text) } : {}),
+      ...(data.caption ? { caption: richText(data.caption) } : {}),
+      ...(image?.url ? { imageUrl: await persistImage(image.url, pageId, block.id) } : {}),
+      ...(data.language ? { language: data.language } : {}),
+      ...(children?.length ? { children } : {}),
+    };
+  }));
 }
 
 const posts = [];
@@ -121,6 +164,8 @@ const entries = await Promise.all(posts.filter((page) => page.properties.Publish
     throw new Error(`Every published Notion post needs a Name and Slug. Page ${page.id} is missing one.`);
   }
 
+  const blocks = await getChildren(page.id);
+
   return {
     slug,
     title,
@@ -128,8 +173,9 @@ const entries = await Promise.all(posts.filter((page) => page.properties.Publish
     excerpt: propertyText(properties.Excerpt),
     readingTime: propertyText(properties["Reading time"]) || "Read note",
     source: "Notion",
-    notionEmbedUrl: `${publicSiteOrigin}/ebd//${page.id.replace(/-/g, "")}`,
-    sections: sectionsFromBlocks(await getChildren(page.id)),
+    notionUrl: `${publicSiteOrigin}/ebd//${page.id.replace(/-/g, "")}`,
+    sections: sectionsFromBlocks(blocks),
+    blocks: await notionBlocks(blocks, page.id),
   };
 }));
 

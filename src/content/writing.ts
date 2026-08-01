@@ -3,6 +3,26 @@ export type BlogSection = {
   paragraphs: string[];
 };
 
+export type NotionRichText = {
+  text: string;
+  href?: string;
+  bold?: boolean;
+  italic?: boolean;
+  strikethrough?: boolean;
+  underline?: boolean;
+  code?: boolean;
+};
+
+export type NotionBlock = {
+  id: string;
+  type: string;
+  richText?: NotionRichText[];
+  caption?: NotionRichText[];
+  imageUrl?: string;
+  language?: string;
+  children?: NotionBlock[];
+};
+
 export type BlogEntry = {
   slug: string;
   category: string;
@@ -11,7 +31,8 @@ export type BlogEntry = {
   readingTime: string;
   source: "Notion";
   sections: BlogSection[];
-  notionEmbedUrl?: string;
+  blocks?: NotionBlock[];
+  notionUrl?: string;
 };
 
 export type YouTubeVideo = {
