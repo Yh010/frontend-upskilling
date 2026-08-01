@@ -90,6 +90,27 @@ do {
   cursor = response.has_more ? response.next_cursor : undefined;
 } while (cursor);
 
+// Some newer Notion workspaces expose database entries to an internal
+// connection through Search before they appear in the data-source query.
+// The connection for this project is granted access only to Blog Posts, so
+// this is a safe fallback and keeps publishing reliable across both shapes.
+if (!posts.length) {
+  let searchCursor;
+  do {
+    const body = {
+      page_size: 100,
+      filter: { property: "object", value: "page" },
+    };
+    if (searchCursor) body.start_cursor = searchCursor;
+
+    const response = await request("/search", { method: "POST", body: JSON.stringify(body) });
+    posts.push(
+      ...response.results.filter((page) => page.properties?.Name && page.properties?.Slug),
+    );
+    searchCursor = response.has_more ? response.next_cursor : undefined;
+  } while (searchCursor);
+}
+
 const entries = await Promise.all(posts.filter((page) => page.properties.Published?.checkbox !== false).map(async (page) => {
   const properties = page.properties;
   const title = propertyText(properties.Name);
