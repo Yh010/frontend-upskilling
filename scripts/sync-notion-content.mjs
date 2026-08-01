@@ -3,10 +3,11 @@ import { writeFile } from "node:fs/promises";
 const outputFile = new URL("../src/content/notionWriting.generated.ts", import.meta.url);
 const apiVersion = "2026-03-11";
 const token = process.env.NOTION_ACCESS_TOKEN;
-const dataSourceId = process.env.NOTION_BLOG_DATA_SOURCE_ID;
+let dataSourceId = process.env.NOTION_BLOG_DATA_SOURCE_ID;
+const databaseId = process.env.NOTION_BLOG_DATABASE_ID;
 
-if (!token || !dataSourceId) {
-  console.log("Notion sync skipped: NOTION_ACCESS_TOKEN and NOTION_BLOG_DATA_SOURCE_ID are not both configured.");
+if (!token || (!dataSourceId && !databaseId)) {
+  console.log("Notion sync skipped: configure NOTION_ACCESS_TOKEN and either NOTION_BLOG_DATA_SOURCE_ID or NOTION_BLOG_DATABASE_ID.");
   process.exit(0);
 }
 
@@ -31,6 +32,12 @@ const request = async (path, options = {}) => {
 const plainText = (value = []) => value.map((item) => item.plain_text ?? item.text?.content ?? "").join("").trim();
 const propertyText = (property) => plainText(property?.title ?? property?.rich_text ?? []);
 const blockText = (block) => plainText(block[block.type]?.rich_text ?? []);
+
+if (!dataSourceId) {
+  const database = await request(`/databases/${databaseId}`);
+  dataSourceId = database.data_sources?.[0]?.id;
+  if (!dataSourceId) throw new Error("The Notion database does not contain a data source.");
+}
 
 async function getChildren(pageId) {
   const blocks = [];
@@ -75,7 +82,6 @@ let cursor;
 do {
   const body = {
     page_size: 100,
-    filter: { property: "Published", checkbox: { equals: true } },
     sorts: [{ timestamp: "last_edited_time", direction: "descending" }],
   };
   if (cursor) body.start_cursor = cursor;
@@ -84,7 +90,7 @@ do {
   cursor = response.has_more ? response.next_cursor : undefined;
 } while (cursor);
 
-const entries = await Promise.all(posts.map(async (page) => {
+const entries = await Promise.all(posts.filter((page) => page.properties.Published?.checkbox !== false).map(async (page) => {
   const properties = page.properties;
   const title = propertyText(properties.Name);
   const slug = propertyText(properties.Slug);

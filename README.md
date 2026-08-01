@@ -140,7 +140,7 @@ Create a Notion database and use these exact property names:
 | `Excerpt` | Text | Short introduction shown in the index and article header |
 | `Category` | Select | Article collection, for example `OpenKode` |
 | `Reading time` | Text | Label such as `5 min read` |
-| `Published` | Checkbox | Only checked posts are visible on the site |
+| `Published` | Checkbox | Optional; only checked posts are visible once the property is added |
 
 Use normal paragraph blocks and heading blocks for the post body. The sync currently renders paragraphs, quotes, numbered lists, bulleted lists, and headings.
 
@@ -155,7 +155,7 @@ Add these Production environment variables in Vercel:
 | Variable | Value |
 | --- | --- |
 | `NOTION_ACCESS_TOKEN` | Notion connection access token |
-| `NOTION_BLOG_DATA_SOURCE_ID` | Your Notion data source ID |
+| `NOTION_BLOG_DATABASE_ID` | The first UUID in your Notion database URL |
 | `VERCEL_DEPLOY_HOOK_URL` | A Vercel Deploy Hook URL for this project |
 | `NOTION_WEBHOOK_VERIFICATION_TOKEN` | Added after the first webhook delivery, described below |
 
