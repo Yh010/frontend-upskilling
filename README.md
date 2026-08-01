@@ -125,6 +125,52 @@ npm run dev
 
 Then open the local Vite URL and visit any route above.
 
+## Notion-powered blog
+
+The blog can publish from a Notion data source while retaining a static, fast Vercel site. A Notion update calls `api/notion-webhook.js`, which validates the event and triggers a new deployment. During that deployment, `scripts/sync-notion-content.mjs` fetches the latest published posts and generates the site's blog data.
+
+### 1. Create the Notion data source
+
+Create a Notion database and use these exact property names:
+
+| Property | Type | Purpose |
+| --- | --- | --- |
+| `Name` | Title | Blog title |
+| `Slug` | Text | URL-safe unique slug, for example `building-a-small-agent` |
+| `Excerpt` | Text | Short introduction shown in the index and article header |
+| `Category` | Select | Article collection, for example `OpenKode` |
+| `Reading time` | Text | Label such as `5 min read` |
+| `Published` | Checkbox | Only checked posts are visible on the site |
+
+Use normal paragraph blocks and heading blocks for the post body. The sync currently renders paragraphs, quotes, numbered lists, bulleted lists, and headings.
+
+### 2. Create and share a Notion connection
+
+Create an internal connection in the [Notion integrations settings](https://www.notion.so/my-integrations), enable read access, and share the blog database with that connection. Copy its access token and the data source ID from the database URL.
+
+### 3. Configure Vercel
+
+Add these Production environment variables in Vercel:
+
+| Variable | Value |
+| --- | --- |
+| `NOTION_ACCESS_TOKEN` | Notion connection access token |
+| `NOTION_BLOG_DATA_SOURCE_ID` | Your Notion data source ID |
+| `VERCEL_DEPLOY_HOOK_URL` | A Vercel Deploy Hook URL for this project |
+| `NOTION_WEBHOOK_VERIFICATION_TOKEN` | Added after the first webhook delivery, described below |
+
+Deploy once after adding the first three variables. Create a Deploy Hook in **Project Settings → Git → Deploy Hooks**; it must target the production branch.
+
+### 4. Activate Notion updates
+
+In your Notion connection's **Webhooks** tab, add this public endpoint:
+
+`https://<your-domain>/api/notion-webhook`
+
+Subscribe to `page.created`, `page.content_updated`, `page.properties_updated`, `page.deleted`, and `page.undeleted`. The first delivery writes the verification token to the Vercel function logs. Copy that token into `NOTION_WEBHOOK_VERIFICATION_TOKEN`, redeploy once, then complete verification in Notion.
+
+From then on, publishing or editing a Notion post triggers a signed webhook and deploys the refreshed blog automatically. Never commit the Notion token or Deploy Hook URL.
+
 ## Capture Notes
 
 The README demos are stored in `public/demos/`.

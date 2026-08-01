@@ -31,7 +31,7 @@ export type YouTubePlaylist = {
 // These entries establish the public writing structure. The Notion page is private
 // in the current session, so its toggle text should be pasted into `sections` once
 // access is available rather than rewritten from memory.
-export const blogEntries: BlogEntry[] = [
+const fallbackBlogEntries: BlogEntry[] = [
   {
     slug: "why-headless-ai-core-and-start-with-cli-not-vscode-extension",
     category: "OpenKode",
@@ -66,6 +66,10 @@ export const blogEntries: BlogEntry[] = [
     ],
   },
 ];
+
+import { notionBlogEntries } from "./notionWriting.generated";
+
+export const blogEntries = notionBlogEntries.length ? notionBlogEntries : fallbackBlogEntries;
 
 export const youtubePlaylists: YouTubePlaylist[] = [
   {
