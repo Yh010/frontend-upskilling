@@ -3,6 +3,7 @@ import { writeFile } from "node:fs/promises";
 const outputFile = new URL("../src/content/notionWriting.generated.ts", import.meta.url);
 const apiVersion = "2026-03-11";
 const token = process.env.NOTION_ACCESS_TOKEN;
+const publicSiteOrigin = (process.env.NOTION_PUBLIC_SITE_ORIGIN || "https://yashhegde.notion.site").replace(/\/$/, "");
 let dataSourceId = process.env.NOTION_BLOG_DATA_SOURCE_ID;
 const databaseId = process.env.NOTION_BLOG_DATABASE_ID;
 
@@ -127,7 +128,7 @@ const entries = await Promise.all(posts.filter((page) => page.properties.Publish
     excerpt: propertyText(properties.Excerpt),
     readingTime: propertyText(properties["Reading time"]) || "Read note",
     source: "Notion",
-    notionEmbedUrl: `https://www.notion.so/embed/${page.id.replace(/-/g, "")}`,
+    notionEmbedUrl: `${publicSiteOrigin}/ebd//${page.id.replace(/-/g, "")}`,
     sections: sectionsFromBlocks(await getChildren(page.id)),
   };
 }));
