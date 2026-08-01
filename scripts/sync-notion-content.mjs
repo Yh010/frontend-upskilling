@@ -127,6 +127,7 @@ const entries = await Promise.all(posts.filter((page) => page.properties.Publish
     excerpt: propertyText(properties.Excerpt),
     readingTime: propertyText(properties["Reading time"]) || "Read note",
     source: "Notion",
+    notionEmbedUrl: `https://www.notion.so/embed/${page.id.replace(/-/g, "")}`,
     sections: sectionsFromBlocks(await getChildren(page.id)),
   };
 }));

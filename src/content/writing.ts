@@ -11,6 +11,7 @@ export type BlogEntry = {
   readingTime: string;
   source: "Notion";
   sections: BlogSection[];
+  notionEmbedUrl?: string;
 };
 
 export type YouTubeVideo = {

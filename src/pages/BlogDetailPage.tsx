@@ -1,4 +1,4 @@
-import { ArrowLeft, BookOpen, CalendarDays, ChevronRight, Hash, Tag } from "lucide-react";
+import { ArrowLeft, BookOpen, CalendarDays, ChevronRight, ExternalLink, Hash, Tag } from "lucide-react";
 import { Link, useParams } from "react-router";
 import { blogEntries } from "../content/writing";
 
@@ -14,6 +14,7 @@ export default function BlogDetailPage() {
 
   const relatedEntries = blogEntries.filter((item) => item.category === entry.category);
   const headings = entry.sections.flatMap((section) => section.heading ? [section.heading] : []);
+  const usesNotionEmbed = Boolean(entry.notionEmbedUrl);
 
   return (
     <div className="mx-auto grid max-w-[1520px] xl:grid-cols-[260px_minmax(0,1fr)_240px]">
@@ -43,14 +44,24 @@ export default function BlogDetailPage() {
           <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--color-muted)] sm:text-lg">{entry.excerpt}</p>
           <div className="mt-10 border-t border-[var(--color-line)]" />
 
-          <div className="space-y-12 py-10 sm:py-12">
-            {entry.sections.map((section, index) => (
-              <section key={`${entry.slug}-${index}`} className="scroll-mt-28">
-                {section.heading ? <h2 id={anchorId(section.heading)} className="font-display text-2xl leading-tight tracking-[-0.03em] text-[var(--color-ink)] sm:text-3xl">{section.heading}</h2> : null}
-                <div className={section.heading ? "mt-5 space-y-5" : "space-y-5"}>{section.paragraphs.map((paragraph) => <p key={paragraph} className="text-[0.98rem] leading-8 text-[var(--color-muted)]">{paragraph}</p>)}</div>
-              </section>
-            ))}
-          </div>
+          {usesNotionEmbed ? (
+            <div className="py-8 sm:py-10">
+              <div className="mb-4 flex items-center justify-between gap-4">
+                <p className="text-sm text-[var(--color-muted)]">Rendered directly from Notion</p>
+                <a href={entry.notionEmbedUrl?.replace("/embed/", "/")} target="_blank" rel="noreferrer" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-[var(--color-ink)] hover:text-[var(--color-muted)]">Open in Notion <ExternalLink className="h-3.5 w-3.5" /></a>
+              </div>
+              <iframe title={`${entry.title} on Notion`} src={entry.notionEmbedUrl} className="min-h-[900px] w-full rounded-lg border border-[var(--color-line)] bg-white" allowFullScreen />
+            </div>
+          ) : (
+            <div className="space-y-12 py-10 sm:py-12">
+              {entry.sections.map((section, index) => (
+                <section key={`${entry.slug}-${index}`} className="scroll-mt-28">
+                  {section.heading ? <h2 id={anchorId(section.heading)} className="font-display text-2xl leading-tight tracking-[-0.03em] text-[var(--color-ink)] sm:text-3xl">{section.heading}</h2> : null}
+                  <div className={section.heading ? "mt-5 space-y-5" : "space-y-5"}>{section.paragraphs.map((paragraph) => <p key={paragraph} className="text-[0.98rem] leading-8 text-[var(--color-muted)]">{paragraph}</p>)}</div>
+                </section>
+              ))}
+            </div>
+          )}
           <div className="flex items-center justify-between border-t border-[var(--color-line)] py-8 text-sm"><Link to="/blogs" className="inline-flex items-center gap-2 text-[var(--color-muted)] hover:text-[var(--color-ink)]"><ArrowLeft className="h-4 w-4" /> All notes</Link><span className="inline-flex items-center gap-1 text-[var(--color-muted)]">More writing <ChevronRight className="h-4 w-4" /></span></div>
         </div>
       </article>
@@ -60,7 +71,7 @@ export default function BlogDetailPage() {
           <p className="text-sm font-semibold text-[var(--color-ink)]">On this page</p>
           <nav className="mt-4 border-l border-[var(--color-line)]" aria-label="Table of contents">
             <a href="#top" className="flex items-center gap-2 border-l-2 border-[var(--color-ink)] -ml-px py-1.5 pl-3 text-sm text-[var(--color-ink)]">Overview</a>
-            {headings.map((heading) => <a key={heading} href={`#${anchorId(heading)}`} className="flex items-center gap-2 py-1.5 pl-3 text-sm leading-5 text-[var(--color-muted)] transition hover:text-[var(--color-ink)]"><Hash className="h-3 w-3 shrink-0 opacity-50" />{heading}</a>)}
+            {!usesNotionEmbed ? headings.map((heading) => <a key={heading} href={`#${anchorId(heading)}`} className="flex items-center gap-2 py-1.5 pl-3 text-sm leading-5 text-[var(--color-muted)] transition hover:text-[var(--color-ink)]"><Hash className="h-3 w-3 shrink-0 opacity-50" />{heading}</a>) : null}
           </nav>
         </div>
       </aside>
