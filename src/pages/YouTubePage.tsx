@@ -5,7 +5,8 @@ import { youtubePlaylists } from "../content/writing";
 const allVideos = youtubePlaylists.flatMap((playlist) => playlist.videos.map((video) => ({ ...video, playlist })));
 
 function youtubeId(href: string) {
-  return new URL(href).searchParams.get("v") ?? "";
+  const url = new URL(href);
+  return url.searchParams.get("v") ?? (url.hostname.includes("youtu.be") ? url.pathname.slice(1) : "");
 }
 
 export default function YouTubePage() {

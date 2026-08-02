@@ -43,6 +43,10 @@ export type YouTubeVideo = {
   thumbnail: string;
 };
 
+export type NotionYouTubeVideo = YouTubeVideo & {
+  playlistTitle: string;
+};
+
 export type YouTubePlaylist = {
   id: string;
   title: string;
@@ -93,7 +97,7 @@ import { notionBlogEntries } from "./notionWriting.generated";
 
 export const blogEntries = notionBlogEntries.length ? notionBlogEntries : fallbackBlogEntries;
 
-export const youtubePlaylists: YouTubePlaylist[] = [
+const fallbackYoutubePlaylists: YouTubePlaylist[] = [
   {
     id: "openkode-devlog",
     title: "Building OpenKode",
@@ -185,3 +189,22 @@ export const youtubePlaylists: YouTubePlaylist[] = [
     ],
   },
 ];
+
+import { notionYouTubeVideos } from "./notionVideos.generated";
+
+export const youtubePlaylists: YouTubePlaylist[] = Array.from(new Set([...fallbackYoutubePlaylists.map((playlist) => playlist.title), ...notionYouTubeVideos.map((video) => video.playlistTitle)])).map((title) => {
+  const fallback = fallbackYoutubePlaylists.find((playlist) => playlist.title === title);
+  return {
+    id: fallback?.id ?? title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""),
+    title,
+    description: fallback?.description ?? `Videos tagged ${title} in Notion.`,
+    videos: Array.from(
+      new Map(
+        [
+          ...(fallback?.videos ?? []),
+          ...notionYouTubeVideos.filter((video) => video.playlistTitle === title),
+        ].map((video) => [video.href, video]),
+      ).values(),
+    ),
+  };
+});
