@@ -1,0 +1,9 @@
+.codex-temp
+.playwright-mcp
+.pnpm-store
+andrej-karpathy-skills
+node_modules
+dist
+outputs
+notion-end-game.png
+.vercel
