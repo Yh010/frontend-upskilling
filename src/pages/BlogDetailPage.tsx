@@ -4,6 +4,15 @@ import { blogEntries, type NotionBlock, type NotionRichText } from "../content/w
 
 const anchorId = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
+const numberedListStart = (blocks: NotionBlock[], index: number) => {
+  let count = 0;
+  for (let cursor = index - 1; cursor >= 0; cursor -= 1) {
+    if (/^heading_\d+$/.test(blocks[cursor].type) || blocks[cursor].type === "divider") break;
+    if (blocks[cursor].type === "numbered_list_item") count += 1;
+  }
+  return count + 1;
+};
+
 function RichText({ parts = [] }: { parts?: NotionRichText[] }) {
   return <>{parts.map((part, index) => {
     const className = `${part.bold ? "font-semibold " : ""}${part.italic ? "italic " : ""}${part.strikethrough ? "line-through " : ""}${part.underline ? "underline underline-offset-2 " : ""}${part.code ? "rounded bg-[var(--color-surface-strong)] px-1.5 py-0.5 font-mono text-[0.9em] text-[var(--color-ink)] " : ""}`;
@@ -25,7 +34,7 @@ function NotionBlocks({ blocks }: { blocks: NotionBlock[] }) {
         items.push(item);
       }
       const List = block.type === "numbered_list_item" ? "ol" : "ul";
-      return <List key={block.id} className={`${block.type === "numbered_list_item" ? "list-decimal" : "list-disc"} space-y-2 pl-6 text-[0.98rem] leading-8 text-[var(--color-muted)]`}>{items.map((item) => <li key={item.id}><RichText parts={item.richText} />{item.children ? <div className="mt-3"><NotionBlocks blocks={item.children} /></div> : null}</li>)}</List>;
+      return <List key={block.id} {...(block.type === "numbered_list_item" ? { start: numberedListStart(blocks, index) } : {})} className={`${block.type === "numbered_list_item" ? "list-decimal" : "list-disc"} space-y-2 pl-6 text-[0.98rem] leading-8 text-[var(--color-muted)]`}>{items.map((item) => <li key={item.id}><RichText parts={item.richText} />{item.children ? <div className="mt-3"><NotionBlocks blocks={item.children} /></div> : null}</li>)}</List>;
     }
 
     if (/^heading_\d+$/.test(block.type)) {
