@@ -14,11 +14,13 @@ function RichText({ parts = [] }: { parts?: NotionRichText[] }) {
 
 function NotionBlocks({ blocks }: { blocks: NotionBlock[] }) {
   return <div className="space-y-5">{blocks.map((block, index) => {
-    const previous = blocks[index - 1];
+    const isEmptyParagraph = (candidate?: NotionBlock) => candidate?.type === "paragraph" && !candidate.richText?.length && !candidate.children?.length;
+    const previous = blocks.slice(0, index).reverse().find((candidate) => !isEmptyParagraph(candidate));
     if (block.type === "bulleted_list_item" || block.type === "numbered_list_item") {
       if (previous?.type === block.type) return null;
       const items = [];
       for (const item of blocks.slice(index)) {
+        if (isEmptyParagraph(item)) continue;
         if (item.type !== block.type) break;
         items.push(item);
       }
@@ -26,10 +28,12 @@ function NotionBlocks({ blocks }: { blocks: NotionBlock[] }) {
       return <List key={block.id} className={`${block.type === "numbered_list_item" ? "list-decimal" : "list-disc"} space-y-2 pl-6 text-[0.98rem] leading-8 text-[var(--color-muted)]`}>{items.map((item) => <li key={item.id}><RichText parts={item.richText} />{item.children ? <div className="mt-3"><NotionBlocks blocks={item.children} /></div> : null}</li>)}</List>;
     }
 
-    if (block.type === "heading_1" || block.type === "heading_2" || block.type === "heading_3") {
+    if (/^heading_\d+$/.test(block.type)) {
       const text = block.richText?.map((part) => part.text).join("") ?? "";
-      const Heading = block.type === "heading_1" ? "h2" : block.type === "heading_2" ? "h3" : "h4";
-      return <Heading key={block.id} id={anchorId(text)} className={`${block.type === "heading_1" ? "pt-8 text-3xl sm:text-4xl" : block.type === "heading_2" ? "pt-6 text-2xl sm:text-3xl" : "pt-4 text-xl sm:text-2xl"} scroll-mt-28 font-display leading-tight tracking-[-0.03em] text-[var(--color-ink)]`}><RichText parts={block.richText} /></Heading>;
+      const level = Number(block.type.replace("heading_", ""));
+      const Heading = level === 1 ? "h2" : level === 2 ? "h3" : level === 3 ? "h4" : level === 4 ? "h5" : "h6";
+      const size = level === 1 ? "pt-8 text-3xl sm:text-4xl" : level === 2 ? "pt-6 text-2xl sm:text-3xl" : level === 3 ? "pt-4 text-xl sm:text-2xl" : level === 4 ? "pt-4 text-lg sm:text-xl" : "pt-3 text-base sm:text-lg";
+      return <Heading key={block.id} id={anchorId(text)} className={`${size} scroll-mt-28 font-display leading-tight tracking-[-0.03em] text-[var(--color-ink)]`}><RichText parts={block.richText} /></Heading>;
     }
 
     if (block.type === "toggle") return <details key={block.id} className="group rounded-lg border border-[var(--color-line)] bg-white px-4 py-3"><summary className="cursor-pointer list-none font-medium text-[var(--color-ink)] [&::-webkit-details-marker]:hidden"><span className="mr-2 inline-block text-[var(--color-muted)] transition group-open:rotate-90">›</span><RichText parts={block.richText} /></summary>{block.children ? <div className="border-t border-[var(--color-line)] pt-4 mt-4"><NotionBlocks blocks={block.children} /></div> : null}</details>;
@@ -37,7 +41,10 @@ function NotionBlocks({ blocks }: { blocks: NotionBlock[] }) {
     if (block.type === "callout") return <div key={block.id} className="rounded-lg border border-[var(--color-line)] bg-[var(--color-surface-strong)] px-5 py-4 leading-7 text-[var(--color-muted)]"><RichText parts={block.richText} />{block.children ? <div className="mt-4"><NotionBlocks blocks={block.children} /></div> : null}</div>;
     if (block.type === "code") return <pre key={block.id} className="overflow-x-auto rounded-lg bg-[#161616] p-5 text-sm leading-7 text-[#f5f5f5]"><code><RichText parts={block.richText} /></code></pre>;
     if (block.type === "image" && block.imageUrl) return <figure key={block.id} className="space-y-3"><img src={block.imageUrl} alt={block.caption?.map((part) => part.text).join("") || ""} className="w-full rounded-lg border border-[var(--color-line)]" />{block.caption?.length ? <figcaption className="text-sm leading-6 text-[var(--color-muted)]"><RichText parts={block.caption} /></figcaption> : null}</figure>;
+    if (block.type === "column_list" && block.children) return <div key={block.id} className="grid gap-5" style={{ gridTemplateColumns: `repeat(${block.children.length}, minmax(0, 1fr))` }}>{block.children.map((column) => <div key={column.id} className="min-w-0"><NotionBlocks blocks={column.children ?? []} /></div>)}</div>;
+    if (block.type === "column" && block.children) return <NotionBlocks key={block.id} blocks={block.children} />;
     if (block.type === "divider") return <hr key={block.id} className="border-[var(--color-line)]" />;
+    if (isEmptyParagraph(block)) return null;
     if (block.type === "paragraph") return <div key={block.id}><p className="text-[0.98rem] leading-8 text-[var(--color-muted)]"><RichText parts={block.richText} /></p>{block.children ? <div className="mt-4"><NotionBlocks blocks={block.children} /></div> : null}</div>;
     return block.richText?.length ? <p key={block.id} className="text-[0.98rem] leading-8 text-[var(--color-muted)]"><RichText parts={block.richText} /></p> : null;
   })}</div>;
@@ -52,7 +59,7 @@ export default function BlogDetailPage() {
   }
 
   const relatedEntries = blogEntries.filter((item) => item.category === entry.category);
-  const headings = entry.blocks?.filter((block) => ["heading_1", "heading_2", "heading_3"].includes(block.type)).map((block) => block.richText?.map((part) => part.text).join("") ?? "") ?? entry.sections.flatMap((section) => section.heading ? [section.heading] : []);
+  const headings = entry.blocks?.filter((block) => /^heading_\d+$/.test(block.type)).map((block) => block.richText?.map((part) => part.text).join("") ?? "") ?? entry.sections.flatMap((section) => section.heading ? [section.heading] : []);
 
   return (
     <div className="mx-auto grid max-w-[1520px] xl:grid-cols-[260px_minmax(0,1fr)_240px]">
